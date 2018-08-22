@@ -4,7 +4,7 @@
  */
 
 
-.wrapper {
+.nua__wrapper {
   max-width: 97vw;
   width:100%;
   padding: 0;
@@ -15,16 +15,16 @@
 
 }
 
-body.page-template-template-guide {
-  & > .wrapper {
-    max-width:80vw;
-  }
-}
-
-@media only screen and (max-width: 959px) {
-  body.page-template-template-guide {
-    & > .wrapper {
-      max-width:97vw;
-    }
-  }
-}
+// body.page-template-template-guide {
+//   & > .wrapper {
+//     max-width:80vw;
+//   }
+// }
+//
+// @media only screen and (max-width: 959px) {
+//   body.page-template-template-guide {
+//     & > .wrapper {
+//       max-width:97vw;
+//     }
+//   }
+// }

@@ -31,4 +31,4 @@
 				</div>
 			</header>
 			<!-- wrapper -->
-			<div class="wrapper">
+			<div class="nua__wrapper">

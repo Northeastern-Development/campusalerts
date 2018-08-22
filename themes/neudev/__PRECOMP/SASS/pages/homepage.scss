@@ -1,39 +1,39 @@
-#nu__home-content {
-  max-width:50vw;
-  width:100%;
-  margin:0 auto;
-  // margin-left:5%;
-  & > h1 {
-    @include font-5b-c;
-  }
-  & > h3 {
-    @include font-2b-l;
-  }
-  & > p {
-    @include font-2l-l;
-    margin: 0 0 $gutter 0;
-    & > a {
-      color:$brand_colors-black;
-      text-decoration: none;
-      border-bottom:1px solid $brand_colors-red;
-      &:hover {
-        text-decoration: none;
-        color: $brand_colors-red;
-      }
-    }
-  }
-  & > ul {
-    margin: 0 0 0 $gutter;
-    & > li {
-      @include font-2l-l;
-      margin: 0 0 ($gutter / 2) 0;
-      & > a {
-        color:$brand_colors-black;
-        text-decoration: none;
-        border-bottom:1px solid $brand_colors-red;
-        &:hover {
-          text-decoration: none;
-          color: $brand_colors-red;
+.nua__wrapper {
+
+  & > main {
+
+    & > section {
+
+      & > div {
+        max-width:50vw;
+        width:100%;
+        margin:0 auto;
+        & > h2 {
+          @include font-5b-c;
+        }
+        & > p {
+          @include font-2l-l;
+          margin: 0 0 $gutter 0;
+        }
+        & > ul {
+          margin: 0 0 0 $gutter;
+          & > li {
+            @include font-2l-l;
+            margin: 0 0 ($gutter / 2) 0;
+            list-style-type: none;
+            & > a {
+              color:$brand_colors-black;
+              text-decoration: none;
+              border-bottom:1px solid $brand_colors-red;
+              &:hover {
+                text-decoration: none;
+                color: $brand_colors-red;
+              }
+              & > span {
+                font-weight:700;
+              }
+            }
+          }
         }
       }
     }

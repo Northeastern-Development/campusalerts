@@ -6,15 +6,4 @@
       </a>
     </div>
     <!-- /logo -->
-    <input  type="checkbox" name="nav-btn" id="nav-btn" />
-    <span></span>
-    <div class="nu__accordion" id="nu__mobile">
-      <nav class="nu__main-nav">
-        <?php neudev_nav(); ?>
-      </nav>
-      <?php get_template_part('_includes/side', 'navigation');?>
-    </div>
-
-    <nav class="nu__main-nav" id="nu__main-nav-desktop">
-      <?php neudev_nav(); ?>
-    </nav>
+    

@@ -33,7 +33,7 @@ if($filter == ''){
 
 			$fields = get_fields($a->ID);
 
-			$guide = '<li><a href="%s" title="%s, read more">%s For: %s - %s - Read More</a></li>';
+			$guide = '<li><a href="%s" title="%s, read more">%s For: <span>%s</span> - %s - Read More</a></li>';
 
 
 			$campus = "";
@@ -55,11 +55,10 @@ if($filter == ''){
   }
 
 		$response .= "</ul></div>";
-	}
-	echo $response;
+}
+echo $response;
 
 }else {
-
 
 	$args = array(
 		 "post_type" => "nualerts",
@@ -70,6 +69,7 @@ if($filter == ''){
 	);
 
 	$res = query_posts($args);
+	//print_r($res);
 
 	$response = "";	// an empty return will collapse the alert area to nothing
 
@@ -77,41 +77,38 @@ if($filter == ''){
 
 			$response .= "<div><h2>University Alert!</h2><p>The Northeastern University System has issued the following alert(s).  Please be sure to read any associated information and contact your campus emergency services with any questions.</p><ul>";
 
-			$guide = '<li><a href="%s" title="%s, read more">%s For: %s - %s - Read More</a></li>';
+			$guide = '<li><a href="%s" title="%s, read more">%s For: <span>%s</span> - %s - Read More</a></li>';
 
-		foreach($res as $r){
-			$fields = get_fields($r->ID);
-			//print_r($fields);
+			foreach($res as $r){
+				$fields = get_fields($r->ID);
+				//print_r($fields);
 
-			$affected_campus = $fields['affected_campus'][0]->post_name;
-			$campuses = $affected_campus;
-			//print_r($campuses);
+				$affected_campus = $fields['affected_campus'][0]->post_name;
+				$campus = $affected_campus;
+				//print_r($campuses);
 
-			$campus = "";
+				$thisCampus = "";
 
-			if($campuses == $filter){
+				if($campus == $filter){
 
-				foreach($fields['affected_campus'] as $c){
-					$campus .= ($campus != ""?", ":"").$c->post_name;
+					foreach($fields['affected_campus'] as $c){
+						$thisCampus .= ($thisCampus != ""?", ":"").$c->post_title;
+					}
+
+					$response .= sprintf(
+						 $guide
+						 ,$r->guid
+						 ,$r->post_title
+						 ,$r->post_title
+						 ,$thisCampus
+						 ,$r->post_excerpt
+					);
 				}
-
-				$response .= sprintf(
-					 $guide
-					 ,$r->guid
-					,$r->post_title
-					,$r->post_title
-					,$campus
-					,$r->post_excerpt
-
-				);
-
 			}
 
-		}
-		echo($response);
-		$response .= "</ul></div>";
+			echo($response);
+			$response .= "</ul></div>";
 	}
-
 }
 
 
