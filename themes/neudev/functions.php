@@ -186,29 +186,29 @@ function neudev_footer_nav()
 }
 
 // neudev navigation
-function neudev_sidebar_nav()
-{
-    wp_nav_menu(
-    array(
-        'theme_location'  => 'sidebar-menu',
-        'menu'            => '',
-        'container'       => 'div',
-        'container_class' => 'menu-{menu slug}-container',
-        'container_id'    => '',
-        'menu_class'      => 'menu',
-        'menu_id'         => '',
-        'echo'            => true,
-        'fallback_cb'     => 'wp_page_menu',
-        'before'          => '',
-        'after'           => '',
-        'link_before'     => '',
-        'link_after'      => '',
-        'items_wrap'      => '<ul>%3$s</ul>',
-        'depth'           => 0,
-        'walker'          => new neu_walker_nav_menu()
-        )
-    );
-}
+// function neudev_sidebar_nav()
+// {
+//     wp_nav_menu(
+//     array(
+//         'theme_location'  => 'sidebar-menu',
+//         'menu'            => '',
+//         'container'       => 'div',
+//         'container_class' => 'menu-{menu slug}-container',
+//         'container_id'    => '',
+//         'menu_class'      => 'menu',
+//         'menu_id'         => '',
+//         'echo'            => true,
+//         'fallback_cb'     => 'wp_page_menu',
+//         'before'          => '',
+//         'after'           => '',
+//         'link_before'     => '',
+//         'link_after'      => '',
+//         'items_wrap'      => '<ul>%3$s</ul>',
+//         'depth'           => 0,
+//         'walker'          => new neu_walker_nav_menu()
+//         )
+//     );
+// }
 
 // Extend Walker Menu
 class neu_walker_nav_menu extends Walker_Nav_Menu {
