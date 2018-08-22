@@ -1,0 +1,35 @@
+<ul>
+  <li>
+    <h2>
+      <a href="<?php echo esc_url( home_url( '/' ) ); ?>">About This Guideline</a>
+    </h2>
+  </li>
+</ul>
+  <?php
+    $args = array(
+      'sort_column' => 'menu_order',
+      'parent' 			=> 0,
+      //'exclude' 		=> array( 43, 264 ),
+      'exclude' 		=> 43,
+     );
+     //$parent_page_id = 264;
+     $pages = get_pages($args);
+     foreach($pages as $page){
+     ?>
+<ul>
+  <li>
+    <input class="js-detectThisChange" data-id="<?php echo $page->ID ?>" type="checkbox" checked >
+    <i></i>
+    <?php
+    //echo '<a href="' . get_permalink( $page->ID ) . '">' . $page->post_title . '</a>';
+    echo '<h2>' . $page->post_title . '</h2>';
+    ?>
+    <ul class="nu__children">
+      <?php
+      wp_list_pages('title_li=&depth=0&child_of='.$page->ID.'');
+      //wp_list_pages("title_li=&child_of=".$post->post_parent."&echo=0");
+      ?>
+    </ul>
+  </li>
+</ul>
+<?php } ?>

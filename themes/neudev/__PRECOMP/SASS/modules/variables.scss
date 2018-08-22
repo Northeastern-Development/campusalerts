@@ -1,0 +1,412 @@
+/**
+ * modules/variables
+ * ---
+ */
+
+
+/**
+ * Typography
+ */
+
+$selection-bg: #04A4CC;
+
+$black: rgba(0, 0, 0, 1.0);
+$nured: rgba(204, 0, 0, 1.0);
+$white: rgba(255, 255, 255, 1.0);
+
+
+/**
+ * Grid
+ */
+
+
+
+
+
+
+$font-family-base: 'Lato',sans-serif,'Material Icons';
+$font-size-base: 20px;
+$line-height-base: 32px;
+$font-weight-base: 400;
+
+
+/**
+ * Colors
+ */
+
+$text-color: rgba(0,0,0,1.0);
+$body-bg: rgba(255,255,255,1.0);
+
+
+$brand_colors-red: rgb(204,0,0);                      // regular red
+$brand_colors-redD: rgb(147,0,0);                     // dark red
+$brand_colors-redL: rgb(218,52,50);                   // light red
+$brand_colors-black: rgb(0, 0, 0);                    // black
+$brand_colors-white: rgb(255, 255, 254);              // white
+$brand_colors-beige: rgb(236,230,213);                // beige
+$brand_colors-grayW: rgb(151, 151, 151);              // warm gray
+
+
+/**
+ * Grid
+ */
+
+$wrapper-width: 100vw;
+$content-width: 80vw;
+$content-width-super-narrow: 88vw;
+$content-width-wide: 94vw;
+$content-width-960: 96vw;
+$content-width-700: 92vw;
+$content-width-narrow: 50vw;
+$gutter: 30px;
+
+
+$padding-horizontal-base: 5px;
+$padding-vertical-base: 5px;
+$margin-horizontal-base: 5px;
+$margin-vertical-base: 5px;
+$margin-horizontal-large: 15px;
+$margin-vertical-large: 15px;
+
+
+
+
+/* These are variables for the header */
+$headerHeight: 80px;
+
+
+/* These are variables for the main navigation */
+$navigation-height: 50px;
+
+
+$footer-height: 250px;
+$footer-height-collapsed: 44px;
+
+
+@mixin font-0r-l{
+  font-size: 12px;
+  color: $brand_colors-grayW;
+  line-height: 26px;
+  text-align: left;
+}
+
+@mixin font-0r-c{
+  font-size: 12px;
+  line-height: 24px;
+  text-align: center;
+}
+
+
+
+@mixin font-0-l{
+  font-size: 14px;
+  line-height: 28px;
+  text-align: left;
+}
+
+@mixin font-1b-l{
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+}
+
+@mixin font-1b-c{
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+}
+
+@mixin font-1l-l{
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 24px;
+  text-align: left;
+}
+
+
+@mixin font-1r-l{
+  font-size: 14px;
+  color: $brand_colors-grayW;
+  line-height: 28px;
+  text-align: left;
+}
+
+@mixin font-1r-r{
+  font-size: 14px;
+  color: $brand_colors-grayW;
+  line-height: 28px;
+  text-align: right;
+}
+
+@mixin font-1r-c{
+  font-size: 14px;
+  line-height: 28px;
+  text-align: center;
+}
+
+
+
+@mixin font-2l-l{
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 28px;
+  text-align: left;
+  // letter-spacing: 0;
+}
+
+@mixin font-2l-r{
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 28px;
+  text-align: right;
+}
+
+@mixin font-2r-r{
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 28px;
+  text-align: right;
+}
+
+@mixin font-2r-l{
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 28px;
+  text-align: left;
+}
+
+@mixin font-2l-c{
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 28px;
+  text-align: center;
+}
+
+@mixin font-2b-l{
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: left;
+}
+
+@mixin font-2b-c{
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: center;
+}
+
+@mixin font-3r-l{
+  font-size: 20px;
+  line-height: 32px;
+  text-align: left;
+}
+
+@mixin font-3b-l{
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: left;
+}
+
+@mixin font-3l-l{
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 32px;
+  text-align: left;
+}
+
+// @mixin font-3r-c{
+//   font-size: 20px;
+//   line-height: 32px;
+//   text-align: center;
+// }
+
+@mixin font-3l-c{
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 32px;
+  text-align: center;
+}
+
+@mixin font-3b-c{
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: center;
+}
+
+@mixin font-4-c{
+  font-size: 20px;
+  line-height: 32px;
+  text-align: center;
+}
+
+@mixin font-5r-l{
+  font-size: 24px;
+  line-height: 32px;
+  text-align: left;
+}
+
+@mixin font-5r-c{
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+}
+
+@mixin font-5l-c{
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+  font-weight:300;
+}
+
+@mixin font-5l-l{
+  font-size: 24px;
+  line-height: 32px;
+  text-align: left;
+  font-weight:300;
+}
+
+@mixin font-5b-l{
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: left;
+}
+
+@mixin font-5b-c{
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: center;
+}
+
+@mixin font-6l-l{
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 48px;
+  text-align: left;
+}
+
+@mixin font-6l-c{
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 48px;
+  text-align: center;
+}
+
+@mixin font-7-c{
+  font-size: 34px;
+  line-height: 48px;
+  text-align: center;
+  font-weight:300;
+}
+
+@mixin font-8l-c{
+  font-size: 50px;
+  font-weight: 300;
+  line-height: 72px;
+  text-align: center;
+}
+
+
+@mixin font-9b-l{
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 28px;
+  text-align: left;
+}
+
+@mixin font-9l-l{
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 28px;
+  text-align: left;
+}
+
+
+@mixin font-9l-c{
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 96px;
+  text-align: center;
+}
+
+
+@mixin font-10b-l{
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: left;
+}
+
+@mixin font-10r-l{
+  font-size: 12px;
+  line-height: 24px;
+  text-align: left;
+}
+
+@mixin font-10l-l{
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 28px;
+  text-align: left;
+}
+
+@mixin font-10l-c{
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 28px;
+  text-align: center;
+}
+
+
+/**
+ * modules/mixins
+ * ---
+ */
+
+
+@mixin reset-box {
+  padding: 0;
+  margin: 0;
+}
+
+
+
+// this will be a mixin for the hover state of most blocks to include:
+// a red arrow after the title
+// a slight scaling of the background image
+
+@mixin block-group{
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+@mixin block-item-default{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: scale(1);
+  transition: all .5s;
+  background: rgba($brand_colors-black,1.0);
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+@mixin block-item-hover{
+  transform: scale(1.1);
+  transition: all .5s;
+}
+
+
+body.home {
+  & h1, h2, h3, h4, h5, p, li, a, span, button {
+    font-family: 'Lato',sans-serif,'Material Icons';
+  }
+}

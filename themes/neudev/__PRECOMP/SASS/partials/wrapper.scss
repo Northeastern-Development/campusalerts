@@ -1,0 +1,30 @@
+/**
+ * partials/wrapper
+ * ---
+ */
+
+
+.wrapper {
+  max-width: 97vw;
+  width:100%;
+  padding: 0;
+  margin: 181px auto $gutter auto;
+  position: relative;
+  flex: 1 ;
+  overflow:hidden;
+
+}
+
+body.page-template-template-guide {
+  & > .wrapper {
+    max-width:80vw;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  body.page-template-template-guide {
+    & > .wrapper {
+      max-width:97vw;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+/**
+ * partials/header
+ * ---
+ */
+
+
+// Header container
+header {
+  -moz-box-flex: 0;
+  background: $black none repeat scroll 0 0;
+  flex: 0 0 auto;
+  height: $headerHeight;
+  left: 0;
+  position: fixed;
+  top: 44px;
+  width: 100vw;
+  z-index: 1000;
+
+  div#header {
+    // // display: table;
+    // height: $headerHeight;
+    // // margin: 0 auto;
+    // max-width: $wrapper-width;
+    // overflow: hidden;
+    // width: 100%;
+
+    overflow: hidden;
+    height: $headerHeight;
+    text-align: left;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width: 97vw;
+    margin:0 auto;
+    position: relative;
+    & .logo {
+
+      // display: table-cell;
+      // width: 50%;
+      // vertical-align: middle;
+      // display: table-cell;
+      // vertical-align: middle;
+      & svg {
+        height:80px;
+        max-width:280px;
+        //float: left;
+
+        //height:80px;
+        // max-width: 300px;
+        //width: 100%;
+      }
+    }
+  }
+}
