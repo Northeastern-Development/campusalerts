@@ -313,8 +313,8 @@ function nudev_footer_scripts() {
   //wp_enqueue_script('js-cookie'); // Enqueue it!
 
   //if ( is_page_template('page-templates/template-guide.php') ) {
-    wp_register_script('js-accordion', get_template_directory_uri() . '/_scripts/js/lib/jquery.navgoco.js', array('jquery'), '1.0.0'); // Custom scripts
-    wp_enqueue_script('js-accordion'); // Enqueue it!
+    //wp_register_script('js-accordion', get_template_directory_uri() . '/_scripts/js/lib/jquery.navgoco.js', array('jquery'), '1.0.0'); // Custom scripts
+    //wp_enqueue_script('js-accordion'); // Enqueue it!
 
     wp_register_script('nudevscripts', get_template_directory_uri() . '/_scripts/js/scripts-min.js', array('jquery'), '1.0.0'); // Custom scripts
     wp_enqueue_script('nudevscripts'); // Enqueue it!

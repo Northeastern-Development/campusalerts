@@ -7,21 +7,7 @@
 
 //JQUERY ACCORDION
 
-$('.guide-nav').navgoco({
 
-		accordion: false,
-		openClass: 'open',
-		save: true,
-		cookie: {
-			name: 'navgoco',
-			expires: false,
-			path: '/'
-		},
-		slide: {
-			duration: 200,
-			easing: 'linear'
-		}
-	});
 
 
 
