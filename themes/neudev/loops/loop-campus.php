@@ -15,7 +15,6 @@ if($filter == ''){
 	);
 
 
-
 	$alerts = query_posts($args);
 	print_r($alerts);
 	//die();
