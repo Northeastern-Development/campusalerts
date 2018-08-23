@@ -6,6 +6,8 @@
       </a>
     </div>
     <!-- /logo -->
+
+    <!-- TURN THIS NAV OFF IF YOU WANT INCLUDED IT FOR TESTING PURPOSES-->
     <nav class="nu__main-nav">
       <?php neudev_nav(); ?>
     </nav>

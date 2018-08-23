@@ -1,12 +1,8 @@
-
-
-
+<!-- Build out the loop for alerts. If we dont enter a campus into the url then it defualts to all (if), (else) contains if campus name is entered into url-->
 <?php
 
-//function getAlerts(){
 
-  //wp_reset_postdata();
-	wp_reset_query();
+wp_reset_query();
 
 
 if($filter == ''){
@@ -21,7 +17,7 @@ if($filter == ''){
 
 
 	$alerts = query_posts($args);
-	//print_r($alerts);
+	print_r($alerts);
 	//die();
 
 	$response = "";	// an empty return will collapse the alert area to nothing
@@ -30,63 +26,23 @@ if($filter == ''){
 
 
 	if(count($alerts) > 0){	// we found a result, let's build out the list
-		$response .= "<div><h2>University Alert!</h2><p>The Northeastern University System has issued the following alert(s).  Please be sure to read any associated information and contact your campus emergency services with any questions.</p><ul>";
 
+		$response .= "<div><h2>University Alert(s)!</h2><p>The Northeastern University System has issued the following alert(s).  Please be sure to read any associated information and contact your campus emergency services with any questions.</p><ul>";
 
-
-		// foreach($alerts as $g){
-		// 	$location = get_fields($g->ID);
-		// 	//print_r($location);
-		//
-		// 	$group = "";
-		// 	foreach($location['affected_campus'] as $c){
-		// 		$group .= ($group != ""?", ":"").$c->post_title;
-		// 		//print_r($campus);
-		//
-		// 	}
-		//
-		// 	 echo $group;
-		// }
-
-
-
+		$guide = '<li><a href="%s" title="%s, read more">%s For: <span>%s</span> - %s - Read More</a></li>';
 
 
     foreach($alerts as $a){
 
 			$fields = get_fields($a->ID);
-			//print_r($fields);
-
-
-
-			// $campus = "";
-			// 	$response .= "<h2>";
-			// foreach($fields['affected_campus'] as $g){
-			// 	$campus .= ($campus != ""?", ":"").$g->post_title;
-			// 	$response .= "</h2>";
-			//
-			// }
-
-			//$group = '<h2>%s</h2>';
-			$guide = '<li><a href="%s" title="%s, read more">%s For: <span>%s</span> - %s - Read More</a></li>';
 
 
 			$campus = "";
 			foreach($fields['affected_campus'] as $c){
 				$campus .= ($campus != ""?", ":"").$c->post_title;
+
 				//print_r($campus);
-
-			}
-
-			//echo $campus;
-
-			// echo $campus;
-
-			// $campusgroup .= sprintf(
-			// 	 $group
-			// 	,$campus
-			// );
-
+			}//END FOREACH $FIELDS
 
       $response .= sprintf(
 				 $guide
@@ -95,21 +51,17 @@ if($filter == ''){
 				,$a->post_title
 				,$campus
 				,$a->post_excerpt
-
 			);
 
-  	}
-		$response .= "</ul></div>";
-		//END FOREACH
+  	}//END FOREACH $ALERTS AS $A
 
+	}//END IF COUNT ALERTS > 0
 
+	$response .= "</ul></div>";
+	echo($response);
 
-}
-//echo $campusgroup;
-
-echo $response;
-
-}else {
+}//END IF FILTER == ''
+else {
 
 	$args = array(
 		 "post_type" => "nualerts",
@@ -121,8 +73,6 @@ echo $response;
 
 	$res = query_posts($args);
 	//print_r($res);
-
-	//echo 'fdasfasd';
 
 	$response = "";	// an empty return will collapse the alert area to nothing
 
@@ -161,8 +111,7 @@ echo $response;
 					foreach($fields['affected_campus'] as $c){
 						$campus .= ($campus != ""?", ":"").$c->post_title;
 						//print_r($campus);
-
-					}
+					}//END FOREACH FIELDS
 
 					$response .= sprintf(
 						 $guide
@@ -172,17 +121,18 @@ echo $response;
 						 ,$campus
 						 ,$r->post_excerpt
 					);
-				}
 
-			}
+				}//END IF $CAMPUS == $FILTER
 
-	}
+			}//END FOREACH $RES AS $R
+
+	}//END IF COUNT $RES > 0
 	$response .= "</ul></div>";
 	echo($response);
-}
 
-// wp_reset_postdata();
-//wp_reset_query();
+}//END else
+
+
 
 
 ?>
