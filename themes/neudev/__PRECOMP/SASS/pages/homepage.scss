@@ -3,11 +3,15 @@
   & > main {
 
     & > section {
-
+      max-width:50vw;
+      width:100%;
+      margin:0 auto;
+      & > p {
+        @include font-2l-l;
+        margin: 0 0 $gutter 0;
+      }
       & > div {
-        max-width:50vw;
-        width:100%;
-        margin:0 auto;
+
         & > h2 {
           @include font-5b-c;
         }
@@ -34,6 +38,40 @@
               }
             }
           }
+        }
+      }
+    }
+    & > section.intro {
+      & > button {
+        border: 1px solid $brand_colors-black;
+        margin: 0 0 ($gutter *2) 0;
+        min-width: 250px;
+        display: block;
+        color: $brand_colors-black ;
+        @include font-2l-c;
+        font-weight: 400;
+        padding: 0;
+        line-height: 44px;
+        height:44px;
+        text-transform: uppercase;
+        background: none;
+        &:hover {
+          background: $brand_colors-grayW;
+        }
+      }
+      & > h1 {
+        margin: 0 0 $gutter 0;
+      }
+    }
+    & > section.last {
+      & > a {
+        color:$brand_colors-black;
+        text-decoration: none;
+        border-bottom:1px solid $brand_colors-red;
+        @include font-2l-l;
+        &:hover {
+          text-decoration: none;
+          color: $brand_colors-red;
         }
       }
     }

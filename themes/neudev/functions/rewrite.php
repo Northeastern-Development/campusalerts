@@ -25,7 +25,7 @@ add_action('init', 'myplugin_rewrite_tag', 10, 0);
 // add custom rewrite rules here
 function custom_rewrite_rule() {
 
-  add_rewrite_rule('^([^/]*)?','index.php?page_id=282&hptesting=$matches[1]','top');  // testing
+  add_rewrite_rule('^campus/([^/]*)?','index.php?page_id=282&hptesting=$matches[1]','top');  // testing
 
 
 }

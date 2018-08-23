@@ -6,4 +6,6 @@
       </a>
     </div>
     <!-- /logo -->
-    
+    <nav class="nu__main-nav">
+      <?php neudev_nav(); ?>
+    </nav>

@@ -86,24 +86,24 @@ if (function_exists('add_theme_support'))
 \*------------------------------------*/
 
 //Limits amount of menu items shown in the header. Prevents mktg from adding in to many nav items which would effect mobile
-add_filter( 'wp_nav_menu_objects', 'mytheme_menufilter', 10, 2 );
-function mytheme_menufilter($items, $args) {
-	// want our MAINMENU to have MAX of 7 items
-	if ( $args->theme_location == 'header-menu' ) {
-		$toplinks = 0;
-		foreach ( $items as $k => $v ) {
-			if ( $v->menu_item_parent == 0 ) {
-				// count how many top-level links we have so far...
-				$toplinks++;
-			}
-			// if we've passed our max # ...
-			if ( $toplinks > 5 ) {
-				unset($items[$k]);
-			}
-		}
-	}
-	return $items;
-}
+// add_filter( 'wp_nav_menu_objects', 'mytheme_menufilter', 10, 2 );
+// function mytheme_menufilter($items, $args) {
+// 	// want our MAINMENU to have MAX of 7 items
+// 	if ( $args->theme_location == 'header-menu' ) {
+// 		$toplinks = 0;
+// 		foreach ( $items as $k => $v ) {
+// 			if ( $v->menu_item_parent == 0 ) {
+// 				// count how many top-level links we have so far...
+// 				$toplinks++;
+// 			}
+// 			// if we've passed our max # ...
+// 			if ( $toplinks > 5 ) {
+// 				unset($items[$k]);
+// 			}
+// 		}
+// 	}
+// 	return $items;
+// }
 
 // neudev navigation
 function neudev_nav()

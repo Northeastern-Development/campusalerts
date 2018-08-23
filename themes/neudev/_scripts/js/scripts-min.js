@@ -1,1 +1,100 @@
-!function(t,$,e){"use strict";$(function(){var t=1e3,e=1500,n=500;$(window).scroll(function(){$(this).scrollTop()<1e3?$(".topbutton").fadeOut(500):$(".topbutton").fadeIn(500)}),$(".topbutton").on("touchend click",function(){return $("html, body").animate({scrollTop:0},1500),!1});var i=$(window).width();$("p.testp").text("Initial screen width is currently: "+i+"px."),$(window).resize(function(){var t=$(window).width();$("p.testp").text("Initial screen width is currently: "+t+"px."),t<=576?$("p.testp").text("Screen width is less than or equal to 576px. Width is currently: "+t+"px."):t<=680?$("p.testp").text("Screen width is between 577px and 680px. Width is currently: "+t+"px."):t<=1024?$("p.testp").text("Screen width is between 681px and 1024px. Width is currently: "+t+"px."):t<=1500?$("p.testp").text("Screen width is between 1025px and 1499px. Width is currently: "+t+"px."):$("p.testp").text("Screen width is greater than 1500px. Width is currently: "+t+"px.")})})}(this,jQuery);
+function goBack() {
+	window.history.back();
+}
+
+
+
+(function( root, $, undefined ) {
+	"use strict";
+
+	$(function () {
+
+
+
+//JQUERY ACCORDION
+
+
+
+
+
+
+//-----------------------------------------------------
+	// SCROLL BACK TO TOP BUTTON
+//-----------------------------------------------------
+		var offset = 1000;
+		var speed = 1500;
+		var duration = 500;
+		 $(window).scroll(function(){
+			if ($(this).scrollTop() < offset) {
+				$('.topbutton') .fadeOut(duration);
+			} else {
+			 $('.topbutton') .fadeIn(duration);
+			}
+		});
+		$('.topbutton').on('touchend click', function(){
+			$('html, body').animate({scrollTop:0}, speed);
+			return false;
+		});
+
+
+			// if ($(window).width() < 1020) {
+			// 	$('nav').removeClass('nu__main-nav');
+			// 	$('nav').addClass('nu__mobile-nav');
+			// }else {
+			// 	$('nav').removeClass('nu__mobile-nav');
+			// 	$('nav').addClass('nu__main-nav');
+			// }
+// var ww = $(window).width();
+//
+//
+//
+// if (ww <= 960){
+// 	$("nav.nu__main-nav").insertBefore($( "#nu__main-mobile"));
+// }else {
+// 	$("nav.nu__main-nav").insertAfter($( "#nu__mobile"));
+// }
+//-----------------------------------------------------
+	// FOR TESTING MOBILE RESPONSE SIZES
+//-----------------------------------------------------
+		var wi = $(window).width();
+		$("p.testp").text('Initial screen width is currently: ' + wi + 'px.');
+
+
+
+//-----------------------------------------------------
+	// WINDOW RESIZE FUNCTION
+//-----------------------------------------------------
+		$(window).resize(function() {
+
+			// if (ww <= 960){
+			// 	$("nav.nu__main-nav").insertBefore($( "#nu__main-mobile"));
+			// }else {
+			// 	$("nav.nu__main-nav").insertAfter($( "#nu__mobile"));
+			// }
+
+			var wi = $(window).width();
+
+
+			$("p.testp").text('Initial screen width is currently: ' + wi + 'px.');
+			if (wi <= 576){
+				$("p.testp").text('Screen width is less than or equal to 576px. Width is currently: ' + wi + 'px.');
+				}
+			else if (wi <= 680){
+				$("p.testp").text('Screen width is between 577px and 680px. Width is currently: ' + wi + 'px.');
+				}
+			else if (wi <= 1024){
+				$("p.testp").text('Screen width is between 681px and 1024px. Width is currently: ' + wi + 'px.');
+				}
+			else if (wi <= 1500){
+				$("p.testp").text('Screen width is between 1025px and 1499px. Width is currently: ' + wi + 'px.');
+				}
+			else {
+				$("p.testp").text('Screen width is greater than 1500px. Width is currently: ' + wi + 'px.');
+				}
+		});
+
+	});
+
+} ( this, jQuery ));
+
+

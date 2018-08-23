@@ -1,3 +1,9 @@
+function goBack() {
+	window.history.back();
+}
+
+
+
 (function( root, $, undefined ) {
 	"use strict";
 
@@ -6,6 +12,7 @@
 
 
 //JQUERY ACCORDION
+
 
 
 

@@ -6,6 +6,7 @@ $filter = (isset($fChk) && $fChk != ''?$fChk:'');
 	<main role="main" aria-label="Content">
 		<section>
 			<?php include(locate_template('loops/loop-campus.php')); ?>
+      
 		</section>
 	</main>
 <?php get_footer(); ?>

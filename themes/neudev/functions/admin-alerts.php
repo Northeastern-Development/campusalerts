@@ -24,8 +24,8 @@ register_post_type('nualerts', // Register Custom Post Type
     'hierarchical' => false, // Allows your posts to behave like Hierarchy Pages
     'has_archive' => false,
     'rewrite' => array(
-        'slug'       => '/',
-        'with_front' => false
+        'with_front' => false,
+        'slug'       => 'alert'
     ),
     'supports' => array(
         'title',
