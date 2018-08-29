@@ -19,6 +19,9 @@
  // set up specific admin tools for campuses
  require_once(get_template_directory() . "/functions/admin-campuses.php");
 
+ // set up the custom feed endpoints so that other sites can grab the data in a few formats
+ require_once(get_template_directory() . "/functions/custom-rss.php");
+
 
 
 

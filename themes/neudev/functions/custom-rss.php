@@ -3,9 +3,9 @@
   add_action('init', 'customRSS');
   function customRSS(){
 
-    add_feed('campuses', 'campusesRSSFunc');
+    // add_feed('campuses', 'campusesRSSFunc');
     add_feed('alerts', 'alertsRSSFunc');
-  
+
 
   }
 

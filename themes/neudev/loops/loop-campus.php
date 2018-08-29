@@ -16,8 +16,8 @@ if($filter == ''){
 
 
 	$alerts = query_posts($args);
-	//print_r($alerts);
-	//die();
+	// print_r($alerts);
+	// die();
 
 	$response = "";	// an empty return will collapse the alert area to nothing
 	//$campusgroup = "";
