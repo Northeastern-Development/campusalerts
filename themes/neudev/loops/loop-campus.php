@@ -41,7 +41,7 @@ if($filter == ''){
         //$campus .= ($campus != ""?", ":"").$campus;
 				$campus .= ($campus != ""?", ":"").$c->post_title;
 
-				print_r($campus);
+				//print_r($campus);
 			}//END FOREACH $FIELDS
 
       $response .= sprintf(
