@@ -194,6 +194,13 @@ jQuery(document).ready(function ($) {
         $("#crb-performance").html(scanner_data.performance);
         $("#crb-smode").html(smode);
 
+        $.each(scanner_data.numbers, function (type, value) {
+            var e = document.getElementById("crb-numbers-" + type);
+            if (e) {
+                $(e).text(value);
+            }
+        });
+
         $("#crb-total-files").html(scanner_data.total.files);
         $("#crb-scanned-files").html(scanner_data.scanned.files);
 
@@ -213,19 +220,25 @@ jQuery(document).ready(function ($) {
             issues = scanner_data.issues;
         }
 
-        $.each(issues, function (section_id) {
+        $.each(issues, function (section_id, section) {
             var the_items = [];
 
             if (!this.issues.length) {
-                return;
+                //return;
             }
 
-            var section_name = this.name;
-            var setype = this.setype;
+            // Avoid JS undefined error with an old data set
+            var vul_list;
+            if (typeof section.sec_details !== 'undefined') {
+                vul_list = section.sec_details.vul_list;
+            }
+
+            var section_name = section.name;
+            var setype = section.setype;
 
             var section_header_class = 'crb-scan-section';
-            if (this.container) {
-                section_header_class = section_header_class + ' section-' + this.container;
+            if (section.container) {
+                section_header_class = section_header_class + ' section-' + section.container;
             }
 
             var section_items = [];
@@ -237,6 +250,7 @@ jQuery(document).ready(function ($) {
             var version;
 
             var section_header = '<tr id="' + section_id + '" class="' + section_header_class + '" data-section-name="' + section_name + '" data-setype="' + setype + '"><td></td><td colspan = 5><span>' + section_name + '</span></td></tr>';
+            //var section_header = '';
 
             $.each(this.issues, function (index, single_issue) {
                 issue_type_id = single_issue[0];
@@ -262,18 +276,39 @@ jQuery(document).ready(function ($) {
                     name_classes += ' cursor-pointer';
                 }
 
-                if (issue_type_id < 10) {
+                if (issue_type_id < 10 ) {
                     // Section -------------------------
-                    var extra = '';
-                    if (issue_type_id !== 1) {
-                        extra += ' &mdash; ';
-                    }
-                    extra += '<span class="crb-it-' + issue_type_id + ' scan-ilabel">' + crb_scan_msg_issues[issue_type_id] + '</span>';
-                    if (issue_type_id === 5) {
-                        extra += ' &mdash; <a href="#" class="crb-issue-link" data-itype="' + issue_type_id + '" data-section-name="' + section_name + ' v. ' + version + '">' + crb_txt_strings['explain'][9] + '</a>';
+
+                    if (issue_type_id === 4) {
+                        return; // skip 4
                     }
 
-                    section_header = '<tr id="' + section_id + '" class="' + section_header_class + '" data-section-name="' + section_name + '" data-setype="' + setype + '"><td></td><td colspan = 5><span>' + section_name + '</span>' + extra + '</td></tr>';
+                    var extra = '';
+
+                    if (vul_list) {
+                        extra += '<span class="crb-it-4 scan-ilabel">' + crb_scan_msg_issues[4] + '</span>';
+                    }
+
+                    if (issue_type_id === 5) {
+                        extra += ' &mdash; ';
+                        extra += '<span class="crb-it-' + issue_type_id + '">' + crb_scan_msg_issues[issue_type_id] + '</span>';
+                        extra += ' &mdash; <a href="#" class="crb-issue-link" data-itype="' + issue_type_id + '" data-section-name="' + section_name + ' v. ' + version + '">' + crb_txt_strings['explain'][9] + '</a>';
+                    }
+                    else {
+                        extra += '<span class="crb-it-' + issue_type_id + ' scan-ilabel">' + crb_scan_msg_issues[issue_type_id] + '</span>';
+                    }
+
+                    var under = '';
+                    if (vul_list) {
+                        $.each(vul_list, function (index, vuln) {
+                            //under += '<i style="font-size: 125%; vertical-align: middle; margin-left: -2px;" class="crb-icon crb-icon-bxs-error-circle"></i> ' + vuln.n + '. Please update the plugins as soon as possible.<br/>';
+                            under += vuln.n + '. ' + vuln.f + '<br/>';
+                        });
+                        //under += 'Please update the plugins as soon as possible.<br/>';
+                        under = '<p class="crb-list-vlnb">' + under + '</p>';
+                    }
+
+                    section_header = '<tr id="' + section_id + '" class="' + section_header_class + '" data-section-name="' + section_name + '" data-setype="' + setype + '"><td></td><td colspan = 5><span>' + section_name + '</span>' + extra + under + '</td></tr>';
                 }
                 else {
                     // Single file issue ----------------
@@ -281,7 +316,7 @@ jQuery(document).ready(function ($) {
                     if (single_issue.data.fd_allowed) {
                         rbox = '<input type="checkbox" name="" data-file_name="' + full_name + '">';
                     }
-                    section_items.push('<tr class="crb-item-file" data-itype="' + issue_type_id + '"><td>' + rbox + '</td><td data-file-name="' + full_name + '" data-short="' + f_name + '" class="' + name_classes + '">' + f_name + '</td><td>' + cerber_get_issue_txt(index, single_issue) + '</td><td class="risk' + risk + ' scan-ilabel"><span>' + crb_scan_msg_risks[risk] + '</span></td><td>' + isize + '</td><td>' + itime + '</td></tr>');
+                    section_items.push('<tr class="crb-item-file" data-itype="' + issue_type_id + '"><td>' + rbox + '</td><td data-file-name="' + full_name + '" data-short="' + f_name + '" class="' + name_classes + '">' + f_name + '</td><td>' + cerber_get_issue_txt(index, single_issue) + '</td><td class="risk' + risk + '"><span>' + crb_scan_msg_risks[risk] + '</span></td><td>' + isize + '</td><td>' + itime + '</td></tr>');
                 }
 
                 crb_issues_counter[risk]++;
@@ -330,6 +365,12 @@ jQuery(document).ready(function ($) {
 
     function cerber_scan_parse(server_response) {
         crb_response = $.parseJSON(server_response);
+        if (!crb_response) {
+            cerber_scan_ended();
+            alert('Process has been aborted due to server error. Check the browser console for errors.');
+            return false;
+        }
+
         scanner_data = crb_response.cerber_scanner;
 
         if (scanner_data.issues) {

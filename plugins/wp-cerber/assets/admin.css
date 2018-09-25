@@ -1,4 +1,10 @@
-/* Reset some WP styles */
+
+#crb-activation-msg i{
+    font-size: 1.6em;
+}
+#crb-activation-msg i:nth-of-type(n+2){
+    margin-left:20px;
+}
 
 .crb-admin {
     font-family: 'Roboto', sans-serif;
@@ -30,7 +36,7 @@
 }
 
 .cerber-margin {
-    margin-left: 10px;
+    /*margin-left: 10px;*/
 }
 
 .cupage {
@@ -191,6 +197,11 @@
     vertical-align: top;
     line-height: 1;
     padding-right: 0.4em;
+}
+
+#activity-filter .crb-button-tiny {
+    margin-right: 0.3em;
+    margin-bottom: 0.3em;
 }
 
 .crb-button-tiny{
@@ -635,13 +646,24 @@ a.nav-tab:first-child{
 }
 .cerber-tabs .nav-tab {
     font-weight: normal;
+    margin-left: 0;
+    border-right: none;
+}
+.cerber-tabs .nav-tab:hover {
+    color: #000;
+}
+a.nav-tab:last-of-type{
+    border: 1px solid #ccc;
+    border-bottom: none;
 }
 .cerber-tabs .nav-tab-active {
-    /* color: #804040;*/
-    color: rgb(0, 103, 153);
-    font-weight: 500;
+    color: #011b45;
+    /*color: rgb(0, 103, 153);*/
+    font-weight: 700;
 }
-
+.cerber-tabs .nav-tab i{
+    font-size: 1.5em;
+}
 /* Preserve line-height for tabs */
 
 .cerber-tabs sup,
@@ -686,6 +708,10 @@ body.wp-cerber_page_cerber-integrity {
     border-bottom: none;
     /*margin-bottom: 10px;*/
 }
+#crb-the-table {
+    display: table;
+    width: 100%;
+}
 #crb-scan-details {
     padding: 0;
     border: solid #E5E5E5 2px;
@@ -695,14 +721,17 @@ body.wp-cerber_page_cerber-integrity {
     -webkit-transition: height 2s; /* Safari */
     transition: height 2s;
 }
-div.scan-tile {
-    float: left;
-    width: 19%;
+#crb-scan-display div.scan-tile {
+    /*float: left;*/
+    display: table-cell;
+    width: 25%;
+    vertical-align: middle;
+    /*width: auto;*/
     text-align: center;
 }
-div.scan-tile div {
+#crb-scan-display div.scan-tile div {
     display: inline-block;
-    text-align: left;
+    text-align: center;
 }
 #crb-scan-display div div p:first-of-type {
     font-size: 200%;
@@ -712,23 +741,50 @@ div.scan-tile div {
     margin: 0;
 }
 
-#crb-scan-info {
+#crb-started,
+#crb-finished {
+    white-space: nowrap;
+}
+
+.crb-scan-info {
     width: 23%;
     text-align: left !important;
 }
-#crb-scan-info table {
+.crb-scan-info table {
     width: 100%;
+    padding-right: 2em;
+}
+.crb-scan-info table td:first-child{
+    padding-right: 1em;
+    color: #555;
+}
+.crb-scan-info table td:last-child{
+    color: #000;
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 700px) {
     #crb-scan-display div.scan-tile,
-    #crb-scan-info {
+    .crb-scan-info {
         float: none;
         width: 100%;
+        text-align: center;
     }
 
     #crb-scan-display div.scan-tile div {
         text-align: center;
+    }
+
+    .crb-scan-info table {
+        width: auto;
+        margin: 0 auto;
+    }
+
+    #crb-the-table {
+        display: block;
+    }
+
+    #crb-scan-display div.scan-tile {
+        display: block;
     }
 }
 
@@ -808,13 +864,10 @@ div.scan-tile div {
 }
 
 #crb-browse-files .crb-scan-section .crb-it-1 {
-    background-color: #00ae65cc;
-    color: #fff;
-    margin-left: 6px;
-    display: inline-block;
-    line-height: 1em;
-    padding: 3px 5px;
-    font-size: 92%;
+    background-color: #33be84;
+}
+#crb-browse-files .crb-scan-section .crb-it-4{
+    background-color: #dc2f34;
 }
 #crb-browse-files .crb-scan-section .crb-it-5,
 #crb-browse-files .crb-scan-section .crb-it-6,
@@ -838,6 +891,16 @@ div.scan-tile div {
 }
 
 #crb-browse-files .scan-ilabel {
+    color: #fff;
+    margin-left: 6px;
+    display: inline-block;
+    line-height: 1em;
+    padding: 3px 5px;
+    font-size: 92%;
+}
+
+#crb-browse-files .crb-list-vlnb {
+    color: #dd1320;
 }
 
 #crb-scan-controls {
@@ -967,6 +1030,9 @@ div.scan-tile div {
 }
 .wilinks a {
     white-space: nowrap;
+}
+.wilinks i {
+    font-size: 22px;
 }
 
 .up-cerber {

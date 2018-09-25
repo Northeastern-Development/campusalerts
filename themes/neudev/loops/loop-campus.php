@@ -26,8 +26,8 @@ if($filter == ''){
 
 	if(count($alerts) > 0){	// we found a result, let's build out the list
 
-		$response .= "<div><h2>University Alert(s)!</h2><p>The Northeastern University System has issued the following alert(s).  Please be sure to read any associated information and contact your campus emergency services with any questions.</p><ul>";
-
+		$response .= "<div><h2>University Alert(s)!</h2><p>The Northeastern University System has issued the following alert(s).  Please be sure to read any associated information and contact your campus emergency services with any questions.</p><hr><ul>";
+    //$campusgroup = '<h2>%s</h2';
 		$guide = '<li><a href="%s" title="%s, read more">%s For: <span>%s</span> - %s - Read More</a></li>';
 
 
@@ -38,18 +38,20 @@ if($filter == ''){
 
 			$campus = "";
 			foreach($fields['affected_campus'] as $c){
+        //$campus .= ($campus != ""?", ":"").$campus;
 				$campus .= ($campus != ""?", ":"").$c->post_title;
 
-				//print_r($campus);
+				print_r($campus);
 			}//END FOREACH $FIELDS
 
       $response .= sprintf(
 				 $guide
+         //,$campus
 				 ,$a->guid
-				,$a->post_title
-				,$a->post_title
-				,$campus
-				,$a->post_excerpt
+				 ,$a->post_title
+				 ,$a->post_title
+				 ,$campus
+				 ,$a->post_excerpt
 			);
 
   	}//END FOREACH $ALERTS AS $A

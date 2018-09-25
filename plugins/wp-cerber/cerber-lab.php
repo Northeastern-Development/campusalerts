@@ -524,26 +524,17 @@ function lab_is_cloud_ok(){
  * @param $details
  */
 function lab_save_push( $ip, $reason_id, $details ) {
-	global $wpdb;
 	$ip = filter_var( $ip, FILTER_VALIDATE_IP );
 	if ( ! $ip || is_ip_private( $ip ) || cerber_acl_check( $ip, 'W' ) || ! ( crb_get_settings( 'cerberlab' ) || lab_lab() ) ) {
 		return;
 	}
 	$reason_id = absint( $reason_id );
-	if ($reason_id == 8){
+	if ( $reason_id == 8 || $reason_id == 9 ) {
 		$details = array( 'uri' => $_SERVER['REQUEST_URI'] );
 	}
 	if ( is_array( $details ) ) {
 		$details = serialize( $details );
 	}
-	/*
-	$wpdb->insert( CERBER_LAB_TABLE, array(
-		'ip'        => $ip,
-		'reason_id' => $reason_id,
-		'details'   => $details,
-		'stamp'     => time(),
-	), array( '%s', '%d', '%s', '%d' ) );
-	*/
 	$details = cerber_real_escape( $details );
 	cerber_db_query( 'INSERT INTO ' . CERBER_LAB_TABLE . ' (ip, reason_id, details, stamp) VALUES ("' . $ip . '",' . $reason_id . ',"' . $details . '",' . time() . ')' );
 }
@@ -671,11 +662,13 @@ function lab_validate_lic( $lic = '' ) {
 		$i --;
 	}
 
-	if ( !$ret || empty( $ret['response']['expires_gmt'] ) ) {
-		return false;
+	if ( ! $ret || empty( $ret['response']['expires_gmt'] ) ) {
+		cerber_admin_notice( 'A network error occurred while verifying the license key. Please try again in a couple of minutes.' );
+		$expires = 0;
 	}
-
-	$expires = absint( $ret['response']['expires_gmt'] );
+	else {
+		$expires = absint( $ret['response']['expires_gmt'] );
+	}
 
 	lab_update_key($lic, $expires);
 
@@ -711,7 +704,7 @@ function lab_indicator(){
 	if ( lab_is_cloud_ok() && lab_lab() ) {
 		$key = lab_get_key();
 		$sid = 'Site ID: '.$key[0];
-		return '<div title="'.$sid.'" style="float: right; font-weight: normal; font-size: 80%; padding: 0.35em 0.6em 0.35em 0.6em; color: #fff; background-color: #00ae65cc;"><span style="vertical-align: top; line-height: 1;" class="dashicons dashicons-shield-alt"></span></div>';
+		return '<div title="'.$sid.'" style="float: right; font-weight: normal; font-size: 80%; padding: 0.35em 0.6em 0.35em 0.6em; color: #fff; background-color: #00ae65cc;"><i style="font-size:1.5em; vertical-align: top; line-height: 1;" class="crb-icon crb-icon-bxs-shield"></i></div>';
 		//return '<div title="'.$sid.'" style="float: right; font-weight: normal; font-size: 80%; padding: 0.35em 0.6em 0.35em 0.6em; color: #fff; background-color: #51AE43;"><span style="vertical-align: top; line-height: 1;" class="dashicons dashicons-yes"></span> Cerber Security Cloud Protection is active</div>';
 	}
 

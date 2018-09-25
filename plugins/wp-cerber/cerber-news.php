@@ -154,6 +154,19 @@ function cerber_push_the_news( $version ) {
 	$news['7.2'][] = 'Bug fixed: Unexpected warning messages in the WordPress dashboard.';
 	$news['7.2'][] = 'Bug fixed: Some file status links on the scanner results page may not work.';
 
+	$news['7.5'][] = 'The firewall algorithms have been improved and now inspect the contents of all files that are being tried to upload on a website.';
+	$news['7.5'][] = 'The traffic logger can save headers, cookies and the $_SERVER variable for every HTTP request.';
+	$news['7.5'][] = 'The scanner now scans installed plugins for known vulnerabilities. If you have enabled scheduled automatic scans you will be notified in a email report.';
+	$news['7.5'][] = 'A set of new malware signatures amd patterns have been added to detect malware submitted through a contact form as well as any HTTP request fields.';
+	$news['7.5'][] = 'Now the plugin inspects user sign ups (user registrations) on multisite WordPress installations and BuddyPress.';
+	$news['7.5'][] = 'The search for user activity, as well as enabling activity notifications, is improved.';
+
+	$news['7.6'][] = 'The quarantine has got a separate admin page in the WordPress dashboard which allows viewing deleted files, restoring or deleting them.';
+	$news['7.6'][] = 'Now the malware scanner and integrity checker supports multisite WordPress installations.';
+	$news['7.6'][] = 'Bug fixed: Once an address IP has been locked out after reaching the limit to the number of attempts to log in the "We’re sorry, you are not allowed to proceed" forbidden page is being displayed instead of the normal user message "You have exceeded the number of allowed login attempts".';
+	$news['7.6'][] = 'Bug fixed: PHP Notice: Only variables should be passed by reference in cerber-load.php on line 5377';
+
+
 	if ( ! empty( $news[ $version ] ) ) {
 		//$text = '<h3>What\'s new in WP Cerber '.$version.'</h3>';
 
