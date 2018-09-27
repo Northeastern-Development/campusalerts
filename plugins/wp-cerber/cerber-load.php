@@ -81,7 +81,7 @@ define( 'CERBER_REQ_PHP', '5.3.0' );
 define( 'CERBER_REQ_WP', '4.5' );
 define( 'CERBER_TECH', 'https://cerber.tech/' );
 
-define( 'CERBER_CIREC_LIMIT', 50 ); // Upper limit for allowed nested values during inspection for malware
+define( 'CERBER_CIREC_LIMIT', 30 ); // Upper limit for allowed nested values during inspection for malware
 
 define( 'CERBER_AGGRESSIVE', 1 );
 
@@ -5365,12 +5365,15 @@ function cerber_inspect_array( &$array, $white = array() ) {
 		}
 	}
 
+	$rec_limit ++;
+
 	return false;
 }
 
 function cerber_inspect_value( &$value = '', $reset = false ) {
 	global $cerber_status, $crb_x64;
-	static $rec_limit = null;
+	static $rec_limit = null; // Real recursion limit
+	//static $in_the_loop = false; // Looping through the a not-nested list of values, prevent count interations as recursions
 
 	if ( ! $value || is_numeric( $value ) ) {
 		return false;
@@ -5384,7 +5387,12 @@ function cerber_inspect_value( &$value = '', $reset = false ) {
 		$rec_limit = CERBER_CIREC_LIMIT;
 	}
 	else {
-		$rec_limit --;
+		//if ( ! $in_the_loop ) {
+			$rec_limit --;
+		//}
+		//else {
+		//	$in_the_loop = false;
+		//}
 		if ( $rec_limit <= 0 ) {
 			$rec_limit   = null;
 			$cerber_status = 21;
@@ -5395,28 +5403,33 @@ function cerber_inspect_value( &$value = '', $reset = false ) {
 
 	$found = false;
 
-	$value = trim( $value );
-
-	if ( cerber_is_base64_encoded( $value ) ) {
+	if ( $varbyref = cerber_is_base64_encoded( $value ) ) {
 		//$crb_x64 = true;
-		$varbyref = base64_decode( $value );
-		$found    = cerber_inspect_value( $varbyref );
+		//$varbyref = base64_decode( $value );
+		$found = cerber_inspect_value( $varbyref );
 	}
 	else {
-		$parsed = cerber_parse_value( $value );
+		$parsed = cerber_detect_php_code( $value );
 		if ( ! empty( $parsed[0] ) ) {
 			$cerber_status = 22;
 			$found         = 100;
 		}
         elseif ( ! empty( $parsed[1] ) ) {
 			foreach ( $parsed[1] as $string ) {
+				//$in_the_loop = true;
 				$found = cerber_inspect_value( $string );
 				if ( $found ) {
 					break;
 				}
 			}
 		}
+		if ( ! $found && cerber_detect_other_code( $value ) ) {
+			$cerber_status = 23;
+			$found         = 100;
+		}
 	}
+
+	$rec_limit ++;
 
 	return $found;
 }
@@ -5426,7 +5439,7 @@ function cerber_inspect_value( &$value = '', $reset = false ) {
  *
  * @return array A list of suspicious code patterns
  */
-function cerber_parse_value( &$value ) {
+function cerber_detect_php_code( &$value ) {
     static $list;
 	if ( ! $list ) {
 		$list = cerber_get_php_unsafe();
@@ -5460,6 +5473,16 @@ function cerber_parse_value( &$value ) {
 	return $ret;
 }
 
+function cerber_detect_other_code( &$value ) {
+	//static $sql = array( 'information_schema.', 'xp_cmdshell', 'FROM_BASE64', '@@' );
+	if ( preg_match( '/\b(?:SELECT|INSERT|UPDATE|DELETE)\b/i', $value ) ) {
+		if ( preg_match( '/\b(?:information_schema|FROM_BASE64|wp_users|xp_cmdshell)\b/i', $value ) ) {
+			return true;
+		}
+	}
+
+	return false;
+}
 
 function cerber_inspect_uploads() {
     static $found = null;
@@ -5487,7 +5510,7 @@ function cerber_inspect_uploads() {
 
 	foreach ( $files as $file_name ) {
 		if ( $f = @fopen( $file_name, 'r' ) ) {
-			$str = @fread( $f, 10000 );
+			$str = @fread( $f, 100000 );
 			@fclose( $f );
 			if ( cerber_inspect_value( $str ) ) {
 				$found = 56;

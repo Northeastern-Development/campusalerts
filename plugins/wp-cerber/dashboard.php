@@ -1098,7 +1098,17 @@ function cerber_is_admin_page( $force = false, $params = array() ) {
 		$ret = true;
 		if ( $params ) {
 			foreach ( $params as $param => $value ) {
-				if ( ! isset( $_GET[ $param ] ) || $_GET[ $param ] != $value ) {
+				if ( ! isset( $_GET[ $param ] ) ) {
+					$ret = false;
+					break;
+				}
+				if ( ! is_array( $value ) ) {
+					if ( $_GET[ $param ] != $value ) {
+						$ret = false;
+						break;
+					}
+				}
+                elseif ( ! in_array( $_GET[ $param ], $value ) ) {
 					$ret = false;
 					break;
 				}
@@ -1250,7 +1260,7 @@ function cerber_quick_w(){
 	$dash = cerber_admin_link();
 	$act = cerber_admin_link('activity');
 	$acl = cerber_admin_link('traffic');
-	$loc = cerber_admin_link('antispam');
+	$scanner = cerber_admin_link('scanner');
 
 	$failed = cerber_db_get_var('SELECT count(ip) FROM '. CERBER_LOG_TABLE .' WHERE activity IN (7) AND stamp > '.(time() - 24 * 3600));
 	$failed_prev = cerber_db_get_var('SELECT count(ip) FROM '. CERBER_LOG_TABLE .' WHERE activity IN (7) AND stamp > '.(time() - 48 * 3600).' AND stamp < '.(time() - 24 * 3600));
@@ -1304,12 +1314,12 @@ function cerber_quick_w(){
 		$s = 'style="color: red;"';
 	}
 
-	echo '<tr ' . $s . '><td>Last malware scan</td><td><a href="' . cerber_admin_link( 'scanner' ) . '">' . $scan['mode_h'] . ' ' . cerber_auto_date( $scan['started'] ) . '</a></td></tr>';
+	echo '<tr ' . $s . '><td>' . _x( 'Last malware scan', 'Example: Last malware scan: 23 Jan 2018', 'wp-cerber' ) . '</td><td><a href="' . $scanner . '">' . $scan['mode_h'] . ' ' . cerber_auto_date( $scan['started'] ) . '</a></td></tr>';
 
 	$link = cerber_admin_link( 'scan_schedule' );
-	$q = ( ! $lab ) ? __( 'Disabled', 'wp-cerber' ) : cerber_get_qs( absint( crb_get_settings( 'scan_aquick' ) ) );
-	echo '<tr><td>' . __( 'Quick Scan', 'wp-cerber' ) . '</td><td><a href="' . $link . '">' . $q . '</a></td></tr>';
-	$f = ( ! $lab || !crb_get_settings( 'scan_afull-enabled' ) ) ? __( 'Disabled', 'wp-cerber' ) : crb_get_settings( 'scan_afull' );
+	$quick = ( ! $lab || ! $q = absint( crb_get_settings( 'scan_aquick' ) ) ) ? __( 'Disabled', 'wp-cerber' ) : cerber_get_qs( $q );
+	echo '<tr><td>' . __( 'Quick Scan', 'wp-cerber' ) . '</td><td><a href="' . $link . '">' . $quick . '</a></td></tr>';
+	$f = ( ! $lab || ! crb_get_settings( 'scan_afull-enabled' ) ) ? __( 'Disabled', 'wp-cerber' ) : crb_get_settings( 'scan_afull' );
 	echo '<tr><td>' . __( 'Full Scan', 'wp-cerber' ) . '</td><td><a href="' . $link . '">' . $f . '</a></td></tr>';
 
 
@@ -1323,7 +1333,7 @@ function cerber_quick_w(){
 	<a href="'.$dash.'"><i class="crb-icon crb-icon-bxs-dashboard"></i> ' . __('Dashboard','wp-cerber').'</a> |
 	<a href="'.$act.'"><i class="crb-icon crb-icon-bx-pulse"></i> ' . __('Activity','wp-cerber').'</a> |
 	<a href="'.$acl.'"><i class="crb-icon crb-icon-bx-show"></i> ' . __('Traffic','wp-cerber').'</a> |
-	<a href="'.$loc.'"><i class="crb-icon crb-icon-bx-chip"></i> ' . __('Antispam','wp-cerber').'</a>
+	<a href="'.$scanner.'"><i class="crb-icon crb-icon-bx-radar"></i> ' . __('Integrity','wp-cerber').'</a>
 	</div>';
 	if ( $new = cerber_check_version() ) {
 		echo '<div class="up-cerber">' . $new['msg'] . '</div>';
@@ -1354,66 +1364,143 @@ function cerber_show_scan_help() {
             <tr>
                 <td>
 
-                    <h2>Using the scanner</h2>
+                    <div>
+                        <h2>Using the malware scanner</h2>
 
-                    <p>To start scanning, click either the Start Quick Scan button or the Start Full Scan button. Do not close the browser window while the scan is in progress. You may just open a new browser tab to do something else on the website. Once the scan is finished you can close the window, the results are stored in the DB until the next scan.</p>
+                        <p>To start scanning, click either the Start Quick Scan button or the Start Full Scan button. Do
+                            not close the browser window while the scan is in progress. You may just open a new browser
+                            tab to do something else on the website. Once the scan is finished you can close the window,
+                            the results are stored in the DB until the next scan.</p>
 
-                    <p>Depending on server performance and the number of files, the Quick scan may take about 3-5 minutes and the Full scan can take about ten minutes or less.</p>
+                        <p>Depending on server performance and the number of files, the Quick scan may take about 3-5
+                            minutes and the Full scan can take about ten minutes or less.</p>
 
-                    <p>During the scan, the plugin verifies plugins, themes, and WordPress by trying to retrieve checksum data from wordpress.org. If the integrity data is not available, you can upload an appropriate source ZIP archive for a plugin or a theme. The plugin will use it to detect changes in files. You need to do it once, after the first scan.</p>
+                        <p>During the scan, the plugin verifies plugins, themes, and WordPress by trying to retrieve
+                            checksum data from wordpress.org. If the integrity data is not available, you can upload an
+                            appropriate source ZIP archive for a plugin or a theme. The plugin will use it to detect
+                            changes in files. You need to do it once, after the first scan.</p>
 
-                    <p>Read more: <a href="https://wpcerber.com/malware-scanner-settings/" target="_blank">Cerber Security Scanner Settings</a></p>
+                        <p>Read more: <a href="https://wpcerber.com/malware-scanner-settings/" target="_blank">Cerber
+                                Security Scanner Settings</a></p>
 
-                    <h2>What's the Quick Scan?</h2>
+                    </div>
 
-                    <p>During the Quick Scan, the scanner verifies the integrity and inspects the code of all files with executable extensions only.</p>
+                    <div>
+                        <h2>Interpreting scan results</h2>
 
-                    <h2>What's the Full Scan?</h2>
+                        <p>The scanner shows you a list of issues and possible actions you can take. If the integrity of
+                            an object has been verified, you see a green mark Verified. If you see the “Integrity data
+                            not found” message, you need to upload a reference ZIP archive by clicking “Resolve issue”.
+                            For all other issues, click on an appropriate issue link. To view the content of a file,
+                            click on its name.</p>
+                    </div>
 
-                    <p>During the Full Scan, the scanner verifies the integrity and inspects the content of all files on the website. All media files are scanned for malicious payload.</p>
+                    <div>
+                        <h2>Deleting files</h2>
 
-                    <p>Read more: <a href="https://wpcerber.com/wordpress-security-scanner-scan-malware-detect/" target="_blank">What Cerber Security Scanner scans and detects</a>
+                        <p>Usually, you can delete any suspicious or malicious file if it has a checkbox in its row in
+                            the leftmost cell. Before deleting a file, click the issue link in its row to see an
+                            explanation. When you delete a file the plugin moves it to a quarantine folder.</p>
+                    </div>
 
-                    <h2>Configure scheduled scans</h2>
+                    <div>
+                        <h2>What's the Quick Scan?</h2>
 
-                    <p>In the Automated recurring scan schedule section you set up your schedule. Select desired frequency of the Quick Scan and specify the time of the Full Scan.</p>
+                        <p>During the Quick Scan, the scanner verifies the integrity and inspects the code of all files
+                            with executable extensions only.</p>
 
-                    <p>The Scan results reporting section is about reporting. Here you can easily and flexible configure a set of conditions for generating and sending reports.</p>
+                        <h2>What's the Full Scan?</h2>
 
-                    <p>The email report will only include issues that match conditions in the Report an issue if any of the following is true filter. So this setting works as a filter for issues you want to get in a email report. The report will only be sent if there are issues to report and the following condition is true.</p>
+                        <p>During the Full Scan, the scanner verifies the integrity and inspects the content of all
+                            files on the website. All media files are scanned for malicious payload.</p>
 
-                    <p>The second condition is configured with Send email report. The report will be sent if a selected condition is true. The last option is the most restrictive.</p>
+                        <p>Read more: <a href="https://wpcerber.com/wordpress-security-scanner-scan-malware-detect/"
+                                         target="_blank">What Cerber Security Scanner scans and detects</a>
+                    </div>
 
-                    <p>Read more: <a href="https://wpcerber.com/automated-recurring-malware-scans/" target="_blank">Automated recurring scans and email reporting</a></p>
+                    <div>
+                        <h2>Troubleshooting</h2>
+
+                        <p>If the scanner window stops responding or updating, it may mean the process of scanning on
+                            the server is hung. It may happen due to many reasons. Try to disable scanning the session
+                            directory or the temp directory (or both) on the Settings tab. Open the browser console (F12
+                            key) and check it for CERBER ERROR messages.</p>
+
+                        <p>The scanner requires the CURL library to be enabled for PHP scripts. Usually, it's enabled by
+                            default.</p>
+
+                        <p>Read more: <a href="https://wpcerber.com/wordpress-security-scanner/" target="_blank">Malware
+                                Scanner & Integrity Checker</a></p>
+
+                        <h2>Credits</h2>
+
+                        <p>Vulnerability information provided by <a href="https://wpvulndb.com/" target="_blank"
+                                                                    rel="noopener noreferrer">WPScan Vulnerability
+                                Database</a></p>
+
+                    </div>
 
                 </td>
                 <td>
 
-                    <h2>Interpreting scan results</h2>
+                    <div>
+                        <h2>Configuring scheduled scans</h2>
 
-                    <p>The scanner shows you a list of issues and possible actions you can take. If the integrity of an object has been verified, you see a green mark Verified. If you see the “Integrity data not found” message, you need to upload a reference ZIP archive by clicking “Resolve issue”. For all other issues, click on an appropriate issue link. To view the content of a file, click on its name.</p>
+                        <p>In the Automated recurring scan schedule section you set up your schedule. Select the desired
+                            frequency of the Quick Scan and specify the time of the Full Scan. By default, all automated
+                            recurring scans are turned off.
+                        </p>
 
+                        <p>The Scan results reporting section is about reporting. Here you can easily and flexibly
+                            configure conditions for generating and sending reports.
+                        </p>
 
-                    <h2>Deleting files</h2>
+                        <p>The email report will only include issues that match conditions in the Report an issue if any
+                            of the following is true filter. So this setting works as a filter for issues you want to
+                            get in a email report. The report will only be sent if there are issues to report and the
+                            following condition is true.</p>
 
-                    <p>Usually, you can delete any suspicious or malicious file if it has a checkbox in its row in the leftmost cell. Before deleting a file, click the issue link in its row to see an explanation. When you delete a file the plugin moves it to a quarantine folder.</p>
+                        <p>The second condition is configured with Send email report. The report will be sent if a
+                            selected condition is true. The last option is the most restrictive.</p>
 
-                    <h2>Restoring deleted files</h2>
+                        <p>Read more: <a href="https://wpcerber.com/automated-recurring-malware-scans/" target="_blank">Automated
+                                recurring scans and email reporting</a></p>
 
-                    <p>If you delete an important file by chance, you can restore the file from a quarantine folder. The location of the folder is shown on the Tools / Diagnostic page. This folder is not accessible from the Internet. To restore a deleted file you need to use a file manager in your hosting control panel. The original name and location of the deleted file is saved in the .restore file. It's a text file so you can open it in a browser or a file viewer.</p>
+                    </div>
 
+                    <div>
+                        <h2>Automatic cleanup of malware</h2>
 
-                    <h2>Troubleshooting</h2>
+                        <p>The plugin can automatically delete malicious and suspicious files. Automatic removal
+                            policies are enforced at the end of every scheduled scan based on its results. The list of
+                            files to be deleted depends on the scanner settings. By default automatic removal is
+                            disabled. It's advised to enable it at least for unattended files and files in the media
+                            uploads folder for files with the High severity risk. The plugin deletes only files that
+                            have malicious or suspicious code payload. All detected malicious and suspicious files are
+                            moved to the quarantine.
+                        </p>
 
-                    <p>If the scanner window stops responding or updating, it may mean the process of scanning on the server is hung. It may happen due to many reasons. Try to disable scanning the session directory or the temp directory (or both) on the Settings tab. Open the browser console (F12 key) and check it for CERBER ERROR messages.</p>
+                        Read more: <a href="https://wpcerber.com/automatic-malware-removal-wordpress/" target="_blank">Automatic cleanup of malware and suspicious files</a>
 
-                    <p>The scanner requires the CURL library to be enabled for PHP scripts. Usually, it's enabled by default.</p>
+                    </div>
 
-                    <p>Read more: <a href="https://wpcerber.com/wordpress-security-scanner/" target="_blank">Malware Scanner & Integrity Checker</a></p>
+                    <div>
+                        <h2>Restoring deleted files</h2>
 
-                    <h2>Credits</h2>
+                        <p>If you delete an important file by chance, you can restore the file from the quarantine. To
+                            restore one or more files from within the WordPress dashboard, click the Quarantine tab.
+                            Find the filename in the File column and click Restore in the Action column. The file will
+                            be restored to its original location.</p>
 
-                    <p>Vulnerability information provided by <a href="https://wpvulndb.com/" target="_blank" rel="noopener noreferrer">WPScan Vulnerability Database</a></p>
+                        <p>To restore a file manually, you need to use a file manager in your hosting control panel. All
+                            deleted files are stored in a special quarantine folder. The location of the folder is shown
+                            on the Tools / Diagnostic admin page. The original name and location of a deleted file are
+                            saved in a .restore file. It’s a text file. Open it in a browser or a file viewer, find the
+                            filename you need to restore in a list of deleted files and copy the file back to its
+                            location by using the original name and location of the file.
+                        </p>
+
+                    </div>
 
                 </td>
             </tr>
@@ -1789,12 +1876,12 @@ function cerber_show_aside($page){
 			</div>
 	';*/
 
-	if (!lab_lab())  {
-	$aside[] = '
-    <a class="crb-button-one" href="https://wpcerber.com/subscribe-newsletter/" target="_blank"><span class="dashicons dashicons-email-alt"></span> Subscribe to Cerber\'s newsletter</a>
-    <a class="crb-button-one" style="background-color: #1DA1F2;" href="https://twitter.com/wpcerber" target="_blank"><span class="dashicons dashicons-twitter"></span> Follow Cerber on Twitter</a>
-    <a class="crb-button-one" style="background-color: #3B5998;" href="https://www.facebook.com/wpcerber/" target="_blank"><span class="dashicons dashicons-facebook"></span> Follow Cerber on Facebook</a>
-	';
+	if ( ! lab_lab() ) {
+		$aside[] = '
+            <a class="crb-button-one" href="https://wpcerber.com/subscribe-newsletter/" target="_blank"><span class="dashicons dashicons-email-alt"></span> Subscribe to Cerber\'s newsletter</a>';
+//            <a class="crb-button-one" style="background-color: #1DA1F2;" href="https://twitter.com/wpcerber" target="_blank"><span class="dashicons dashicons-twitter"></span> Follow Cerber on Twitter</a>
+//            <a class="crb-button-one" style="background-color: #3B5998;" href="https://www.facebook.com/wpcerber/" target="_blank"><span class="dashicons dashicons-facebook"></span> Follow Cerber on Facebook</a>
+	//';
 
 	// 22.01.2017
 	/*
@@ -1802,7 +1889,7 @@ function cerber_show_aside($page){
             <span class="dashicons dashicons-awards"></span><span class="dashicons dashicons-awards"></span><span class="dashicons dashicons-awards"></span><br><br>UPGRADE TO PROFESSIONAL VERSION</a>';
     */
 
-	$aside[] = '<a href="https://wpcerber.com/pro/" target="_blank"><img src="'.$crb_assets_url.'bn2ra.png" /></a>';
+	$aside[] = '<a href="https://wpcerber.com/pro/" target="_blank"><img src="'.$crb_assets_url.'bn3ra.png" width="290" height="478"/></a>';
 
 	}
 /*
@@ -1839,12 +1926,12 @@ function cerber_show_aside($page){
 			<!-- <h3><span class="dashicons-before dashicons-lightbulb"></span> Read Cerber\'s blog</h3> --> 
 			<h3>Documentation & How to</h3>
 						
+			<p><a href="https://wpcerber.com/automatic-malware-removal-wordpress/" target="_blank">Automatic cleanup of malware and suspicious files</a>
 			<p><a href="https://wpcerber.com/wordpress-security-scanner-scan-malware-detect/" target="_blank">What Cerber Security Scanner scans and detects</a>
 			<p><a href="https://wpcerber.com/automated-recurring-malware-scans/" target="_blank">Automated recurring scans and email reporting</a>
 			<p><a href="https://wpcerber.com/wordpress-security-scanner/" target="_blank">Malware Scanner & Integrity Checker</a>
 			<p><a href="https://wpcerber.com/wordpress-traffic-inspector-how-to/" target="_blank">Quick tips for Traffic Inspector</a>
 			<p><a href="https://wpcerber.com/traffic-inspector-in-a-nutshell/" target="_blank">Traffic Inspector in a nutshell</a>
-			<p><a href="https://wpcerber.com/wordpress-ip-address-detection/" target="_blank">Solving problem with incorrect IP address detection</a>
 			<p><a href="https://wpcerber.com/antispam-for-wordpress-contact-forms/" target="_blank">Antispam protection for WordPress forms</a>
 			<p><a href="https://wpcerber.com/wordpress-mobile-and-browser-notifications-pushbullet/" target="_blank">Instant mobile and browser notifications</a>
 			<p><a href="https://wpcerber.com/wordpress-notifications-made-easy/" target="_blank">WordPress notifications made easy</a>
@@ -1911,9 +1998,7 @@ function cerber_show_admin_notice(){
 		$all[] = array( $notice, 'updated' ); // green
 	}
 
-
-	// yellow #ffb900;
-	if ($all) {
+	if ( $all ) {
 		$cerber_shown = true;
 		foreach ( $all as $notice ) {
 			echo '<div id="setting-error-settings_updated" class="' . $notice[1] . ' settings-error notice is-dismissible"> 
@@ -1924,14 +2009,17 @@ function cerber_show_admin_notice(){
 	update_site_option('cerber_admin_notice', null);
 	update_site_option('cerber_admin_message', null);
 
-	if ( ! cerber_is_admin_page() ) {
+	if ( $cerber_shown || ! cerber_is_admin_page() ) {
 		return;
 	}
 
-	if ($notice = get_site_option('cerber_admin_info')) { // need to be dismissed manually
+	if ( $notice = get_site_option( 'cerber_admin_info' ) ) { // need to be dismissed manually
 		$cerber_shown = true;
-		echo '<div class="updated cerber-msg" style="overflow: auto;"><p>'.$notice.'</p></div>';
+		echo '<div class="updated cerber-msg" style="overflow: auto;"><p>' . $notice . '</p></div>';
+		return;
 	}
+
+	lab_opt_in();
 }
 
 /**
@@ -2339,7 +2427,7 @@ function cerber_admin_footer() {
     </script>
 	<?php
 
-    if ( !lab_lab() && cerber_is_admin_page( false, array( 'tab' => 'scan_schedule' ) ) ) :
+	if ( ! lab_lab() && cerber_is_admin_page( false, array( 'tab' => array( 'scan_schedule', 'scan_policy' ) ) ) ) :
 		?>
         <script type="text/javascript">
             jQuery(document).ready(function ($) {

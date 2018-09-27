@@ -5,20 +5,20 @@ Tags: security, malware scanner, antispam, firewall, limit login attempts, custo
 Requires at least: 4.5
 Requires PHP: 5.4
 Tested up to: 4.9
-Stable tag: 7.6
+Stable tag: 7.7
 License: GPLv2
 
-Protection against hacker attacks and bots. Malware scanner & integrity checker. Monitor user activity. Antispam reCAPTCHA. Limit login attempts.
+Protection against hacker attacks and bots. Malware scanner & integrity checker. User activity log. Antispam reCAPTCHA. Limit login attempts.
 
 == Description ==
 
 Defends WordPress against hacker attacks, spam, trojans and malware.
-Mitigate brute force attacks by limiting the number of login attempts through the login form, XML-RPC / REST API requests or using auth cookies.
+Mitigates brute force attacks by limiting the number of login attempts through the login form, XML-RPC / REST API requests or using auth cookies.
 Restricts access with the Black IP Access List and the White IP Access List.
 Tracks user and intruder activity with powerful email, mobile and desktop notifications.
 Stop spam: activates Cerber antispam engine and Google reCAPTCHA for protecting registration, contact and comments forms.
+Advanced malware scanner, integrity checker and file monitor.
 Hardening WordPress with a set of security rules and comprehensive algorithms.
-Malware scanner, integrity checker, file monitor.
 
 **Features you will love**
 
@@ -307,12 +307,19 @@ To get access to your dashboard you need to copy the WP Cerber Reset folder to t
 
 
 == Changelog ==
+= 7.7 =
+New: [Automatic cleanup of malware and suspicious files](https://wpcerber.com/automatic-malware-removal-wordpress/). This powerful feature is available in the PRO version and automatically deletes trojans, viruses, backdoors, and other malware. Cerber Security Professional scans the website on an hourly basis and removes malware immediately.
+Update: Algorithms of the malware scanner have been improved to detect obfuscated malware code more precisely for all types of files.
+Update: Email reports for [scheduled malware scans](https://wpcerber.com/automated-recurring-malware-scans/) have been extended with useful performance numbers and a list of automatically deleted malicious files if you’ve enabled automatic malware removal and some files have been deleted.
+Fix: A possible issue with uploading large JSON and CSV files. When Traffic Inspector scans uploaded files for malware payload, some JSON and CSV files might be erroneously identified as containing a malicious payload.
+Fix: A possible Divi theme forms incompatibility. If you use the Divi theme (by Elegant Themes), you can come across a problem with submitting some forms.
+* [Read more](https://wpcerber.com/wp-cerber-security-7-7/)
+
 = 7.6 =
 * New: The quarantine has got a separate admin page in the WordPress dashboard which allows viewing deleted files, restoring or deleting them.
 * New: Now [the malware scanner and integrity checker](https://wpcerber.com/wordpress-security-scanner/) supports multisite WordPress installations.
 * Bug fixed: Once an address IP has been locked out after reaching the limit to the number of attempts to log in the "We’re sorry, you are not allowed to proceed" forbidden page is being displayed instead of the normal user message "You have exceeded the number of allowed login attempts".
 * Bug fixed: PHP Notice: Only variables should be passed by reference in cerber-load.php on line 5377
-* Update: Miscellaneous code improvements for traffic inspector
 * [Read more](https://wpcerber.com/wp-cerber-security-7-6/)
 
 = 7.5 =
@@ -328,7 +335,7 @@ To get access to your dashboard you need to copy the WP Cerber Reset folder to t
 * New: Monitoring new and changed files.
 * New: Detecting malicious redirections and directives in .htaccess files.
 * New: [Automated hourly and daily scheduled scans with flexible email reports](https://wpcerber.com/automated-recurring-malware-scans/).
-* Update: Added a protection from logging wrong time stamps on some not correctly configured servers.
+* Update: Added a protection from logging wrong time stamps on some misconfigured web servers.
 * Bug fixed: Unexpected warning messages in the WordPress dashboard.
 * Bug fixed: Some file status links on the scanner results page may not work.
 
@@ -454,24 +461,6 @@ To get access to your dashboard you need to copy the WP Cerber Reset folder to t
 * New: To improve compatibility with some plugins the email notification function has been updated and now uses the comma-separated list of email addresses instead of an array.
 * Bug fixed: An IP address from a range might not be allowed to log in if you have overlapping IP ranges in the both IP Access List.
 * Bug fixed: A reason of blocking an IP address is not shown in notification emails if Always block entire subnet Class C of intruders IP is selected in the settings.
-
-= 4.8 =
-* New: You can enable/disable applying limit login rules to IP addresses in the White IP Access List.
-* New: Block malicious IP addresses after a specified number of failed attempts to solve visible or invisible reCAPTCHA.
-* New: Track password reset requests with username entered.
-
-= 4.7.7 =
-* New: invisible reCAPTCHA (classic, visible also available).
-* New: reCAPTCHA for comment forms. Works well as anti-spam tool.
-* Fixed bug: "Add network to the Black List" and "Add IP to the Black List" buttons on the Activity tab doesn't work in the Safari web browser.
-
-= 4.5 =
-* New: Instant mobile and browser notifications with Pushbullet.
-* New: Ability to choose a 404 page template.
-* New: Events on the Activity tab are displaying with user roles and avatars.
-* Update: PHP function file_get_contents() has been replaced with cURL to improve compatibilty with restrictive hostings.
-* Fixed bug: Password reset link that is generated by the WooCommerce reset password form can be corrupted if reCAPTCHA is enabled for the form.
-* Fixed bug: The plugin doesn’t block IPv6 addresses from the Black IP Access List (versions affected: 4.0 – 4.3).
 
 == Other Notes ==
 

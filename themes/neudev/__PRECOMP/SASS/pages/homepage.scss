@@ -45,20 +45,30 @@
     }
     & > section.intro {
       & > button {
-        border: 1px solid $brand_colors-black;
+        // border: 1px solid $brand_colors-black;
+        // margin: 0 0 ($gutter *2) 0;
+        // min-width: 250px;
+        // display: block;
+        // color: $brand_colors-black ;
+        // @include font-2l-c;
+        // font-weight: 400;
+        // padding: 0;
+        // line-height: 44px;
+        // height:44px;
+        // text-transform: uppercase;
+        // background: none;
+        //float: left;
+        width: auto;
+        border: none;
+        background: $brand_colors-red;
+        @include font-2r-l;
         margin: 0 0 ($gutter *2) 0;
-        min-width: 250px;
-        display: block;
-        color: $brand_colors-black ;
-        @include font-2l-c;
-        font-weight: 400;
-        padding: 0;
-        line-height: 44px;
-        height:44px;
         text-transform: uppercase;
-        background: none;
+        padding: 5px ($gutter *2) 5px ($gutter *2);
+        color: $brand_colors-white;
+        letter-spacing: 0px;
         &:hover {
-          background: $brand_colors-grayW;
+          background: $brand_colors-black;
         }
       }
       & > h1 {
@@ -128,11 +138,12 @@
       }
       & > section.intro {
         & > button {
-          border: 1px solid $brand_colors-black;
+           border: 1px solid $brand_colors-black;
           margin: 0 0 ($gutter *2) 0;
           min-width: 250px;
           display: block;
-          color: $brand_colors-black ;
+          color: $brand_colors-white ;
+          background:rgba(197, 0, 3, 1.0);
           @include font-2l-c;
           font-weight: 400;
           padding: 0;
@@ -141,7 +152,7 @@
           text-transform: uppercase;
           background: none;
           &:hover {
-            background: $brand_colors-grayW;
+            background: $brand_colors-black;
           }
         }
         & > h1 {

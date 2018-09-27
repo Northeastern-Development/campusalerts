@@ -5,7 +5,7 @@
 	Description: Defends WordPress against hacker attacks, spam, trojans, and viruses. Malware scanner and integrity checker. Hardening WordPress with a set of comprehensive security algorithms. Spam protection with a sophisticated bot detection engine and reCAPTCHA. Tracks user and intruder activity with powerful email, mobile and desktop notifications.
 	Author: Gregory
 	Author URI: https://wpcerber.com
-	Version: 7.6
+	Version: 7.7
 	Text Domain: wp-cerber
 	Domain Path: /languages
 	Network: true
@@ -31,7 +31,7 @@
 
 */
 
-define( 'CERBER_VER', '7.6' );
+define( 'CERBER_VER', '7.7' );
 
 function cerber_plugin_file() {
 	return __FILE__;

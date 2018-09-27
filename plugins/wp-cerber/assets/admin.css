@@ -653,8 +653,8 @@ a.nav-tab:first-child{
     color: #000;
 }
 a.nav-tab:last-of-type{
-    border: 1px solid #ccc;
-    border-bottom: none;
+    border-right: 1px solid #ccc;
+    /*border-bottom: none;*/
 }
 .cerber-tabs .nav-tab-active {
     color: #011b45;
@@ -1273,6 +1273,9 @@ table.crb-avatar a{
 /* Help tab */
 #crb-help {
     padding: 0 10px;
+}
+#crb-help div {
+    margin-bottom: 2em;
 }
 #crb-help h3 {
     margin-top: 2em;

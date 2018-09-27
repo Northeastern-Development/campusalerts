@@ -44,6 +44,7 @@ define('CERBER_OPT_N','cerber-notifications');
 define('CERBER_OPT_T','cerber-traffic');
 define('CERBER_OPT_S','cerber-scanner');
 define('CERBER_OPT_E','cerber-schedule');
+define('CERBER_OPT_P','cerber-policies');
 
 /**
  * A set of Cerber setting (WP options)
@@ -52,7 +53,7 @@ define('CERBER_OPT_E','cerber-schedule');
  */
 
 function cerber_get_setting_list() {
-	return array( CERBER_OPT, CERBER_OPT_H, CERBER_OPT_U, CERBER_OPT_A, CERBER_OPT_C, CERBER_OPT_N, CERBER_OPT_T, CERBER_OPT_S, CERBER_OPT_E );
+	return array( CERBER_OPT, CERBER_OPT_H, CERBER_OPT_U, CERBER_OPT_A, CERBER_OPT_C, CERBER_OPT_N, CERBER_OPT_T, CERBER_OPT_S, CERBER_OPT_E, CERBER_OPT_P );
 }
 
 /*
@@ -498,34 +499,102 @@ function cerber_settings_init(){
 		       'label'       => sprintf( __( 'if empty, email from notification settings will be used', 'wp-cerber' ), $def_email )
 		) );
 
+	// Scanner Policies -----------------------------------------------------------------------------
+
+	$group = 'policies'; // 'cerber-scanner' settings
+	register_setting( 'cerberus-' . $group, CERBER_OPT_P );
+
+	add_settings_section( 'scanpls', __( 'Automatic cleanup of malware and suspicious files', 'wp-cerber' ), 'cerber_sapi_section', CERBER_OPT_P );
+
+	add_settings_field( 'scan_delunatt', __( 'Unattended files', 'wp-cerber' ), 'cerber_field_show', CERBER_OPT_P, 'scanpls',
+		array(
+			'group'   => $group,
+			'setting' => 'scan_delunatt',
+			'type'    => 'checkbox',
+		) );
+	$list = array( 1 => __('Low severity','wp-cerber'), 2 => __('Medium severity','wp-cerber'), 3 => __('High severity','wp-cerber'));
+	add_settings_field( 'scan_delupl', __( 'Files in the uploads folder', 'wp-cerber' ), 'cerber_field_show', CERBER_OPT_P, 'scanpls',
+		array(
+			'group'   => $group,
+			'setting' => 'scan_delupl',
+			'type'    => 'checkbox_set',
+			'set'     => $list,
+		) );
+	add_settings_field( 'scan_delunwant', __( 'Files with unwanted extensions', 'wp-cerber' ), 'cerber_field_show', CERBER_OPT_P, 'scanpls',
+		array(
+			'group'   => $group,
+			'setting' => 'scan_delunwant',
+			'type'    => 'checkbox',
+		) );
+
+	add_settings_section( 'scanexcl', __( 'Exclusions', 'wp-cerber' ), 'cerber_sapi_section', CERBER_OPT_P );
+	add_settings_field( 'scan_nodeltemp', __( 'Files in the temporary directory', 'wp-cerber' ), 'cerber_field_show', CERBER_OPT_P, 'scanexcl',
+		array(
+			'group'   => $group,
+			'setting' => 'scan_nodeltemp',
+			'type'    => 'checkbox',
+		) );
+	add_settings_field( 'scan_nodelsess', __( 'Files in the sessions directory', 'wp-cerber' ), 'cerber_field_show', CERBER_OPT_P, 'scanexcl',
+		array(
+			'group'   => $group,
+			'setting' => 'scan_nodelsess',
+			'type'    => 'checkbox',
+		) );
+	add_settings_field( 'scan_delexdir', __( 'Files in these directories', 'wp-cerber' ), 'cerber_field_show', CERBER_OPT_P, 'scanexcl',
+		array( 'group'  => $group,
+		       'setting' => 'scan_delexdir',
+		       'type'   => 'textarea',
+		       'delimiter'   => "\n",
+		       'list'        => true,
+		       'label' => __( 'Use absolute paths. One item per line.', 'wp-cerber' )
+		) );
+	add_settings_field( 'scan_delexext', __( 'Files with these extensions', 'wp-cerber' ), 'cerber_field_show', CERBER_OPT_P, 'scanexcl',
+		array( 'group'  => $group,
+		       'setting' => 'scan_delexext',
+		       'type'   => 'textarea',
+		       'delimiter'   => ",",
+		       'list'        => true,
+		       'label' => __( 'Use comma to separate items.', 'wp-cerber' )
+		) );
+
 }
+
 /*
 	Generate HTML for each sections on a settings page
 */
-function cerber_sapi_section($args){
-    switch ($args['id']){ // a section id
-        case 'proactive':
-	        _e('Make your protection smarter!','wp-cerber');
-            break;
-	    case 'custom':
-		    if ( ! cerber_is_permalink_enabled() ) {
-			    echo '<span style="color:#DF0000;">' . __( 'Please enable Permalinks to use this feature. Set Permalink Settings to something other than Default.', 'wp-cerber' ) . '</span>';
-		    }
-		    else {
-			    echo __( 'Be careful about enabling these options.', 'wp-cerber' ) . ' ' . __( 'If you forget your Custom login URL, you will be unable to log in.', 'wp-cerber' );
-		    }
-		    break;
-	    case 'citadel':
-		    _e("In the Citadel mode nobody is able to log in except IPs from the White IP Access List. Active user sessions will not be affected.",'wp-cerber');
-	        break;
-	    case 'hwp':
-		    echo __('These settings do not affect hosts from the ','wp-cerber').' '.__('White IP Access List','wp-cerber');
-	        break;
-	    case 'recap':
-		    _e('Before you can start using reCAPTCHA, you have to obtain Site key and Secret key on the Google website','wp-cerber');
-		    echo ' <a href="https://wpcerber.com/how-to-setup-recaptcha/">'.__('Know more','wp-cerber').'</a>';
-		    break;
-    }
+function cerber_sapi_section( $args ) {
+	switch ( $args['id'] ) { // a section id
+		case 'proactive':
+			_e( 'Make your protection smarter!', 'wp-cerber' );
+			break;
+		case 'custom':
+			if ( ! cerber_is_permalink_enabled() ) {
+				echo '<span style="color:#DF0000;">' . __( 'Please enable Permalinks to use this feature. Set Permalink Settings to something other than Default.', 'wp-cerber' ) . '</span>';
+			}
+			else {
+				echo __( 'Be careful about enabling these options.', 'wp-cerber' ) . ' ' . __( 'If you forget your Custom login URL, you will be unable to log in.', 'wp-cerber' );
+			}
+			break;
+		case 'citadel':
+			_e( 'In the Citadel mode nobody is able to log in except IPs from the White IP Access List. Active user sessions will not be affected.', 'wp-cerber' );
+			break;
+		case 'hwp':
+			echo __( 'These settings do not affect hosts from the ', 'wp-cerber' ) . ' ' . __( 'White IP Access List', 'wp-cerber' );
+			break;
+		case 'recap':
+			_e( 'Before you can start using reCAPTCHA, you have to obtain Site key and Secret key on the Google website', 'wp-cerber' );
+			echo ' <a href="https://wpcerber.com/how-to-setup-recaptcha/">' . __( 'Know more', 'wp-cerber' ) . '</a>';
+			break;
+		case 's2':
+			echo 'Configure what issues to include in a email report and the condition for sending the report.' . ' <a href="https://wpcerber.com/automated-recurring-malware-scans/" target="_blank">' . __( 'Know more', 'wp-cerber' ) . '</a>';
+			break;
+		case 'scanexcl':
+			echo 'These files will never be deleted during automatic cleanup.';
+			break;
+		case 'scanpls':
+			echo 'These policies will be automatically enforced at the end of every scheduled scan based on its results. Malicious and suspicious files will be moved to the quarantine.';
+			break;
+	}
 }
 
 /*
@@ -1177,23 +1246,7 @@ add_filter( 'pre_update_option_'.CERBER_OPT_T, function ($new, $old, $option) {
 */
 add_filter( 'pre_update_option_' . CERBER_OPT_S, function ( $new, $old, $option ) {
 
-	$list = cerber_text2array( $new['scan_exclude'], "\n" );
-    $ready = array();
-
-	foreach ( $list as $item ) {
-		//$list = array_filter( $list, function ( $item ) {
-		if ( ! @is_dir( $item ) ) {
-			$dir = cerber_get_abspath() . ltrim( $item, DIRECTORY_SEPARATOR );
-			if ( ! @is_dir( $dir ) ) {
-				cerber_admin_notice( 'Directory does not exist: ' . htmlspecialchars( $item ) );
-				continue;
-			}
-			$item = $dir;
-		}
-		$ready[] = cerber_normal_path( $item );
-	}
-
-	$new['scan_exclude'] = $ready;
+	$new['scan_exclude'] = cerber_normal_dirs( $new['scan_exclude'] );
 
 	$new['scan_cpt']  = cerber_text2array( $new['scan_cpt'], "\n" );
 	$new['scan_uext'] = cerber_text2array( $new['scan_uext'], ",", function ( $ext ) {
@@ -1240,6 +1293,41 @@ add_filter( 'pre_update_option_' . CERBER_OPT_E, function ( $new, $old, $option 
 
 	return $new;
 }, 10, 3 );
+
+add_filter( 'pre_update_option_' . CERBER_OPT_P, function ( $new, $old, $option ) {
+
+	$new['scan_delexdir'] = cerber_normal_dirs($new['scan_delexdir']);
+
+	$new['scan_delexext'] = cerber_text2array( $new['scan_delexext'], ",", function ( $ext ) {
+		$ext = strtolower( trim( $ext, '. *' ) );
+
+		return $ext;
+	} );
+
+	return $new;
+}, 10, 3 );
+
+function cerber_normal_dirs( $list = array() ) {
+	if ( ! is_array( $list ) ) {
+		$list = cerber_text2array( $list, "\n" );
+	}
+	$ready = array();
+
+	foreach ( $list as $item ) {
+		//$list = array_filter( $list, function ( $item ) {
+		if ( ! @is_dir( $item ) ) {
+			$dir = cerber_get_abspath() . ltrim( $item, DIRECTORY_SEPARATOR );
+			if ( ! @is_dir( $dir ) ) {
+				cerber_admin_notice( 'Directory does not exist: ' . htmlspecialchars( $item ) );
+				continue;
+			}
+			$item = $dir;
+		}
+		$ready[] = cerber_normal_path( $item );
+	}
+
+	return $ready;
+}
 
 /**
  * Let's sanitize and normalize them all
@@ -1507,7 +1595,16 @@ function cerber_get_defaults() {
 			'scan_isize'         => 0,
 			'scan_ierrors'       => 0,
 			'email-scan'         => ''
-		)
+		),
+		CERBER_OPT_P => array(
+			'scan_delunatt'  => 0,
+			'scan_delupl'    => array(),
+			'scan_delunwant' => 0,
+			'scan_nodeltemp' => 0,
+			'scan_nodelsess' => 0,
+			'scan_delexdir'  => array(),
+			'scan_delexext'  => array(),
+		),
 	);
 
 	return $all_defaults;

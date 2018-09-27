@@ -353,6 +353,7 @@ function cerber_show_wp_diag(){
 	$ret = array();
 
 	$ret[] = cerber_make_plain_table( array(
+		array( 'PHP version ', phpversion() ),
 		array( 'WordPress version', cerber_get_wp_version() ),
 		array( 'Options DB table', $wpdb->prefix . 'options' ),
 		array( 'Server platform', PHP_OS ),

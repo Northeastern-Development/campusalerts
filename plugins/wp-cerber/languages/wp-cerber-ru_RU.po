@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Cerber Security, Antispam &amp; Malware Scan - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-08-21 01:41:57+0000\n"
+"PO-Revision-Date: 2018-09-07 11:54:57+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,415 +11,509 @@ msgstr ""
 "Language: ru\n"
 "Project-Id-Version: Plugins - Cerber Security, Antispam &amp; Malware Scan - Stable (latest release)\n"
 
-#: cerber-scanner.php:1131
+#. Description of the plugin/theme
+msgid "Defends WordPress against hacker attacks, spam, trojans, and viruses. Malware scanner and integrity checker. Hardening WordPress with a set of comprehensive security algorithms. Spam protection with a sophisticated bot detection engine and reCAPTCHA. Tracks user and intruder activity with powerful email, mobile and desktop notifications."
+msgstr "Защищает WordPress от атак хакеров, спама, троянов и вирусов. Включает сканер вредоносного ПО и проверку целостности. Усиление защиты WordPress набором комплексных алгоритмов безопасности. Защита от спама тонким определением ботов и reCAPTCHA. Отслеживание пользовательской активности и вторжений с уведомлением по email, а также через уведомления браузера или на мобильные устройства."
+
+#: settings.php:957
+msgctxt "preposition of time like: at 11:00"
+msgid "at"
+msgstr "в"
+
+#: dashboard.php:3545
+msgid "Antispam engine"
+msgstr "Антиспам защита"
+
+#: cerber-scanner.php:5184
+msgid "The file has been restored to its original location."
+msgstr "Файл был восстановлен по оригинальному местоположению."
+
+#: cerber-scanner.php:5175
+msgid "The file has been deleted permanently."
+msgstr "Файл удален навсегда."
+
+#: cerber-scanner.php:5113
+msgid "File"
+msgstr "Файл"
+
+#: cerber-scanner.php:5112
+msgid "Size"
+msgstr "Размер"
+
+#: cerber-scanner.php:5111
+msgid "Automatic deletion"
+msgstr "Автоматическое удаление"
+
+#: cerber-scanner.php:5110
+msgid "Moved to quarantine"
+msgstr "Перемещен в карантин"
+
+#: cerber-scanner.php:5105
+msgid "Delete permanently"
+msgstr "Удалить навсегда"
+
+#: cerber-scanner.php:5102
+msgid "Restore"
+msgstr "Восстановить"
+
+#: cerber-scanner.php:5037
+msgid "There are no files in the quarantine at the moment."
+msgstr "В карантине сейчас нет файлов."
+
+#: cerber-scanner.php:3563 cerber-scanner.php:5109
+msgid "Scanned"
+msgstr "Проверено"
+
+#: cerber-scanner.php:3554
+msgid "Unattended files"
+msgstr "Несопровождаемые файлы"
+
+#: cerber-scanner.php:3546
+msgid "Changed files"
+msgstr "Измененные файлы"
+
+#: cerber-scanner.php:3542
+msgid "New files"
+msgstr "Новые файлы"
+
+#: cerber-scanner.php:3538
+msgid "Vulnerabilities"
+msgstr "Уязвимости"
+
+#: cerber-scanner.php:3526
+msgid "Performance"
+msgstr "Производительность"
+
+#: cerber-scanner.php:3518
+msgid "Finished"
+msgstr "Завершено"
+
+#: cerber-scanner.php:3514
+msgid "Started"
+msgstr "Начато"
+
+#: cerber-scanner.php:86
+msgid "Quarantine"
+msgstr "Карантин"
+
+#: cerber-load.php:375
+msgid "You have exceeded the number of allowed login attempts. Please try again in %d minutes."
+msgstr "Вы исчерпали максимально допустимое количество попыток входа. Попробуйте снова через %d минут."
+
+#: common.php:997
+msgctxt "preposition of a period of time like: in 6 hours"
+msgid "in %s"
+msgstr "Через %s"
+
+#: cerber-scanner.php:1148
 msgid "Vulnerability found"
 msgstr "Обнаружена уязвимость"
 
-#: cerber-scanner.php:1136
+#: cerber-scanner.php:1153
 msgid "Unable to check the integrity due to a DB error"
 msgstr "Невозможно проверить целостность из-за ошибки БД"
 
-#: cerber-scanner.php:3410
+#: cerber-scanner.php:3435
 msgid "Scanning the temp folder for files"
 msgstr "Поиск файлов в временном каталоге"
 
-#: cerber-scanner.php:3409
+#: cerber-scanner.php:3434
 msgid "Scanning the upload folder for files"
 msgstr "Поиск файлов в каталоге uploads"
 
-#: cerber-scanner.php:3411
+#: cerber-scanner.php:3436
 msgid "Scanning the session folder for files"
 msgstr "Поиск файлов в каталоге сессий"
 
-#: common.php:855
+#: common.php:878
 msgid "Malicious request denied"
 msgstr "Заблокирован вредоносный запрос"
 
-#: common.php:859
+#: common.php:882
 msgid "User activated"
 msgstr "Пользователь активирован"
 
-#: common.php:874
+#: common.php:897
 msgid "Suspicious number of fields"
 msgstr "Подозрительное число полей"
 
-#: common.php:875
+#: common.php:898
 msgid "Suspicious number of nested values"
 msgstr "Подозрительное количество вложенных значений"
 
-#: common.php:876 common.php:909
+#: common.php:899 common.php:932
 msgid "Malicious code detected"
 msgstr "Обнаружен вредоносный код"
 
-#: common.php:910
+#: common.php:933
 msgid "Attempt to upload a file with malicious code"
 msgstr "Попытка загрузки файла с вредоносным кодом"
 
-#: common.php:1057
+#: common.php:1082
 msgid "Bytes"
 msgstr "Байт"
 
-#: dashboard.php:1023
+#: dashboard.php:1037
 msgid "Activated"
 msgstr "Активация"
 
-#: dashboard.php:3144
+#: dashboard.php:3173
 msgid "Suspicious activity"
 msgstr "Подозрительная активность"
 
-#: dashboard.php:3145
+#: dashboard.php:3174
 msgid "Errors"
 msgstr "Ошибки"
 
-#: settings.php:448
+#: settings.php:452
 msgid "Scan results reporting"
 msgstr "Отчет о результатах проверки"
 
-#: settings.php:432
+#: settings.php:436
 msgid "Automated recurring scan schedule"
 msgstr "План автоматической повторной проверки"
 
-#: settings.php:1217
+#: settings.php:1238
 msgid "Unable to updated the schedule"
 msgstr "Невозможно обновить запланированное"
 
-#: settings.php:1214
+#: settings.php:1235
 msgid "The schedule has been updated"
 msgstr "Запланированное обновлено"
 
-#: settings.php:478
+#: settings.php:482
 msgid "Include scan errors"
 msgstr "Включать ошибки сканера"
 
-#: settings.php:471
+#: settings.php:475
 msgid "Include file sizes"
 msgstr "Включать размеры файлов"
 
-#: settings.php:467
+#: settings.php:471
 msgid "If new issues found"
 msgstr "Если найдены новые проблемы"
 
-#: settings.php:466
+#: settings.php:470
 msgid "If any changes in scan results occurred"
 msgstr "Если найдены изменения в результатах сканирования"
 
-#: settings.php:465
+#: settings.php:469
 msgid "After every scan"
 msgstr "После каждого сканирования"
 
-#: settings.php:451
+#: settings.php:455
 msgid "Report an issue if any of the following is true"
 msgstr "Отчитываться о проблемах, если нижеперечисленное верно"
 
-#: settings.php:459
+#: settings.php:463
 msgid "Send email report"
 msgstr "Отсылать отчет по эл.почте"
 
-#: settings.php:450
+#: settings.php:454
 msgid "Medium severity"
 msgstr "Средняя тяжесть"
 
-#: settings.php:450
+#: settings.php:454
 msgid "High severity"
 msgstr "Высокая тяжесть"
 
-#: settings.php:450
+#: settings.php:454
 msgid "Low severity"
 msgstr "Низкая тяжесть"
 
-#: settings.php:399
+#: settings.php:403
 msgid "Monitor modified files"
 msgstr "Наблюдать за изменением файлов"
 
-#: settings.php:392
+#: settings.php:396
 msgid "Monitor new files"
 msgstr "Наблюдать за новыми файлами"
 
-#: cerber-scanner.php:4696
+#: cerber-scanner.php:4841
 msgid "To view full report visit"
 msgstr "Для просмотра полного отчета зайдите на"
 
-#: cerber-scanner.php:3573
+#: cerber-scanner.php:3719
 msgid "You have to upload a ZIP archive from which you've installed it. This enables the security scanner to verify the integrity of the code and detect malware."
 msgstr "Вам нужно загрузить zip-архив, из которого вы это установили. Это даст возможность сканеру безопасности проверить целостность файлов, кода и определить вредоносный код."
 
-#: cerber-scanner.php:3571
+#: cerber-scanner.php:3717
 msgid "We have not found any integrity data to verify"
 msgstr "Не найдены данные о целостности для проверки"
 
-#: cerber-scanner.php:3417
+#: cerber-scanner.php:3442
 msgid "Searching for malicious code"
 msgstr "Поиск вредоносного кода"
 
-#: cerber-scanner.php:3416
+#: cerber-scanner.php:3441
 msgid "Verifying the integrity of the themes"
 msgstr "Проверка целостности тем"
 
-#: cerber-scanner.php:3415
+#: cerber-scanner.php:3440
 msgid "Verifying the integrity of the plugins"
 msgstr "Проверка целостности плагинов"
 
-#: cerber-scanner.php:3414
+#: cerber-scanner.php:3439
 msgid "Verifying the integrity of WordPress"
 msgstr "Проверка целостности WordPress"
 
-#: cerber-scanner.php:3413
+#: cerber-scanner.php:3438
 msgid "Checking for new and modified files"
 msgstr "Поиск новых и измененных файлов"
 
-#: cerber-scanner.php:3412
+#: cerber-scanner.php:3437
 msgid "Parsing the list of files"
 msgstr "Обработка списка файлов"
 
-#: cerber-scanner.php:3408
+#: cerber-scanner.php:3433
 msgid "Scanning folders for files"
 msgstr "Поиск файлов в каталогах"
 
-#: cerber-scanner.php:2364
+#: cerber-scanner.php:2392
 msgid "Resolve issue"
 msgstr "Решить проблему"
 
-#: cerber-scanner.php:2363
+#: cerber-scanner.php:2391
 msgid "Please upload a reference ZIP archive"
 msgstr "Пожалуйста, загрузите установочный zip-архив"
 
-#: cerber-scanner.php:2362
+#: cerber-scanner.php:2390
 msgid "To solve this issue you have to reinstall %s or update it to the latest version."
 msgstr "Для решения этой проблемы нужно переустановить %s или обновить до последней версии."
 
-#: cerber-scanner.php:2359
+#: cerber-scanner.php:2387
 msgid "Suspicious code signatures found"
 msgstr "Найдены подозрительные отпечатки кода"
 
-#: cerber-scanner.php:2358
+#: cerber-scanner.php:2386
 msgid "Suspicious code instruction found"
 msgstr "Найдены подозрительные инструкции в коде"
 
-#: cerber-scanner.php:1178
+#: cerber-scanner.php:1195
 msgid "Every 6 hours"
 msgstr "Каждые 6 часов"
 
-#: cerber-scanner.php:1175 dashboard.php:1296 dashboard.php:1298
+#: cerber-scanner.php:1192 dashboard.php:1310 dashboard.php:1312
 msgid "Disabled"
 msgstr "Отключено"
 
-#: cerber-scanner.php:1176
+#: cerber-scanner.php:1193
 msgid "Every hour"
 msgstr "Каждый час"
 
-#: cerber-scanner.php:1177
+#: cerber-scanner.php:1194
 msgid "Every 3 hours"
 msgstr "Каждые 3 часа"
 
-#: cerber-scanner.php:1156
+#: cerber-scanner.php:1173
 msgid "New file"
 msgstr "Новый файл"
 
-#: cerber-scanner.php:1153
+#: cerber-scanner.php:1170
 msgid "Unwanted file extension"
 msgstr "Файл с нежелательным расширением"
 
-#: cerber-scanner.php:1152 cerber-scanner.php:2360
+#: cerber-scanner.php:1169 cerber-scanner.php:2388
 msgid "Suspicious directives found"
 msgstr "Найдены подозрительные директивы"
 
-#: cerber-scanner.php:1143
+#: cerber-scanner.php:1160
 msgid "Checksum mismatch"
 msgstr "Несовпадение контрольной суммы"
 
-#: cerber-scanner.php:86
+#: cerber-scanner.php:85
 msgid "Scheduling"
 msgstr "Планирование"
 
-#: settings.php:440
+#: settings.php:444
 msgid "Launch Full Scan"
 msgstr "Запуск полной проверки"
 
-#: settings.php:433
+#: settings.php:437
 msgid "Launch Quick Scan"
 msgstr "Запуск быстрой проверки"
 
-#: cerber-scanner.php:4570
+#: cerber-scanner.php:4715
 msgid "Quick Scan Report"
 msgstr "Отчет быстрой проверки"
 
-#: settings.php:390
+#: settings.php:394
 msgid "Specify directories to exclude from scanning. Use absolute paths. One item per line."
 msgstr "Укажите каталоги для исключения проверки. Используйте абсолютный путь, 1 элемент на строку."
 
-#: cerber-scanner.php:4583
+#: cerber-scanner.php:4728
 msgid "Files scanned"
 msgstr "Проверено файлов"
 
-#: cerber-scanner.php:4570
+#: cerber-scanner.php:4715
 msgid "Full Scan Report"
 msgstr "Отчет полной проверки"
 
-#: cerber-scanner.php:4085
+#: cerber-scanner.php:4230
 msgid "File access error. Possibly scan results are outdated. Please run Quick or Full Scan."
 msgstr "Ошибка доступа к файлу. Возможно результаты проверки устарели. Запустите быструю или полную проверку."
 
-#: cerber-scanner.php:3418
+#: cerber-scanner.php:3443
 msgid "Finalizing the scan"
 msgstr "Завершение проверки"
 
-#: cerber-scanner.php:750 dashboard.php:1299
+#: cerber-scanner.php:756 dashboard.php:1313
 msgid "Full Scan"
 msgstr "Полная проверка"
 
-#: cerber-scanner.php:750 dashboard.php:1297
+#: cerber-scanner.php:756 dashboard.php:1311
 msgid "Quick Scan"
 msgstr "Быстрая проверка"
 
-#: cerber-scanner.php:146
+#: cerber-scanner.php:149
 msgid "It seems this website has never been scanned. To start scanning click the button below."
 msgstr "Похоже этот сайт еще не проверялся, нажмите кнопку ниже для начала проверки."
 
-#: cerber-scanner.php:137
+#: cerber-scanner.php:140
 msgid "Previous scan started %s has not been completed. Continue scanning?"
 msgstr "Предыдущая попытка проверки, начатая %s, не завершена. Продолжить проверку?"
 
-#: cerber-scanner.php:133
+#: cerber-scanner.php:136
 msgid "Currently a scheduled scan in progress. Please wait until it is finished."
 msgstr "Сейчас выполняется запланированная проверка. Дождитесь пока она завершится."
 
-#: cerber-load.php:3488
+#: cerber-load.php:3506
 msgid "Scanner Report"
 msgstr "Отчет проверки"
 
-#: cerber-scanner.php:79 dashboard.php:64
+#: cerber-scanner.php:78 dashboard.php:64
 msgid "Site Integrity"
 msgstr "Целостность сайта"
 
-#: cerber-load.php:4234 cerber-scanner.php:84
+#: cerber-load.php:4257 cerber-scanner.php:83
 msgid "Security Scanner"
 msgstr "Сканер безопасности"
 
-#: cerber-scanner.php:149
+#: cerber-scanner.php:152
 msgid "Start Quick Scan"
 msgstr "Начать быструю проверку"
 
-#: cerber-scanner.php:150
+#: cerber-scanner.php:153
 msgid "Start Full Scan"
 msgstr "Начать полную проверку"
 
-#: cerber-scanner.php:151
+#: cerber-scanner.php:154
 msgid "Stop Scanning"
 msgstr "Остановить проверку"
 
-#: cerber-scanner.php:181
+#: cerber-scanner.php:184
 msgid "Delete"
 msgstr "Удалить"
 
-#: cerber-scanner.php:1125
+#: cerber-scanner.php:1142
 msgid "Verified"
 msgstr "Проверено"
 
-#: cerber-scanner.php:1132
+#: cerber-scanner.php:1149
 msgid "Integrity data not found"
 msgstr "Данные о целостности не найдены"
 
-#: cerber-scanner.php:1133
+#: cerber-scanner.php:1150
 msgid "Unable to check the integrity of the plugin due to a network error"
 msgstr "Невозможно проверить целостность плагина из-за ошибки сети"
 
-#: cerber-scanner.php:1134
+#: cerber-scanner.php:1151
 msgid "Unable to check the integrity of WordPress files due to a network error"
 msgstr "Невозможно проверить целостность WordPress из-за ошибки сети"
 
-#: cerber-scanner.php:1135
+#: cerber-scanner.php:1152
 msgid "Unable to check the integrity of the theme due to a network error"
 msgstr "Невозможно проверить целостность темы из-за ошибки сети"
 
-#: cerber-scanner.php:1138
+#: cerber-scanner.php:1155
 msgid "Local file doesn't exist"
 msgstr "Локальный файл отсутствует"
 
-#: cerber-scanner.php:1140
+#: cerber-scanner.php:1157
 msgid "Unable to process file"
 msgstr "Невозможно обработать файл"
 
-#: cerber-scanner.php:1141 cerber-scanner.php:4424
+#: cerber-scanner.php:1158 cerber-scanner.php:4569
 msgid "Unable to open file"
 msgstr "Невозможно открыть файл"
 
-#: cerber-scanner.php:1155
+#: cerber-scanner.php:1172
 msgid "Content has been modified"
 msgstr "Содержимое изменено"
 
-#: cerber-scanner.php:1146
+#: cerber-scanner.php:1163
 msgid "Suspicious code found"
 msgstr "Найден подозрительный код"
 
-#: cerber-scanner.php:1147
+#: cerber-scanner.php:1164
 msgid "Potentially malicious code found"
 msgstr "Найден возможно вредоносный код"
 
-#: cerber-scanner.php:1148
+#: cerber-scanner.php:1165
 msgid "Unattended suspicious file"
 msgstr "Нештатный подозрительный файл"
 
-#: cerber-scanner.php:1149
+#: cerber-scanner.php:1166
 msgid "Executable code found"
 msgstr "Обнаружен исполняемый код"
 
-#: cerber-scanner.php:3487
+#: cerber-scanner.php:3563 cerber-scanner.php:3633
 msgid "Files to scan"
 msgstr "Файлы для проверки"
 
-#: cerber-scanner.php:3495
+#: cerber-scanner.php:3570 cerber-scanner.php:3641
 msgid "Critical issues"
 msgstr "Критические проблемы"
 
-#: cerber-scanner.php:3499 cerber-scanner.php:4614
+#: cerber-scanner.php:3570 cerber-scanner.php:3645 cerber-scanner.php:4759
 msgid "Issues total"
 msgstr "Всего проблем"
 
-#: cerber-scanner.php:3860
+#: cerber-scanner.php:4005
 msgid "The directory is not writable"
 msgstr "Каталог незаписываем"
 
-#: cerber-scanner.php:3878
+#: cerber-scanner.php:4023
 msgid "Unable to create WP CERBER directory"
 msgstr "Невозможно создать каталог WP CERBER"
 
-#: settings.php:79 settings.php:278
+#: settings.php:80 settings.php:282
 msgid "Use White IP Access List"
 msgstr "Использовать белый список IP"
 
-#: settings.php:86
+#: settings.php:87
 msgid "Disable dashboard redirection"
 msgstr "Отключить перенаправление с консоли"
 
-#: settings.php:367
+#: settings.php:371
 msgid "Scanner settings"
 msgstr "Настройки сканера"
 
-#: settings.php:374
+#: settings.php:378
 msgid "Specify custom PHP code signatures. One item per line. To specify a REGEX pattern, enclose a whole line in two braces."
 msgstr "Укажите пользовательские подписи PHP кода. Один элемент на строку. Для использования регулярных выражений, включите строку в фигурные скобки { }."
 
-#: settings.php:376
+#: settings.php:380
 msgid "Unwanted file extensions"
 msgstr "Нежелательные расширения файлов"
 
-#: settings.php:382
+#: settings.php:386
 msgid "Specify file extensions to search for. Full scan only. Use comma to separate items."
 msgstr "Укажите расширения файлов для поиска. Используется только при полной проверке. Испольуйте запятую для разделения элементов."
 
-#: settings.php:384
+#: settings.php:388
 msgid "Directories to exclude"
 msgstr "Каталоги для исключения"
 
-#: settings.php:405
+#: settings.php:409
 msgid "Scan temporary directory"
 msgstr "Проверять каталог временных файлов"
 
-#: settings.php:412
+#: settings.php:416
 msgid "Scan session directory"
 msgstr "Проверять каталог файлов сессий"
 
-#: settings.php:418
+#: settings.php:422
 msgid "Delete quarantined files after"
 msgstr "Удалять файлы карантина через"
 
@@ -427,239 +521,243 @@ msgstr "Удалять файлы карантина через"
 msgid "WP Cerber Security, Antispam & Malware Scan"
 msgstr "WP Cerber Security, Antispam & Malware Scan"
 
-#: cerber-scanner.php:152
+#: cerber-scanner.php:155
 msgid "Continue Scanning"
 msgstr "Продолжить проверку"
 
-#: cerber-scanner.php:2197
+#: cerber-scanner.php:2225
 msgid "Custom signature found"
 msgstr "Найден пользовательский отпечаток"
 
-#: settings.php:368
+#: settings.php:372
 msgid "Custom signatures"
 msgstr "Пользовательские отпечатки"
 
-#: settings.php:511
+#: cerber-scanner.php:3550
+msgid "Unwanted extensions"
+msgstr "Нежелательные расширения"
+
+#: settings.php:515
 msgid "If you forget your Custom login URL, you will be unable to log in."
 msgstr "Если вы забудете ваш пользовательский URL входа, то вы не сможете войти."
 
-#: settings.php:511
+#: settings.php:515
 msgid "Be careful about enabling these options."
 msgstr "Будьте осторожны при включении этих настроек."
 
-#: common.php:873
+#: common.php:896
 msgid "Denied"
 msgstr "Запрещено"
 
-#: settings.php:96
+#: settings.php:97
 msgid "Custom login URL may contain only letters, numbers, dashes and underscores"
 msgstr "Пользовательский URL для входа может содержать только буквы, цифры, типа и знаки подчеркивания."
 
-#: settings.php:178 settings.php:289
+#: settings.php:179 settings.php:293
 msgid "To specify a REGEX pattern, enclose a whole line in two braces."
 msgstr "Для использования регулярных выражений заключите строку целиком в фигурные скобки { }."
 
-#: common.php:849
+#: common.php:872
 msgid "Attempt to upload executable file denied"
 msgstr "Предотвращена загрузка исполняемого файла"
 
-#: common.php:850
+#: common.php:873
 msgid "File upload denied"
 msgstr "Предотвращена загрузка файла"
 
-#: common.php:1815
+#: common.php:1840
 msgid "File not found"
 msgstr "Файл не найден"
 
-#: common.php:1818
+#: common.php:1843
 msgid "Unable to copy the file"
 msgstr "Невозможно скопировать файл"
 
-#: common.php:1824
+#: common.php:1849
 msgid "Unable to delete the file"
 msgstr "Невозможно удалить файл"
 
-#: settings.php:72
+#: settings.php:73
 msgid "Plugin initialization"
 msgstr "Инициализация плагина"
 
-#: settings.php:73
+#: settings.php:74
 msgid "Load security engine"
 msgstr "Загрузка движка безопасности"
 
-#: settings.php:73
+#: settings.php:74
 msgid "Legacy mode"
 msgstr "Старый режим"
 
-#: settings.php:73
+#: settings.php:74
 msgid "Standard mode"
 msgstr "Стандартный режим"
 
-#: settings.php:971
+#: settings.php:984
 msgid "Plugin initialization mode has not been changed"
 msgstr "Режим инициализации плагина не был изменен"
 
-#: common.php:1812
+#: common.php:1837
 msgid "Destination folder access denied"
 msgstr "Доступ к каталогу назначения закрыт"
 
-#: common.php:1807
+#: common.php:1832
 msgid "Unable to create the directory"
 msgstr "Невозможно создать каталог"
 
-#: settings.php:123
+#: settings.php:124
 msgid "Protect admin scripts"
 msgstr "Защита скриптов администратора"
 
-#: settings.php:123
+#: settings.php:124
 msgid "Block unauthorized access to load-scripts.php and load-styles.php"
 msgstr "Блокировка неавторизованного доступа к load-scripts.php и load-styles.php"
 
-#: cerber-load.php:3263
+#: cerber-load.php:3281
 msgid "We're sorry, you are not allowed to proceed"
 msgstr "Извините, вам не разрешено продолжить"
 
-#: settings.php:289
+#: settings.php:293
 msgid "Enter a request URI to exclude the request from inspection. One item per line."
 msgstr "Введите URI запроса для исключения из инспекции. Один элемент на строку."
 
-#: settings.php:283
+#: settings.php:287
 msgid "Request whitelist"
 msgstr "Белый список запросов"
 
-#: dashboard.php:3426
+#: dashboard.php:3455
 msgid "Any"
 msgstr "Любой"
 
-#: settings.php:351
+#: settings.php:355
 msgid "milliseconds"
 msgstr "миллисекунд"
 
-#: settings.php:346
+#: settings.php:350
 msgid "Page generation time threshold"
 msgstr "Порог времени генерации страницы"
 
-#: settings.php:339
+#: settings.php:343
 msgid "Save request cookies"
 msgstr "Сохранять куки запроса"
 
-#: settings.php:333
+#: settings.php:337
 msgid "Save $_SERVER"
 msgstr "Сохранять $_SERVER"
 
-#: settings.php:327
+#: settings.php:331
 msgid "Save request headers"
 msgstr "Сохранять заголовки запроса"
 
-#: settings.php:315
+#: settings.php:319
 msgid "Mask these form fields"
 msgstr "Маскировать эти поля форм"
 
-#: settings.php:310
+#: settings.php:314
 msgid "Save request fields"
 msgstr "Сохранять поля запросов"
 
-#: settings.php:305
+#: settings.php:309
 msgid "Ignore crawlers"
 msgstr "Игнорировать веб-пауков"
 
-#: settings.php:301
+#: settings.php:305
 msgid "All traffic"
 msgstr "Весь трафик"
 
-#: settings.php:300
+#: settings.php:304
 msgid "Smart"
 msgstr "Умная выборка"
 
-#: settings.php:299
+#: settings.php:303
 msgid "Logging disabled"
 msgstr "Журнал отключен"
 
-#: settings.php:293
+#: settings.php:297
 msgid "Logging mode"
 msgstr "Режим журнала"
 
-#: settings.php:292
+#: settings.php:296
 msgid "Logging"
 msgstr "Журналирование"
 
-#: settings.php:272
+#: settings.php:276
 msgid "Enable traffic inspection"
 msgstr "Включить инспектирование трафика"
 
-#: settings.php:271
+#: settings.php:275
 msgid "Inspection"
 msgstr "Инспектирование"
 
-#: dashboard.php:3468
+#: dashboard.php:3497
 msgid "Advanced search"
 msgstr "Улучшенный поиск"
 
-#: dashboard.php:3172
+#: dashboard.php:3201
 msgid "Refresh"
 msgstr "Обновить"
 
-#: dashboard.php:3156
+#: dashboard.php:3185
 msgid "Longer than"
 msgstr "Дольше чем"
 
-#: dashboard.php:3151
+#: dashboard.php:3180
 msgid "XML-RPC"
 msgstr "XML-RPC"
 
-#: dashboard.php:3150
+#: dashboard.php:3179
 msgid "REST API"
 msgstr "REST API"
 
-#: dashboard.php:3149
+#: dashboard.php:3178
 msgid "Page Not Found"
 msgstr "Страница не найдена"
 
-#: dashboard.php:3148
+#: dashboard.php:3177
 msgid "Form submissions"
 msgstr "Отправки форм"
 
-#: dashboard.php:3147
+#: dashboard.php:3176
 msgid "Not logged in visitors"
 msgstr "Неавторизованные посетители"
 
-#: dashboard.php:3142
+#: dashboard.php:3171
 msgid "All requests"
 msgstr "Все запросы"
 
-#: dashboard.php:3134
+#: dashboard.php:3163
 msgid "No requests have been logged."
 msgstr "В журнале нет данных о запросах."
 
-#: dashboard.php:3117
+#: dashboard.php:3146
 msgid "User Agent"
 msgstr "User Agent"
 
-#: dashboard.php:3116
+#: dashboard.php:3145
 msgid "Host Info"
 msgstr "Информация о хосте"
 
-#: dashboard.php:3114
+#: dashboard.php:3143
 msgid "Request"
 msgstr "Запрос"
 
-#: dashboard.php:2788
+#: dashboard.php:2817
 msgid "Live traffic"
 msgstr "Живой трафик"
 
-#: dashboard.php:1311
+#: dashboard.php:1325
 msgid "Traffic"
 msgstr "Трафик"
 
-#: dashboard.php:1283
+#: dashboard.php:1297
 msgid "no connection"
 msgstr "нет подключения"
 
-#: dashboard.php:1278
+#: dashboard.php:1292
 msgid "enabled"
 msgstr "включено"
 
-#: dashboard.php:56 dashboard.php:1279 dashboard.php:2783
+#: dashboard.php:56 dashboard.php:1293 dashboard.php:2812
 msgid "Traffic Inspector"
 msgstr "Инспектор трафика"
 
@@ -667,11 +765,11 @@ msgstr "Инспектор трафика"
 msgid "Cerber Traffic Inspector"
 msgstr "Цербер-инспектор трафика"
 
-#: common.php:1181
+#: common.php:1206
 msgid "Not specified"
 msgstr "Не указано"
 
-#: dashboard.php:1044
+#: dashboard.php:1058
 msgid "Last seen"
 msgstr "Последний раз"
 
@@ -679,286 +777,280 @@ msgstr "Последний раз"
 msgid "Check for requests"
 msgstr "Проверить запросы"
 
-#: common.php:848 common.php:908
+#: common.php:871 common.php:931
 msgid "Probing for vulnerable PHP code"
 msgstr "Проверка на уязвимый PHP-код"
 
-#: dashboard.php:209
+#: dashboard.php:210
 msgid "IP address, IPv4 address range or subnet"
 msgstr "IP адрес, диапазон IPv4 адресов или адрес подсети"
 
-#: dashboard.php:211
+#: dashboard.php:212
 msgid "Optional comment for this entry"
 msgstr "Необязательный комментарий к этой записи"
 
-#: dashboard.php:252
+#: dashboard.php:253
 msgid "You cannot add your IP address or network"
 msgstr "Вы не можете добавить ваш IP-адрес или сеть"
 
-#: cerber-news.php:190
+#: cerber-news.php:196
 msgid "Cool!"
 msgstr "Отлично!"
 
-#: dashboard.php:420
+#: dashboard.php:421
 msgid "Email has been sent to"
 msgstr "Сообщение было отправлено на электронный адрес"
 
-#: dashboard.php:423
+#: dashboard.php:424
 msgid "Unable to send email to"
 msgstr "Невозможно отправить email на"
 
-#: dashboard.php:2514
+#: dashboard.php:2543
 msgid "Not permitted for one country"
 msgid_plural "Not permitted for %d countries"
 msgstr[0] "Не разрешено в одной стране"
 msgstr[1] "Не разрешено в %d странах"
 msgstr[2] "Не разрешено в %d странах"
 
-#: dashboard.php:2665
+#: dashboard.php:2694
 msgctxt "to is a marker of infinitive, e.g. \"to use it\""
 msgid "Selected countries are permitted to %s, other countries are not permitted to"
 msgstr "Выбранным странам разрешено %s, остальным странам - нет"
 
-#: dashboard.php:2668
+#: dashboard.php:2697
 msgctxt "to is a marker of infinitive, e.g. \"to use it\""
 msgid "Selected countries are not permitted to %s, other countries are permitted to"
 msgstr "Выбранным странам не разрешено %s, остальным странам разрешено"
 
-#: settings.php:88
+#: settings.php:89
 msgid "Display simple 404 page"
 msgstr "Показать простую страницу 404"
 
-#: settings.php:154
+#: settings.php:155
 msgid "To specify a REGEX pattern wrap a pattern in two forward slashes."
 msgstr "Для использования регулярных выражений оберните их в два прямых слеша."
 
-#: settings.php:178
+#: settings.php:179
 msgid "Enter a part of query string or query path to exclude a request from inspection by the engine. One item per line."
 msgstr "Введите часть строки или пути запроса для исключения запроса из проверки движком. Один элемент на строку."
 
-#: settings.php:263 settings.php:494
+#: settings.php:267 settings.php:498
 msgid "if empty, email from notification settings will be used"
 msgstr "если не задано, будет использован адрес из настроек уведомлений"
 
-#: settings.php:251
+#: settings.php:255
 msgid "Enable reporting"
 msgstr "Включить отчеты"
 
-#: cerber-load.php:3542
+#: cerber-load.php:3560
 msgid "Your last sign-in was %s from %s"
 msgstr "Ваш последний вход был %s с %s"
 
-#: cerber-load.php:3612
+#: cerber-load.php:3630
 msgid "Weekly Report"
 msgstr "Недельный отчет"
 
-#: cerber-load.php:3638
+#: cerber-load.php:3656
 msgid "Attempts to log in with non-existent username"
 msgstr "Попытка войти с несуществующим именем пользователя"
 
-#: settings.php:88
+#: settings.php:89
 msgid "Use 404 template from the active theme"
 msgstr "Использовать шаблон 404 активной темы"
 
-#: cerber-load.php:811
+#: cerber-load.php:814
 msgid "> > > Translator of WP Cerber? To get the PRO license for free, drop your contacts here: https://wpcerber.com/contact/"
 msgstr ">>> Переводите WP Cerber? Получите PRO лицензию бесплатно, оставьте контакты здесь: https://wpcerber.com/contact/"
 
-#: cerber-load.php:3478
+#: cerber-load.php:3496
 msgid "Weekly report"
 msgstr "Недельный отчет"
 
-#: cerber-load.php:3481 cerber-load.php:3491
+#: cerber-load.php:3499 cerber-load.php:3509
 msgid "To change reporting settings visit"
 msgstr "Для смены настроек отчетности зайдите"
 
-#: cerber-load.php:3514
+#: cerber-load.php:3532
 msgid "Your login page:"
 msgstr "Ваша страница входа:"
 
-#: cerber-load.php:3518
+#: cerber-load.php:3536
 msgid "Your license is valid until"
 msgstr "Ваша лицензия действительна до"
 
-#: cerber-load.php:3624
+#: cerber-load.php:3642
 msgid "Activity details"
 msgstr "Подробно об активности"
 
-#: dashboard.php:1989
+#: dashboard.php:2087
 msgid "Main settings"
 msgstr "Основные настройки"
 
-#: settings.php:250
+#: settings.php:254
 msgid "Weekly reports"
 msgstr "Недельные отчеты"
 
-#: settings.php:928
+#: settings.php:941
 msgid "Sunday"
 msgstr "Воскресенье"
 
-#: settings.php:929
+#: settings.php:942
 msgid "Monday"
 msgstr "Понедельник"
 
-#: settings.php:930
+#: settings.php:943
 msgid "Tuesday"
 msgstr "Вторник"
 
-#: settings.php:931
+#: settings.php:944
 msgid "Wednesday"
 msgstr "Среда"
 
-#: settings.php:932
+#: settings.php:945
 msgid "Thursday"
 msgstr "Четверг"
 
-#: settings.php:933
+#: settings.php:946
 msgid "Friday"
 msgstr "Пятница"
 
-#: settings.php:934
+#: settings.php:947
 msgid "Saturday"
 msgstr "Суббота"
 
-#. translators: preposition of time
-#: settings.php:944
-msgctxt "preposition of time"
-msgid "at"
-msgstr "в"
-
-#: settings.php:960
+#: settings.php:973
 msgid "Click to send now"
 msgstr "Нажмите для отправки сейчас"
 
-#: common.php:871
+#: common.php:894
 msgid "Limit reached"
 msgstr "Предел достигнут"
 
-#: common.php:872
+#: common.php:895
 msgid "Multiple suspicious activities"
 msgstr "Множественная подозрительная активность"
 
-#: common.php:907
+#: common.php:930
 msgid "Multiple suspicious activities were detected"
 msgstr "Обнаружена множественная подозрительная активность"
 
-#: dashboard.php:1138
+#: dashboard.php:1152
 msgid "Failed login attempts"
 msgstr "Неудачные попытки входа"
 
-#: dashboard.php:1054 dashboard.php:1139
+#: dashboard.php:1068 dashboard.php:1153
 msgid "Registered"
 msgstr "Зарегистрирован"
 
-#: dashboard.php:1209
+#: dashboard.php:1223
 msgid "You"
 msgstr "Вы"
 
-#: dashboard.php:1615
+#: dashboard.php:1701
 msgid "in the last 24 hours"
 msgstr "В последние 24 часа"
 
-#: cerber-load.php:3463 cerber-load.php:4225 dashboard.php:1689
+#: cerber-load.php:3481 cerber-load.php:4248 dashboard.php:1775
 msgid "Getting Started Guide"
 msgstr "Руководство с чего начать"
 
-#: dashboard.php:2578
+#: dashboard.php:2607
 msgid "Start typing here to find a country"
 msgstr "Начните печатать тут чтобы найти страну"
 
-#: dashboard.php:2661
+#: dashboard.php:2690
 msgid "Click on a country name to add it to the list of selected countries"
 msgstr "Нажмите на страну чтобы добавить ее в список выбранных"
 
-#: dashboard.php:2685
+#: dashboard.php:2714
 msgid "Submit forms"
 msgstr "отправка форм"
 
-#: dashboard.php:2686
+#: dashboard.php:2715
 msgid "Post comments"
 msgstr "отправка комментариев"
 
-#: dashboard.php:2687
+#: dashboard.php:2716
 msgid "Log in to the website"
 msgstr "авторизация на сайте"
 
-#: dashboard.php:2688
+#: dashboard.php:2717
 msgid "Register on the website"
 msgstr "регистрация на сайте"
 
-#: dashboard.php:2689
+#: dashboard.php:2718
 msgid "Use XML-RPC"
 msgstr "использование XML-RPC"
 
-#: dashboard.php:2690
+#: dashboard.php:2719
 msgid "Use REST API"
 msgstr "использование REST API"
 
-#: settings.php:127
+#: settings.php:128
 msgid "Allow REST API for logged in users"
 msgstr "Разрешить REST API для авторизованных пользователей"
 
-#: settings.php:146
+#: settings.php:147
 msgid "Registration limit"
 msgstr "Предел регистраций"
 
-#: settings.php:157
+#: settings.php:158
 msgid "Sort users in dashboard"
 msgstr "Сортировать пользователей в консоли"
 
-#: settings.php:182
+#: settings.php:183
 msgid "Deny it completely"
 msgstr "Полностью запретить"
 
-#: settings.php:182
+#: settings.php:183
 msgid "Mark it as spam"
 msgstr "Пометить как спам"
 
-#: settings.php:690 settings.php:812
+#: settings.php:703 settings.php:825
 msgid "%s allowed registrations in %s minutes from one IP"
 msgstr "%s разрешенных регистраций в %s минут с одного IP"
 
-#: settings.php:993 settings.php:994
+#: settings.php:1006 settings.php:1007
 msgid "If you use a caching plugin, you have to add your new login URL to the list of pages not to cache."
 msgstr "Если вы используете плагин кеширования, вам нужно добавить новый URL входа в список исключений кеширования"
 
-#: common.php:823
+#: common.php:846
 msgid "Form submission denied"
 msgstr "Отправка формы заблокирована"
 
-#: common.php:824
+#: common.php:847
 msgid "Comment denied"
 msgstr "Комментарий заблокирован"
 
-#: common.php:852
+#: common.php:875
 msgid "Request to REST API denied"
 msgstr "Запрос к REST API заблокирован"
 
-#: common.php:853
+#: common.php:876
 msgid "XML-RPC request denied"
 msgstr "Запрос XML-RPC заблокирован"
 
-#: common.php:864
+#: common.php:887
 msgid "Bot detected"
 msgstr "Обнаружен бот"
 
-#: common.php:865
+#: common.php:888
 msgid "Citadel mode is active"
 msgstr "Режим цитадель активен"
 
-#: common.php:869
+#: common.php:892
 msgid "Malicious activity detected"
 msgstr "Обнаружена вредоносная активность"
 
-#: common.php:870
+#: common.php:893
 msgid "Blocked by country rule"
 msgstr "Заблокирован по ограничению для страны"
 
-#: dashboard.php:135 dashboard.php:704
+#: dashboard.php:136 dashboard.php:718
 msgid "Country"
 msgstr "Страна"
 
-#: dashboard.php:737
+#: dashboard.php:751
 msgid "All events"
 msgstr "Все события"
 
@@ -966,7 +1058,7 @@ msgstr "Все события"
 msgid "Cerber Security Rules"
 msgstr "Правила безопасности Цербер"
 
-#: dashboard.php:60 dashboard.php:2443
+#: dashboard.php:60 dashboard.php:2472
 msgid "Security Rules"
 msgstr "Правила безопасности"
 
@@ -974,38 +1066,38 @@ msgstr "Правила безопасности"
 msgid "Spam form submissions denied"
 msgstr "Заблокированы отправки форм спама"
 
-#: dashboard.php:2448
+#: dashboard.php:2477
 msgid "Countries"
 msgstr "Страны"
 
-#: dashboard.php:2511
+#: dashboard.php:2540
 msgid "Permitted for one country"
 msgid_plural "Permitted for %d countries"
 msgstr[0] "Разрешается для одной страны"
 msgstr[1] "Разрешается для %d стран"
 msgstr[2] "Разрешается для %d стран"
 
-#: dashboard.php:2522
+#: dashboard.php:2551
 msgid "No rule"
 msgstr "Нет правила"
 
-#: dashboard.php:2734
+#: dashboard.php:2763
 msgid "Security rules have been updated"
 msgstr "Правила безопасности обновлены"
 
-#: settings.php:122
+#: settings.php:123
 msgid "Block access to user pages like /?author=n and user data via REST API"
 msgstr "Блокировать доступ к страницам пользователя /?author=n и данным о пользователях через REST API"
 
-#: settings.php:134
+#: settings.php:135
 msgid "Specify REST API namespaces to be allowed if REST API is disabled. One string per line."
 msgstr "Укажите пространства имен REST API разрешенных при отключении REST API, одно имя на строку."
 
-#: settings.php:172
+#: settings.php:173
 msgid "Query whitelist"
 msgstr "Белый список запросов"
 
-#: settings.php:126
+#: settings.php:127
 msgid "Block access to the WordPress REST API except the following"
 msgstr "Блокировать доступ к REST API кроме следующего"
 
@@ -1013,35 +1105,35 @@ msgstr "Блокировать доступ к REST API кроме следую�
 msgid "License"
 msgstr "Лицензия"
 
-#: common.php:822
+#: common.php:845
 msgid "Spam form submission denied"
 msgstr "Отправка формы со спамом заблокирована"
 
-#: settings.php:167
+#: settings.php:168
 msgid "Other forms"
 msgstr "Другие формы"
 
-#: settings.php:167
+#: settings.php:168
 msgid "Protect all forms on the website with bot detection engine"
 msgstr "Защитить все формы на сайте через определение ботов"
 
-#: settings.php:169
+#: settings.php:170
 msgid "Adjust antispam engine"
 msgstr "Настроить антиспам-движок"
 
-#: settings.php:170
+#: settings.php:171
 msgid "Safe mode"
 msgstr "Безопасный режим"
 
-#: settings.php:170
+#: settings.php:171
 msgid "Use less restrictive policies (allow AJAX)"
 msgstr "Использовать менее жесткую политику (разрешить AJAX)"
 
-#: settings.php:171
+#: settings.php:172
 msgid "Disable bot detection engine for logged in users"
 msgstr "Отключить определение ботов для авторизованных пользователей"
 
-#: dashboard.php:3146 settings.php:171
+#: dashboard.php:3175 settings.php:172
 msgid "Logged in users"
 msgstr "Авторизованные пользователи"
 
@@ -1053,63 +1145,63 @@ msgstr "Экспорт и Импорт"
 msgid "Diagnostic"
 msgstr "Диагностика"
 
-#: cerber-tools.php:343
+#: dashboard.php:3540
 msgid "Antispam and bot detection settings"
 msgstr "Антиспам и настройки определения ботов"
 
-#: common.php:906
+#: common.php:929
 msgid "Bot activity is detected"
 msgstr "Обнаружена активность ботов"
 
-#: dashboard.php:67
+#: dashboard.php:68
 msgid "Cerber antispam settings"
 msgstr "Настройка Цербер антиспам"
 
-#: cerber-load.php:4236 dashboard.php:67 dashboard.php:1312 settings.php:200
+#: cerber-load.php:4259 dashboard.php:68 dashboard.php:1326 settings.php:204
 msgid "Antispam"
 msgstr "Аниспам"
 
-#: settings.php:165
+#: settings.php:166
 msgid "Protect comment form with bot detection engine"
 msgstr "Защита комментариев через определение ботов"
 
-#: settings.php:166
+#: settings.php:167
 msgid "Protect registration form with bot detection engine"
 msgstr "Защита регистрации через определение ботов"
 
-#: settings.php:181
+#: settings.php:182
 msgid "Comment processing"
 msgstr "Обработка комментария"
 
-#: settings.php:182
+#: settings.php:183
 msgid "If a spam comment detected"
 msgstr "Если обнаружен спам комментарий"
 
-#: settings.php:183
+#: settings.php:184
 msgid "Trash spam comments"
 msgstr "Удалить спам комментарии в корзину"
 
-#: settings.php:183
+#: settings.php:184
 msgid "Move spam comments to trash after"
 msgstr "Удалить спам комментарии в корзину после"
 
-#: cerber-load.php:1434
+#: cerber-load.php:1440
 msgid "Sorry, human verification failed."
 msgstr "Извините, проверка на человека не удалась."
 
-#: settings.php:164
+#: settings.php:165
 msgid "Cerber antispam engine"
 msgstr "Движок Цербер-антиспам"
 
-#: common.php:821
+#: common.php:844
 msgid "Spam comment denied"
 msgstr "Спам коммнтарий отклонен"
 
-#: common.php:846
+#: common.php:869
 msgid "Attempt to log in denied"
 msgstr "Попытка входа отклонена"
 
-#: common.php:847
+#: common.php:870
 msgid "Attempt to register denied"
 msgstr "Попытка регистрации отклонена"
 
@@ -1125,16 +1217,16 @@ msgstr "Найдены вредоносные IP адреса"
 msgid "Lockouts occurred"
 msgstr "Блокировок произошло"
 
-#: dashboard.php:1630
+#: dashboard.php:1716
 msgid "All suspicious activity"
 msgstr "Вся подозрительная активность"
 
-#: cerber-load.php:1167 cerber-load.php:1173 cerber-load.php:1189
-#: cerber-load.php:1196
+#: cerber-load.php:1173 cerber-load.php:1179 cerber-load.php:1195
+#: cerber-load.php:1202
 msgid "You are not allowed to register."
 msgstr "Вам не разрешено зарегистрироваться."
 
-#: dashboard.php:537 dashboard.php:706
+#: dashboard.php:548 dashboard.php:720
 msgid "Event"
 msgstr "Событие"
 
@@ -1142,147 +1234,147 @@ msgstr "Событие"
 msgid "Spam comments denied"
 msgstr "Спам-комментарии отклонены"
 
-#: common.php:905
+#: common.php:928
 msgid "Limit on failed reCAPTCHA verifications is reached"
 msgstr "Достигнут предел проверки reCAPTCHA"
 
-#: common.php:836
+#: common.php:859
 msgid "Password reset requested"
 msgstr "Запрошен сброс пароля"
 
-#: settings.php:79
+#: settings.php:80
 msgid "Apply limit login rules to IP addresses in the White IP Access List"
 msgstr "Применить правила входа для IP адресов в белом списке"
 
-#: settings.php:203
+#: settings.php:207
 msgid "Limit attempts"
 msgstr "Ограничение попыток"
 
-#: settings.php:203
+#: settings.php:207
 msgid "Lock out IP address for %s minutes after %s failed attempts within %s minutes"
 msgstr "Блокировать IP адрес на %s минут после %s неудачных попыток в течении %s минут"
 
-#: settings.php:515
+#: settings.php:519
 msgid "In the Citadel mode nobody is able to log in except IPs from the White IP Access List. Active user sessions will not be affected."
 msgstr "В режиме Цитадель никто не может войти кроме как с IP в белом списке. Активные сессии пользователей не будут затронуты."
 
-#: settings.php:189
+#: settings.php:193
 msgid "(do not enable it unless you get and enter the Site and Secret keys for the invisible version)"
 msgstr "(не включайте, если у вас нет или вы не вводили ключ сайта и секретный ключ для невидимой версии)"
 
-#: common.php:972
+#: common.php:997
 msgid "%s ago"
 msgstr "%s назад"
 
-#: settings.php:189
+#: settings.php:193
 msgid "Invisible reCAPTCHA"
 msgstr "невидимая reCAPTCHA"
 
-#: settings.php:189
+#: settings.php:193
 msgid "Enable invisible reCAPTCHA"
 msgstr "Включить невидимую reCAPTCHA"
 
-#: settings.php:165
+#: settings.php:166
 msgid "Comment form"
 msgstr "Форма комментариев"
 
-#: settings.php:200
+#: settings.php:204
 msgid "Enable reCAPTCHA for WordPress comment form"
 msgstr "Включить reCAPTCHA в форме комментариев WordPress"
 
-#: settings.php:201
+#: settings.php:205
 msgid "Disable reCAPTCHA for logged in users"
 msgstr "Отключить reCAPTCHA для авторизованных пользователей"
 
-#: settings.php:245
+#: settings.php:249
 msgid "Not available"
 msgstr "Недоступно"
 
-#: settings.php:230
+#: settings.php:234
 msgid "Push notifications"
 msgstr "Push уведомления"
 
-#: settings.php:88
+#: settings.php:89
 msgid "Display 404 page"
 msgstr "Показывать страницу 404"
 
-#: settings.php:209
+#: settings.php:213
 msgid "Email notifications"
 msgstr "Уведомления по эл.почте"
 
-#: settings.php:216 settings.php:258 settings.php:322 settings.php:489
+#: settings.php:220 settings.php:262 settings.php:326 settings.php:493
 msgid "Use comma to specify multiple values"
 msgstr "Используйте запятую для разделения множественных значений"
 
-#: settings.php:238
+#: settings.php:242
 msgid "All connected devices"
 msgstr "Все подключенные устройства"
 
-#: settings.php:241
+#: settings.php:245
 msgid "No devices found"
 msgstr "Устройства не найдены"
 
-#: cerber-load.php:4002
+#: cerber-load.php:4025
 msgid "To unsubscribe click here"
 msgstr "Для отмены подписки нажмите здесь"
 
-#: cerber-load.php:3981
+#: cerber-load.php:4004
 msgid "Search string"
 msgstr "Строка поиска"
 
-#: cerber-load.php:3973
+#: cerber-load.php:3996
 msgid "User"
 msgstr "Пользователь"
 
-#: cerber-load.php:3472 cerber-load.php:3473
+#: cerber-load.php:3490 cerber-load.php:3491
 msgid "A new activity has been recorded"
 msgstr "Отмечена новая активность"
 
-#: cerber-tools.php:273 dashboard.php:1899
+#: cerber-tools.php:285 dashboard.php:1985
 msgid "Unsubscribe"
 msgstr "Отменить подписку"
 
-#: dashboard.php:68
+#: dashboard.php:69
 msgid "Cerber tools"
 msgstr "Инструменты Cerber"
 
-#: dashboard.php:1898
+#: dashboard.php:1984
 msgid "Subscribe"
 msgstr "Подписаться"
 
-#: dashboard.php:748
+#: dashboard.php:762
 msgid "Filter"
 msgstr "Фильтр"
 
-#: dashboard.php:748
+#: dashboard.php:762
 msgid "Search for IP or username"
 msgstr "Поиск IP или имени пользователя"
 
-#: dashboard.php:726
+#: dashboard.php:740
 msgid "Export"
 msgstr "Экспорт"
 
-#: dashboard.php:537
+#: dashboard.php:548
 msgid "User ID"
 msgstr "ID пользователя"
 
-#: dashboard.php:537
+#: dashboard.php:548
 msgid "User login"
 msgstr "Имя пользователя"
 
-#: dashboard.php:537
+#: dashboard.php:548
 msgid "IP address"
 msgstr "IP адрес"
 
-#: settings.php:114
+#: settings.php:115
 msgid "if empty, the default format %s will be used"
 msgstr "Если пусто, будет использован формат по умолчанию %s"
 
-#: dashboard.php:1930
+#: dashboard.php:2016
 msgid "You've unsubscribed"
 msgstr "Подписка отменена"
 
-#: dashboard.php:1927
+#: dashboard.php:2013
 msgid "You've subscribed"
 msgstr "Вы подписались"
 
@@ -1290,11 +1382,11 @@ msgstr "Вы подписались"
 msgid "Cerber Dashboard"
 msgstr "Консоль Cerber"
 
-#: settings.php:112
+#: settings.php:113
 msgid "Preferences"
 msgstr "Настройки"
 
-#: settings.php:114
+#: settings.php:115
 msgid "Date format"
 msgstr "Формат даты"
 
@@ -1302,238 +1394,234 @@ msgstr "Формат даты"
 msgid "Gregory"
 msgstr "Gregory"
 
-#: dashboard.php:54 dashboard.php:1309 dashboard.php:1988 settings.php:547
+#: dashboard.php:54 dashboard.php:1323 dashboard.php:2086 settings.php:560
 msgid "Dashboard"
 msgstr "Консоль"
 
-#: settings.php:198
+#: settings.php:202
 msgid "Enable reCAPTCHA for WooCommerce login form"
 msgstr "Включить reCAPTCHA для формы входа WooCommerce"
 
-#: settings.php:197
+#: settings.php:201
 msgid "Enable reCAPTCHA for WordPress login form"
 msgstr "Включить reCAPTCHA для формы входа WordPress"
 
-#: settings.php:195
+#: settings.php:199
 msgid "Enable reCAPTCHA for WooCommerce lost password form"
 msgstr "Включить reCAPTCHA для формы восстановления пароля WooCommerce"
 
-#: settings.php:194
+#: settings.php:198
 msgid "Enable reCAPTCHA for WordPress lost password form"
 msgstr "Включить reCAPTCHA для формы восстановления пароля WordPress"
 
-#: settings.php:192
+#: settings.php:196
 msgid "Enable reCAPTCHA for WooCommerce registration form"
 msgstr "Включить reCAPTCHA для формы регистрации WooCommerce"
 
-#: settings.php:191
+#: settings.php:195
 msgid "Enable reCAPTCHA for WordPress registration form"
 msgstr "Включить reCAPTCHA для формы регистрации WordPress"
 
-#: settings.php:166 settings.php:191
+#: settings.php:167 settings.php:195
 msgid "Registration form"
 msgstr "Форма регистрации"
 
-#: settings.php:108
+#: settings.php:109
 msgid "Send malicious IP addresses to the Cerber Lab"
 msgstr "Посылать вредоносные IP адреса в Cerber Lab"
 
-#: settings.php:108
+#: settings.php:109
 msgid "Cerber Lab connection"
 msgstr "Подключение Cerber Lab"
 
-#: dashboard.php:1652
+#: dashboard.php:1738
 msgid "Recently locked out IP addresses"
 msgstr "Недавно заблокированые IP адреса"
 
-#: dashboard.php:1621 dashboard.php:1651
+#: dashboard.php:1707 dashboard.php:1737
 msgid "View all"
 msgstr "Просмотреть все"
 
-#: dashboard.php:52 settings.php:541
+#: dashboard.php:52 settings.php:554
 msgid "WP Cerber Security"
 msgstr "WP Cerber Security"
 
-#: dashboard.php:962
+#: dashboard.php:976
 msgid "Add network to the Black List"
 msgstr "Добавить сеть в черный список"
 
-#: dashboard.php:948
+#: dashboard.php:962
 msgid "Network:"
 msgstr "Сеть:"
 
-#: dashboard.php:236 dashboard.php:248
+#: dashboard.php:237 dashboard.php:249
 msgid "Incorrect IP address or IP range"
 msgstr "Неверный IP адрес или диапазон адресов"
 
-#: common.php:840
+#: common.php:863
 msgid "Request to the Google reCAPTCHA service failed"
 msgstr "Запрос к сервису Google reCAPTCHA не удался"
 
-#: cerber-lab.php:757
+#: cerber-lab.php:749
 msgid "NO, maybe later"
 msgstr "НЕТ, возможно позже"
 
-#: cerber-lab.php:756
+#: cerber-lab.php:748
 msgid "OK, nail them all"
 msgstr "ОК, прибьем их всех"
 
-#: cerber-lab.php:755
+#: cerber-lab.php:747
 msgid "Allow WP Cerber to send locked out malicious IP addresses to Cerber Lab. This helps the plugin team to develop new algorithms for WP Cerber that will defend WordPress against new threats and botnets that are appearing  everyday. You can disable the sending in the plugin settings at any time."
 msgstr "Разрешить WP Cerber посылать заблокированные IP адреса в Cerber Lab. Это помогает команде плагина разрабатывать новые алгоритмы для WP Cerber, которые будут защищать WordPress против новых угроз и ботнетов появляюшихся каждый день. Вы всегда можете отключить отсылку в настройках плагина, в любой момент."
 
-#: cerber-lab.php:754
+#: cerber-lab.php:746
 msgid "Want to make WP Cerber even more powerful?"
 msgstr "Хотите сделать WP Cerber еще мощнее ?"
 
-#: settings.php:109
+#: settings.php:110
 msgid "Cerber Lab protocol"
 msgstr "протокол Cerber Lab"
 
-#. Description of the plugin/theme
-msgid "Protects WordPress against brute force attacks, bots and hackers. Antispam protection with the Cerber antispam engine and reCAPTCHA. Comprehensive control of user and bot activity. Restrict login by IP access lists. Limit login attempts. Know more: <a href=\"https://wpcerber.com\">wpcerber.com</a>."
-msgstr "Защищает сайт от атак перебора, ботов, хакеров. Антиспам защита с движком Cerber антиспам и reCAPTCHA. Всесторонний контроль активности пользователей. Ограничение входа по IP адресам. Ограничение попыток входа. Узнайте больше на сайте <a href=\"https://wpcerber.com\">wpcerber.com</a>."
-
-#: dashboard.php:126 dashboard.php:199
+#: dashboard.php:127 dashboard.php:200
 msgid "Remove"
 msgstr "Удалить"
 
-#: cerber-load.php:3969 dashboard.php:133 dashboard.php:702 dashboard.php:3115
+#: cerber-load.php:3992 dashboard.php:134 dashboard.php:716 dashboard.php:3144
 msgid "IP"
 msgstr "IP"
 
-#: dashboard.php:134 dashboard.php:703
+#: dashboard.php:135 dashboard.php:717
 msgid "Hostname"
 msgstr "Имя узла"
 
-#: dashboard.php:136
+#: dashboard.php:137
 msgid "Expires"
 msgstr "Истекает"
 
-#: cerber-load.php:3431 dashboard.php:137
+#: cerber-load.php:3449 dashboard.php:138
 msgid "Reason"
 msgstr "Причина"
 
-#: dashboard.php:152
+#: dashboard.php:153
 msgid "Showing last %d records from %d"
 msgstr "Отображены последние %d строк из %d"
 
-#: dashboard.php:154
+#: dashboard.php:155
 msgid "Hint"
 msgstr "Подсказка"
 
-#: dashboard.php:158
+#: dashboard.php:159
 msgid "No lockouts at the moment. The sky is clear."
 msgstr "Блокировок нет. Все в порядке."
 
-#: cerber-load.php:4223 dashboard.php:171 dashboard.php:677 dashboard.php:904
-#: dashboard.php:1274 dashboard.php:2940 settings.php:518
+#: cerber-load.php:4246 dashboard.php:172 dashboard.php:691 dashboard.php:918
+#: dashboard.php:1288 dashboard.php:2969 settings.php:522
 msgid "White IP Access List"
 msgstr "Белый список доступа по IP"
 
-#: dashboard.php:171
+#: dashboard.php:172
 msgid "These IPs will never be locked out"
 msgstr "Эти адреса не будут заблокированы ни при каких условиях"
 
-#: dashboard.php:173 dashboard.php:678 dashboard.php:907 dashboard.php:1275
-#: dashboard.php:2941
+#: dashboard.php:174 dashboard.php:692 dashboard.php:921 dashboard.php:1289
+#: dashboard.php:2970
 msgid "Black IP Access List"
 msgstr "Черный список доступа по IP"
 
-#: dashboard.php:180
+#: dashboard.php:181
 msgid "Your IP"
 msgstr "Ваш адрес IP"
 
-#: dashboard.php:198 dashboard.php:917 dashboard.php:948 dashboard.php:1060
+#: dashboard.php:199 dashboard.php:931 dashboard.php:962 dashboard.php:1074
 msgid "Check for activities"
 msgstr "Проверить активность"
 
-#: dashboard.php:205
+#: dashboard.php:206
 msgid "List is empty"
 msgstr "Список пуст"
 
-#: dashboard.php:210
+#: dashboard.php:211
 msgid "Add IP to the list"
 msgstr "Добавить IP в список"
 
-#: dashboard.php:242
+#: dashboard.php:243
 msgid "Address %s was added to White IP Access List"
 msgstr "Адрес %s добавлен в белый список доступа"
 
-#: dashboard.php:256
+#: dashboard.php:257
 msgid "Address %s was added to Black IP Access List"
 msgstr "Адрес %s добавлен в черный список доступа"
 
-#: dashboard.php:395
+#: dashboard.php:396
 msgid "unknown"
 msgstr "неизвестно"
 
-#: dashboard.php:429
+#: dashboard.php:430
 msgid "Lockout for %s was removed"
 msgstr "Удалена блокировка для %s"
 
-#: common.php:866 dashboard.php:682 dashboard.php:910 dashboard.php:2945
+#: common.php:889 dashboard.php:696 dashboard.php:924 dashboard.php:2974
 msgid "Locked out"
 msgstr "Заблокировано"
 
-#: dashboard.php:537 dashboard.php:705 dashboard.php:3113
+#: dashboard.php:548 dashboard.php:719 dashboard.php:3142
 msgid "Date"
 msgstr "Дата"
 
-#: cerber-load.php:3960 dashboard.php:1310 dashboard.php:1636 settings.php:106
-#: settings.php:551
+#: cerber-load.php:3983 dashboard.php:1324 dashboard.php:1722 settings.php:107
+#: settings.php:564
 msgid "Activity"
 msgstr "Активность"
 
-#: dashboard.php:537 dashboard.php:707 dashboard.php:3118
+#: dashboard.php:548 dashboard.php:721 dashboard.php:3147
 msgid "Local User"
 msgstr "Пользователь"
 
-#: cerber-load.php:3977 dashboard.php:537 dashboard.php:708
+#: cerber-load.php:4000 dashboard.php:548 dashboard.php:722
 msgid "Username used"
 msgstr "Использован логин"
 
-#: dashboard.php:730
+#: dashboard.php:744
 msgid "No activity has been logged."
 msgstr "Ни одного события не зафиксировано."
 
-#: dashboard.php:967
+#: dashboard.php:981
 msgid "Add IP to the Black List"
 msgstr "Добавить IP в черный список"
 
-#: common.php:814
+#: common.php:837
 msgid "Login failed"
 msgstr "Ошибка авторизации"
 
-#: common.php:817
+#: common.php:840
 msgid "IP blocked"
 msgstr "IP заблокирован"
 
-#: common.php:818
+#: common.php:841
 msgid "Subnet blocked"
 msgstr "Подсеть заблокирована"
 
-#: common.php:820
+#: common.php:843
 msgid "Citadel activated!"
 msgstr "Режим Цитадель активирован!"
 
-#: common.php:867
+#: common.php:890
 msgid "IP blacklisted"
 msgstr "IP в черном списке"
 
-#: common.php:835
+#: common.php:858
 msgid "Password changed"
 msgstr "Пароль изменен"
 
-#: dashboard.php:1136
+#: dashboard.php:1150
 msgid "Comments"
 msgstr "Комментарии"
 
-#: dashboard.php:1137
+#: dashboard.php:1151
 msgid "Last login"
 msgstr "Последний вход"
 
-#: common.php:977 dashboard.php:1170 dashboard.php:1257
+#: common.php:1002 dashboard.php:1184 dashboard.php:1271
 msgid "Never"
 msgstr "Никогда"
 
@@ -1545,13 +1633,13 @@ msgstr "Экспорт настроек в файл"
 msgid "What do you want to export?"
 msgstr "Что вы хотите экспортировать"
 
-#: cerber-scanner.php:85 cerber-tools.php:91 cerber-tools.php:100
-#: dashboard.php:2789
+#: cerber-scanner.php:84 cerber-tools.php:91 cerber-tools.php:100
+#: dashboard.php:2818
 msgid "Settings"
 msgstr "Настройки"
 
-#: cerber-load.php:4235 cerber-tools.php:92 cerber-tools.php:101
-#: cerber-tools.php:182 settings.php:562
+#: cerber-load.php:4258 cerber-tools.php:92 cerber-tools.php:101
+#: cerber-tools.php:188 settings.php:575
 msgid "Access Lists"
 msgstr "Списки доступа"
 
@@ -1575,552 +1663,548 @@ msgstr "Выберите файл для загрузки."
 msgid "What do you want to import?"
 msgstr "Что вы хотите импортировать?"
 
-#: cerber-scanner.php:3576 cerber-tools.php:102
+#: cerber-scanner.php:3722 cerber-tools.php:102
 msgid "Upload file"
 msgstr "Загрузить файл"
 
-#: cerber-tools.php:149
+#: cerber-tools.php:151
 msgid "No file was uploaded or file is corrupted"
 msgstr "Файл не был загружен или имеет неверный формат"
 
-#: cerber-tools.php:182
+#: cerber-tools.php:188
 msgid "Error while updating"
 msgstr "Возникла ошибка при обновлении"
 
-#: cerber-tools.php:185
+#: cerber-tools.php:194
 msgid "Settings has imported successfully from"
 msgstr "Все настройки успешно загружены"
 
-#: cerber-tools.php:189
+#: cerber-tools.php:201
 msgid "Error while parsing file"
 msgstr "Возникла ошибка при обработке файла"
 
-#: dashboard.php:1227
+#: dashboard.php:1241
 msgid "Cerber Quick View"
 msgstr "Сводка от Cerber"
 
-#: dashboard.php:1261 dashboard.php:1283
+#: dashboard.php:1275 dashboard.php:1297
 msgid "active"
 msgstr "активен"
 
-#: dashboard.php:1261
+#: dashboard.php:1275
 msgid "deactivate"
 msgstr "деактивировать"
 
-#: dashboard.php:1263
+#: dashboard.php:1277
 msgid "not active"
 msgstr "неактивен"
 
-#: dashboard.php:1264 dashboard.php:1278
+#: dashboard.php:1278 dashboard.php:1292
 msgid "disabled"
 msgstr "отключен"
 
-#: dashboard.php:1269
+#: dashboard.php:1283
 msgid "failed attempts"
 msgstr "ошибок авторизации"
 
-#: dashboard.php:1269 dashboard.php:1270
+#: dashboard.php:1283 dashboard.php:1284
 msgid "in 24 hours"
 msgstr "за 24 часа"
 
-#: dashboard.php:1269 dashboard.php:1270
+#: dashboard.php:1283 dashboard.php:1284
 msgid "view all"
 msgstr "просмотреть все"
 
-#: dashboard.php:1270
+#: dashboard.php:1284
 msgid "lockouts"
 msgstr "блокировок"
 
-#: dashboard.php:1272
+#: dashboard.php:1286
 msgid "Lockouts at the moment"
 msgstr "Сейчас заблокировано"
 
-#: dashboard.php:1273
+#: dashboard.php:1287
 msgid "Last lockout"
 msgstr "Последняя блокировка"
 
-#: dashboard.php:1274 dashboard.php:1275 dashboard.php:1968
+#: dashboard.php:1288 dashboard.php:1289 dashboard.php:2064
 msgid "entry"
 msgid_plural "entries"
 msgstr[0] "элемент"
 msgstr[1] "элемента"
 msgstr[2] "элементов"
 
-#: dashboard.php:1276 settings.php:101
+#: dashboard.php:1290 settings.php:102
 msgid "Citadel mode"
 msgstr "Режим Цитадель"
 
-#: settings.php:555
+#: settings.php:568
 msgid "Lockouts"
 msgstr "Блокировки"
 
-#: dashboard.php:1677
+#: dashboard.php:1763
 msgid "Confused about some settings?"
 msgstr "Сомневаетесь какие настройки оптимальны?"
 
-#: dashboard.php:1678
+#: dashboard.php:1764
 msgid "You can easily load default recommended settings using button below"
 msgstr "Вы можете загрузить рекомендованные настройки с помощью всего одной кнопки"
 
-#: dashboard.php:1680
+#: dashboard.php:1766
 msgid "Load default settings"
 msgstr "Загрузить настройки"
 
-#: dashboard.php:1682
+#: cerber-scanner.php:5090 dashboard.php:1768
 msgid "Are you sure?"
 msgstr "Вы уверены?"
 
-#: dashboard.php:1688
+#: dashboard.php:1774
 msgid "doesn't affect Custom login URL and Access Lists"
 msgstr "не затронет настройки URL страницы авторизации и списки доступа"
 
-#: dashboard.php:1796
+#: dashboard.php:1882
 msgid "Deactivate"
 msgstr "Деактивировать"
 
-#: dashboard.php:1797 dashboard.php:2275
+#: dashboard.php:1883 dashboard.php:2299
 msgid "View Activity"
 msgstr "Что происходит?"
 
-#: common.php:1155 settings.php:225
+#: common.php:1180 settings.php:229
 msgid "New version is available"
 msgstr "Доступна новая версия"
 
-#: common.php:1162
+#: common.php:1187
 msgid "Update to version %s of WP Cerber"
 msgstr "Обновить WP Cerber до версии %s"
 
-#: cerber-load.php:366
+#: cerber-load.php:368
 msgid "You are not allowed to log in. Ask your administrator for assistance."
 msgstr "Вход на сайт невозможен. Обратитесь к администратору сайта."
 
-#: cerber-load.php:372
-msgid "You have reached the login attempts limit. Please try again in %d minutes."
-msgstr "Вход невозможен. Слишком много ошибочных попыток. Попробуйте войти через %d минут."
-
-#: cerber-load.php:391
+#: cerber-load.php:394
 msgid "You have only one attempt remaining."
 msgid_plural "You have %d attempts remaining."
 msgstr[0] "У вас есть только одна попытка для входа"
 msgstr[1] "У вас осталось %d попытки для входа."
 msgstr[2] "У вас осталось %d попыток для входа."
 
-#: common.php:902
+#: common.php:925
 msgid "Attempt to access"
 msgstr "Попытка доступа к"
 
-#: common.php:901
+#: common.php:924
 msgid "Limit on login attempts is reached"
 msgstr "Количество попыток исчерпано"
 
-#: common.php:843 common.php:903
+#: common.php:866 common.php:926
 msgid "Attempt to log in with non-existent username"
 msgstr "Попытка войти с несуществующим именем пользователя"
 
-#: cerber-load.php:3373
+#: cerber-load.php:3391
 msgid "WP Cerber notify"
 msgstr "Уведомление WP Cerber"
 
-#: cerber-load.php:3395
+#: cerber-load.php:3413
 msgid "Citadel mode is activated"
 msgstr "Активирован режим Цитадель"
 
-#: cerber-load.php:3398
+#: cerber-load.php:3416
 msgid "Last failed attempt was at %s from IP %s with user login: %s."
 msgstr "Последняя неудачная попытка была в %s с IP адреса %s с логином %s."
 
-#: cerber-load.php:3399 cerber-load.php:4001
+#: cerber-load.php:3417 cerber-load.php:4024
 msgid "View activity in dashboard"
 msgstr "Просмотреть журнал активности"
 
-#: cerber-load.php:3429
+#: cerber-load.php:3447
 msgid "Number of active lockouts"
 msgstr "Число активных блокировок на данный момент"
 
-#: cerber-load.php:3430
+#: cerber-load.php:3448
 msgid "Last lockout was added: %s for IP %s"
 msgstr "Последняя блокировка была добавлена %s для IP %s"
 
-#: cerber-load.php:3433
+#: cerber-load.php:3451
 msgid "View lockouts in dashboard"
 msgstr "Просмотреть список заблокированных IP"
 
-#: cerber-load.php:3468
+#: cerber-load.php:3486
 msgid "New Custom login URL"
 msgstr "Новый URL для входа на сайт"
 
-#: cerber-load.php:3521
+#: cerber-load.php:3539
 msgid "This message was sent by"
 msgstr "Это сообщение было отправлено"
 
-#: cerber-load.php:4175
+#: cerber-load.php:4198
 msgid "The WP Cerber requires PHP %s or higher. You are running"
 msgstr "WP Cerber требует PHP версии %s или выше. У вас версия"
 
-#: cerber-load.php:4179
+#: cerber-load.php:4202
 msgid "The WP Cerber requires WordPress %s or higher. You are running"
 msgstr "WP Cerber требует WordPress версии %s или выше. У вас версия"
 
-#: cerber-load.php:4188
+#: cerber-load.php:4211
 msgid "Can't activate WP Cerber due to a database error."
 msgstr "Невозможно активировать плагин WP Cerber из-за ошибки в базе данных."
 
-#: cerber-load.php:4233 settings.php:558
+#: cerber-load.php:4256 settings.php:571
 msgid "Main Settings"
 msgstr "Главные настройки"
 
-#: cerber-load.php:4237 settings.php:565
+#: cerber-load.php:4260 settings.php:578
 msgid "Hardening"
 msgstr "Панцирь"
 
-#: dashboard.php:944
+#: dashboard.php:958
 msgid "Abuse email:"
 msgstr "Адрес email для жалоб:"
 
-#: settings.php:75
+#: settings.php:76
 msgid "Limit login attempts"
 msgstr "Ограничение числа попыток авторизации"
 
-#: settings.php:76
+#: settings.php:77
 msgid "Attempts"
 msgstr "Попытки"
 
-#: settings.php:77
+#: settings.php:78
 msgid "Lockout duration"
 msgstr "Длительность блокировки"
 
-#: settings.php:77 settings.php:103
+#: settings.php:78 settings.php:104
 msgid "minutes"
 msgstr "минут"
 
-#: settings.php:78
+#: settings.php:79
 msgid "Aggressive lockout"
 msgstr "Ужесточение"
 
-#: cerber-load.php:4238 settings.php:80 settings.php:104 settings.php:572
+#: cerber-load.php:4261 settings.php:81 settings.php:105 settings.php:585
 msgid "Notifications"
 msgstr "Уведомления"
 
-#: settings.php:81
+#: settings.php:82
 msgid "Site connection"
 msgstr "Подключение к сети"
 
-#: dashboard.php:1478 settings.php:81
+#: dashboard.php:1525 settings.php:82
 msgid "My site is behind a reverse proxy"
 msgstr "Мой сайт подключен к сети через прокси-сервер"
 
-#: settings.php:83
+#: settings.php:84
 msgid "Proactive security rules"
 msgstr "Проактивные правила безопасности"
 
-#: settings.php:84
+#: settings.php:85
 msgid "Block subnet"
 msgstr "Блокировка подсети"
 
-#: settings.php:84
+#: settings.php:85
 msgid "Always block entire subnet Class C of intruders IP"
 msgstr "Всегда блокировать подсеть класса С вместо IP адреса"
 
-#: settings.php:85
+#: settings.php:86
 msgid "Non-existent users"
 msgstr "Несуществующие пользователи"
 
-#: settings.php:85
+#: settings.php:86
 msgid "Immediately block IP when attempting to login with a non-existent username"
 msgstr "Блокировать IP при попытке авторизации с логином несуществующего пользователя"
 
-#: settings.php:86
+#: settings.php:87
 msgid "Disable automatic redirection to the login page when /wp-admin/ is requested by an unauthorized request"
 msgstr "Отключить автоматическую переадресацию при запросе /wp-admin/ неавторизованным пользователем"
 
-#: settings.php:87
+#: settings.php:88
 msgid "Request wp-login.php"
 msgstr "Запрос wp-login.php"
 
-#: settings.php:87
+#: settings.php:88
 msgid "Immediately block IP after any request to wp-login.php"
 msgstr "Блокировать IP при любом запросе wp-login.php"
 
-#: settings.php:90
+#: settings.php:91
 msgid "Custom login page"
 msgstr "Смена URL страницы авторизации"
 
-#: settings.php:91
+#: settings.php:92
 msgid "Custom login URL"
 msgstr "Адрес страницы авторизации"
 
-#: settings.php:99
+#: settings.php:100
 msgid "Disable wp-login.php"
 msgstr "Доступ к wp-login.php"
 
-#: settings.php:99
+#: settings.php:100
 msgid "Block direct access to wp-login.php and return HTTP 404 Not Found Error"
 msgstr "Заблокировать доступ к wp-login.php и возвращать HTTP 404 Страница не найдена"
 
-#: settings.php:102
+#: settings.php:103
 msgid "Threshold"
 msgstr "Порог"
 
-#: settings.php:103
+#: cerber-scanner.php:3522 settings.php:104
 msgid "Duration"
 msgstr "Длительность"
 
-#: settings.php:104
+#: settings.php:105
 msgid "Send notification to admin email"
 msgstr "Отправить уведомление на адрес email администратора сайта"
 
-#: settings.php:212 settings.php:253 settings.php:485
+#: settings.php:216 settings.php:257 settings.php:489
 msgid "Email Address"
 msgstr "Адрес email"
 
-#: settings.php:221
+#: settings.php:225
 msgid "if empty, the admin email %s will be used"
 msgstr "Если пусто, то будет использован адрес администратора %s"
 
-#: settings.php:107 settings.php:354
+#: settings.php:108 settings.php:358
 msgid "Keep records for"
 msgstr "Хранить записи не более"
 
-#: settings.php:107 settings.php:183 settings.php:358 settings.php:423
+#: settings.php:108 settings.php:184 settings.php:362 settings.php:427
 msgid "days"
 msgstr "дней"
 
-#: settings.php:113
+#: settings.php:114
 msgid "Drill down IP"
 msgstr "Изучать IP"
 
-#: settings.php:113
+#: settings.php:114
 msgid "Retrieve extra WHOIS information for IP"
 msgstr "Получить дополнительную информацию об IP используя WHOIS"
 
-#: settings.php:110
+#: settings.php:111
 msgid "Use file"
 msgstr "Использовать файл"
 
-#: settings.php:110
+#: settings.php:111
 msgid "Write failed login attempts to the file"
 msgstr "Записывать попытки входа в файл"
 
-#: settings.php:122
+#: settings.php:123
 msgid "Stop user enumeration"
 msgstr "Заблокировать сбор имен"
 
-#: settings.php:124
+#: settings.php:125
 msgid "Disable XML-RPC"
 msgstr "Отключить XML-RPC"
 
-#: settings.php:126
+#: settings.php:127
 msgid "Disable REST API"
 msgstr "Отключить REST API"
 
-#: settings.php:504
+#: settings.php:508
 msgid "Make your protection smarter!"
 msgstr "Сделайте защиту от злоумышленников еще умнее"
 
-#: settings.php:508
+#: settings.php:512
 msgid "Please enable Permalinks to use this feature. Set Permalink Settings to something other than Default."
 msgstr "Для использования этой настройки необходимо активировать Постоянные ссылки в настройках сайта."
 
-#: settings.php:518
+#: settings.php:522
 msgid "These settings do not affect hosts from the "
 msgstr "Эти настройки не применяются к адресам из"
 
-#: cerber-tools.php:43 dashboard.php:68
+#: cerber-tools.php:43 dashboard.php:69
 msgid "Tools"
 msgstr "Инструменты"
 
-#: cerber-scanner.php:87 cerber-tools.php:51 dashboard.php:2790
-#: settings.php:575
+#: cerber-scanner.php:87 cerber-tools.php:51 dashboard.php:2819
+#: dashboard.php:3547 settings.php:588
 msgid "Help"
 msgstr "Помощь"
 
-#: settings.php:685 settings.php:807
+#: settings.php:698 settings.php:820
 msgid "%s allowed retries in %s minutes"
 msgstr "%s попыток разрешено в течении %s минут"
 
-#: settings.php:695 settings.php:817
+#: settings.php:708 settings.php:830
 msgid "Increase lockout duration to %s hours after %s lockouts in the last %s hours"
 msgstr "Увеличить длительность блокировки до %s часов после %s блокировок в течение последних %s часов"
 
-#: settings.php:702 settings.php:824
+#: settings.php:715 settings.php:837
 msgid "Notify admin if the number of active lockouts above"
 msgstr "Уведомить администратора, если число заблокированных IP более"
 
-#: settings.php:707 settings.php:829
+#: settings.php:720 settings.php:842
 msgid "Enable after %s failed login attempts in last %s minutes"
 msgstr "Активировать после %s неудачных авторизаций за последние %s минут"
 
-#: settings.php:991 settings.php:992
+#: settings.php:1004 settings.php:1005
 msgid "Attention! You have changed the login URL! The new login URL is"
 msgstr "Внимание! Вы изменили URL страницы авторизации. Новый адрес"
 
-#: cerber-load.php:3397
+#: cerber-load.php:3415
 msgid "Citadel mode is activated after %d failed login attempts in %d minutes."
 msgstr "Режим Цитадель активирован после %d неудачных попыток за %d минут."
 
-#: common.php:812
+#: common.php:835
 msgid "Logged in"
 msgstr "Вход"
 
-#: common.php:813
+#: common.php:836
 msgid "Logged out"
 msgstr "Выход"
 
-#: cerber-load.php:4239
+#: cerber-load.php:4262
 msgid "Import settings"
 msgstr "Импорт настроек"
 
-#: cerber-load.php:4223
+#: cerber-load.php:4246
 msgid "Your IP address is added to the"
 msgstr "Ваш IP адрес добавлен к"
 
-#: cerber-load.php:3461 cerber-load.php:4222
+#: cerber-load.php:3479 cerber-load.php:4245
 msgid "WP Cerber is now active and has started protecting your site"
 msgstr "WP Cerber активен и начал защищать ваш сайт"
 
-#: cerber-load.php:3460
+#: cerber-load.php:3478
 msgid "The WP Cerber security plugin is now active"
 msgstr "WP Cerber плагин безопасности активен"
 
-#: cerber-load.php:3456
+#: cerber-load.php:3474
 msgid "From country"
 msgstr "Из страны"
 
-#: cerber-load.php:3453
+#: cerber-load.php:3471
 msgid "From IP address"
 msgstr "С IP адреса"
 
-#: cerber-load.php:3452
+#: cerber-load.php:3470
 msgid "By user"
 msgstr "По пользователю"
 
-#: cerber-load.php:3446
+#: cerber-load.php:3464
 msgid "Not logged in"
 msgstr "Нет авторизации"
 
-#: cerber-load.php:3443 cerber-load.php:3444
+#: cerber-load.php:3461 cerber-load.php:3462
 msgid "The WP Cerber security plugin has been deactivated"
 msgstr "WP Cerber плагин деактивирован"
 
-#: cerber-load.php:3440 cerber-load.php:3451
+#: cerber-load.php:3458 cerber-load.php:3469
 msgid "Website"
 msgstr "Сайт"
 
-#: cerber-load.php:3437
+#: cerber-load.php:3455
 msgid "Hi!"
 msgstr "Привет!"
 
-#: cerber-load.php:3436 cerber-load.php:3438
+#: cerber-load.php:3454 cerber-load.php:3456
 msgid "A new version of WP Cerber is available to install"
 msgstr "Доступна новая версия WP Cerber!"
 
-#: cerber-load.php:3432
+#: cerber-load.php:3450
 msgid "View activity for this IP"
 msgstr "Посмотреть активность для этого IP"
 
-#: dashboard.php:138
+#: cerber-scanner.php:5114 dashboard.php:139
 msgid "Action"
 msgstr "Действие"
 
-#: dashboard.php:52 dashboard.php:80
+#: dashboard.php:52 dashboard.php:81
 msgid "WP Cerber"
 msgstr "WP Cerber"
 
-#: cerber-load.php:3427
+#: cerber-load.php:3445
 msgid "Number of lockouts is increasing"
 msgstr "Число блокировок увеличилось"
 
-#: cerber-load.php:3424
+#: cerber-load.php:3442
 msgid "unspecified"
 msgstr "неуказано"
 
-#: cerber-load.php:1183
+#: cerber-load.php:1189
 msgid "Username is not allowed. Please choose another one."
 msgstr "Имя пользователя недопустимо. Выберите другое."
 
-#: cerber-load.php:959
+#: cerber-load.php:962
 msgid "<strong>ERROR</strong>: The password you entered for the username %s is incorrect."
 msgstr "<strong>ОШИБКА</strong>: Пароль введенный для пользователя %s is некорректен."
 
-#: cerber-load.php:703
+#: cerber-load.php:706
 msgid "Human verification failed. Please click the square box in the reCAPTCHA block below."
 msgstr "Антибот проверка неудачна. Пожалуйста тыкните в квадратную отметку блока reCAPTCHA ниже"
 
-#: cerber-load.php:674 cerber-load.php:686 cerber-load.php:693
-#: cerber-load.php:947 cerber-load.php:1166 cerber-load.php:1172
-#: cerber-load.php:1177 cerber-load.php:1182 cerber-load.php:1188
-#: cerber-load.php:1195 cerber-load.php:1297 cerber-load.php:1434
-#: common.php:209 common.php:272 common.php:277 common.php:282 settings.php:970
-#: settings.php:1039
+#: cerber-load.php:677 cerber-load.php:689 cerber-load.php:696
+#: cerber-load.php:950 cerber-load.php:1172 cerber-load.php:1178
+#: cerber-load.php:1183 cerber-load.php:1188 cerber-load.php:1194
+#: cerber-load.php:1201 cerber-load.php:1303 cerber-load.php:1440
+#: common.php:209 common.php:272 common.php:277 common.php:282 settings.php:983
+#: settings.php:1066
 msgid "ERROR:"
 msgstr "ОШИБКА:"
 
-#: common.php:900 common.php:1246 dashboard.php:353 dashboard.php:2870
+#: common.php:923 common.php:1271 dashboard.php:354 dashboard.php:2899
 #: whois.php:223 whois.php:254
 msgid "Unknown"
 msgstr "Неизвестен"
 
-#: settings.php:1069 settings.php:1081 settings.php:1209
+#: settings.php:1090 settings.php:1102 settings.php:1230
 msgid "<strong>ERROR</strong>: please enter a valid email address."
 msgstr "<strong>ОШИБКА</strong>: Введите действительный адрес эл.почты."
 
-#: settings.php:568
+#: settings.php:581
 msgid "Users"
 msgstr "Пользователи"
 
-#: cerber-lab.php:758 settings.php:522
+#: cerber-lab.php:750 settings.php:526
 msgid "Know more"
 msgstr "Узнать больше"
 
-#: settings.php:521
+#: settings.php:525
 msgid "Before you can start using reCAPTCHA, you have to obtain Site key and Secret key on the Google website"
 msgstr "Перед использованием reCAPTCHA вам нужно получить ключ сайта и секретный ключ на сайте Google"
 
-#: settings.php:197
+#: settings.php:201
 msgid "Login form"
 msgstr "Форма входа"
 
-#: settings.php:194
+#: settings.php:198
 msgid "Lost password form"
 msgstr "Форма восстановления пароля"
 
-#: settings.php:188
+#: settings.php:192
 msgid "Secret key"
 msgstr "Секретный ключ"
 
-#: settings.php:187
+#: settings.php:191
 msgid "Site key"
 msgstr "Ключ сайта"
 
-#: settings.php:186
+#: settings.php:190
 msgid "reCAPTCHA settings"
 msgstr "Настройки reCAPTCHA"
 
-#: settings.php:156
+#: settings.php:157
 msgid "in minutes (leave empty to use default WP value)"
 msgstr "В минутах (оставьте пустым для значения WP по умолчанию)"
 
-#: settings.php:156
+#: settings.php:157
 msgid "User session expire"
 msgstr "Длительность сессии пользователя"
 
-#: settings.php:154
+#: settings.php:155
 msgid "Usernames from this list are not allowed to log in or register. Any IP address, have tried to use any of these usernames, will be immediately blocked. Use comma to separate logins."
 msgstr "Имена пользователей из этого списка не разрешены для входа или регистрации. Любой IP адрес пытающийся использовать эти имена будет автоматически заблокирован. Испольуйте запятую как разделитель."
 
-#: settings.php:148
+#: settings.php:149
 msgid "Prohibited usernames"
 msgstr "Запрещеные имена пользователей"
 
-#: settings.php:144
+#: settings.php:145
 msgid "User related settings"
 msgstr "Настройки пользователей"
 
-#: settings.php:224
+#: settings.php:228
 msgid "notification letters allowed per hour (0 means unlimited)"
 msgstr "разрешенное число писем с уведомлениями в час (0 - без ограничений)"
 
-#: settings.php:224
+#: settings.php:228
 msgid "Notification limit"
 msgstr "Ограничение уведомлений"
 
@@ -2128,43 +2212,43 @@ msgstr "Ограничение уведомлений"
 msgid "Maximum upload file size: %s."
 msgstr "Максимальный размер загружаемого файла: %s."
 
-#: dashboard.php:173
+#: dashboard.php:174
 msgid "Nobody can log in or register from these IPs"
 msgstr "Никто не сможет войти или зарегистрироваться с этих IP"
 
-#: common.php:844 common.php:904
+#: common.php:867 common.php:927
 msgid "Attempt to log in with prohibited username"
 msgstr "Попытка входа с запрещенным именем"
 
-#: common.php:842
+#: common.php:865
 msgid "Attempt to access prohibited URL"
 msgstr "Попытка доступа к запрещенному URL"
 
-#: common.php:839
+#: common.php:862
 msgid "reCAPTCHA settings are incorrect"
 msgstr "настройки reCAPTCHA неверны"
 
-#: common.php:838
+#: common.php:861
 msgid "reCAPTCHA verification failed"
 msgstr "проверка reCAPTCHA неудачна"
 
-#: common.php:811 dashboard.php:1629
+#: common.php:834 dashboard.php:1715
 msgid "User registered"
 msgstr "Пользователь зарегистрирован"
 
-#: common.php:810
+#: common.php:833
 msgid "User created"
 msgstr "Пользователь создан"
 
-#: dashboard.php:445 dashboard.php:1812
+#: dashboard.php:446 dashboard.php:1898
 msgid "Settings saved"
 msgstr "Настройки сохранены."
 
-#: dashboard.php:1795
+#: dashboard.php:1881
 msgid "Attention! Citadel mode is now active. Nobody is able to log in."
 msgstr "Внимание! Режим Цитадель активен. Авторизация на сайте заблокирована."
 
-#: dashboard.php:154
+#: dashboard.php:155
 msgid "To view activity, click on the IP"
 msgstr "Чтобы увидеть активность, нажмите на адрес IP"
 
@@ -2172,39 +2256,39 @@ msgstr "Чтобы увидеть активность, нажмите на ад
 msgid "When you click the button below you will get a configuration file, which you can upload on another site."
 msgstr "Когда вы нажмете на кнопку, то получите файл с настройками, который можно использовать на других сайтах."
 
-#: settings.php:121
+#: settings.php:122
 msgid "Hardening WordPress"
 msgstr "Усиление защиты WordPress"
 
-#: settings.php:125
+#: settings.php:126
 msgid "Disable feeds"
 msgstr "Отключить ленты"
 
-#: settings.php:125
+#: settings.php:126
 msgid "Block access to the RSS, Atom and RDF feeds"
 msgstr "Закрыть доступ к RSS, Atom и RDF лентам"
 
-#: settings.php:157
+#: settings.php:158
 msgid "by date of registration"
 msgstr "по дате регистрации"
 
 #. #-#-#-#-#  wp-cerber-code.pot (WP Cerber Security, Antispam & Malware Scan
-#. 7.5)  #-#-#-#-#
+#. 7.6)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
 #. #-#-#-#-#  wp-cerber-code.pot (WP Cerber Security, Antispam & Malware Scan
-#. 7.5)  #-#-#-#-#
+#. 7.6)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "https://wpcerber.com"
 msgstr "https://wpcerber.com"
 
-#: settings.php:104 settings.php:704 settings.php:826
+#: settings.php:105 settings.php:717 settings.php:839
 msgid "Click to send test"
 msgstr "Нажмите, чтобы протестировать отправку"
 
-#: settings.php:124
+#: settings.php:125
 msgid "Block access to the XML-RPC server (including Pingbacks and Trackbacks)"
 msgstr "Закрыть доступ к функциям XML-RPC, включая уведомления и обратные ссылки"
 
-#: settings.php:97
+#: settings.php:98
 msgid "must not overlap with the existing pages or posts slug"
 msgstr "не должно совпадать с URL существующих страниц или записей"

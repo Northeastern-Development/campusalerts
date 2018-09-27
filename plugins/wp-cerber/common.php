@@ -71,7 +71,8 @@ function cerber_admin_link($tab = '', $args = array()){
 		elseif ( in_array( $tab, array( 'geo' ) ) ) {
 			$page = 'cerber-rules';
 		}
-		elseif ( in_array( $tab, array( 'scanner', 'scan_settings', 'scan_schedule', 'scan_quarantine' ) ) ) {
+		//elseif ( in_array( $tab, array( 'scanner', 'scan_settings', 'scan_schedule', 'scan_quarantine' ) ) ) {
+		elseif ( 0 === strpos( $tab, 'scan' ) ) {
 			$page = 'cerber-integrity';
 		}
 		else {
@@ -869,7 +870,7 @@ function cerber_get_labels( $type = 'activity', $all = true ) {
 		$labels[53]=__('Attempt to log in denied','wp-cerber');
 		$labels[54]=__('Attempt to register denied','wp-cerber');
 		$labels[55]=__('Probing for vulnerable PHP code','wp-cerber');
-		$labels[56]=__('Attempt to upload executable file denied', 'wp-cerber' );
+		$labels[56]=__('Attempt to upload malicious file denied', 'wp-cerber' );
 		$labels[57]=__('File upload denied', 'wp-cerber' );
 
 		$labels[70]=__('Request to REST API denied','wp-cerber');
@@ -897,6 +898,7 @@ function cerber_get_labels( $type = 'activity', $all = true ) {
 		$labels[20] = __( 'Suspicious number of fields', 'wp-cerber' );
 		$labels[21] = __( 'Suspicious number of nested values', 'wp-cerber' );
 		$labels[22] = __( 'Malicious code detected', 'wp-cerber' );
+		$labels[23] = __( 'Suspicious SQL code detected', 'wp-cerber' );
 	}
 
 	return $labels;
@@ -1514,7 +1516,7 @@ function cerber_get_db() {
 	}
 
 	//if ( ! isset( $db ) || ! is_object( $db ) ) {
-	if ( ! isset( $db ) ) {
+	if ( ! isset( $db ) || empty( $db->dbh ) ) {
 		// Check for connected DB handler
 		if ( ! is_object( $wpdb ) || empty( $wpdb->dbh ) ) {
 			if ( ! $db = cerber_db_connect() ) {
@@ -1924,14 +1926,19 @@ function cerber_get_wp_version() {
 	return $v;
 }
 
-function cerber_is_base64_encoded( &$value ) {
-	if ( ! preg_match( '/[^A-Z0-9\+\/=]/i', $value ) ) {
-		if ( $value = @base64_decode( $value ) ) {
-			if ( ! preg_match( '/[\x00-\x07\x0B-\x0C\x0E-\x1F]/', $value ) ) { // ASCII control characters means not 64 encoded string
-				return true;
+function cerber_is_base64_encoded( $val ) {
+	$val = trim( $val );
+	if ( empty( $val ) || is_numeric( $val ) || strlen( $val ) < 8 || preg_match( '/[^A-Z0-9\+\/=]/i', $val ) ) {
+		return false;
+	}
+	if ( $val = @base64_decode( $val ) ) {
+		if ( ! preg_match( '/[\x00-\x08\x0B-\x0C\x0E-\x1F]/', $val ) ) { // ASCII control characters must not be
+			if ( preg_match( '/[A-Z]/i', $val ) ) { // Latin chars must be
+				return $val;
 			}
 		}
 	}
+
 
 	return false;
 }
@@ -1949,10 +1956,24 @@ function cerber_get_html_label( $iid ) {
 	if ( $iid == 1 ) {
 		$c = '#33be84;';
 	}
-	else{
+	else {
 		$c = '#dc2f34;';
 	}
 
-	return '<span style="background-color:'.$c.$css['scan-ilabel'].'">' . cerber_get_issue_label( $iid ) . '</span>';
+	return '<span style="background-color:' . $c . $css['scan-ilabel'] . '">' . cerber_get_issue_label( $iid ) . '</span>';
 
+}
+
+// @since v. 7.7 for PHP-FPM
+if ( ! function_exists( 'getallheaders' ) ) {
+	function getallheaders() {
+		$headers = [];
+		foreach ( $_SERVER as $name => $value ) {
+			if ( substr( $name, 0, 5 ) == 'HTTP_' ) {
+				$headers[ str_replace( ' ', '-', ucwords( strtolower( str_replace( '_', ' ', substr( $name, 5 ) ) ) ) ) ] = $value;
+			}
+		}
+
+		return $headers;
+	}
 }
