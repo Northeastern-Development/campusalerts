@@ -5,14 +5,41 @@
 wp_reset_query();
 
 
+
 if($filter == ''){
   $args = array(
 		 "post_type" => "nualerts",
 		 'meta_query' => array(
 			 'relation' => 'AND'
 			,array("key"=>"active","value"=>"1",""=>"=")
+      ,'campus_clause' => array("key"=>"affected_campus","compare"=>"EXISTS")
 		)
+    ,
+    'orderby' => array(
+      'campus_clause' => 'ASC',
+    )
 	);
+
+
+
+
+//   $args = array(
+//     "post_type" => "administration"
+//     ,"posts_per_page" => -1
+//     ,'meta_query' => array(
+//     'relation' => 'AND'
+//     ,'type_clause' => array("key"=>"type","value"=>"individual","compare"=>"=")
+//     ,'sub-type_clause' => array("key"=>"sub_type","compare"=>"EXISTS")
+//     ,'dept_clause' => array("key"=>"department","value"=>'"'.str_replace("-"," ",$filter).'"',"compare"=>"LIKE")
+//     ,array("key"=>"department_head","value"=>"0","compare"=>"LIKE")
+//     )
+//     // ,
+//     // 'orderby' => array(
+// //   'sub-type_clause' => 'ASC',
+// // )
+// );
+
+
 
 
 	$alerts = query_posts($args);
@@ -57,21 +84,26 @@ if($filter == ''){
 
 
 
-
+    //print_r($alerts);
 
 
     foreach($alerts as $a){
       //echo 'fads';
 			$fields = get_fields($a->ID);
-      // /print_r($fields);
+      //rint_r($fields);
+
+      // $campustitle .= ($campustitle != ""?", ":"").$c->post_title;
+      // print_r($campustitle);
 
 			$campus = "";
 
 			foreach($fields['affected_campus'] as $c){
         //$campus .= ($campus != ""?", ":"").$campus;
 				$campus .= ($campus != ""?", ":"").$c->post_title;
+        // foreach($fields as $campus){
+        //   print_r($campus);
+        // }
 
-				//print_r($campus);
 			}//END FOREACH $FIELDS
 
       $response .= sprintf(
@@ -117,8 +149,8 @@ else {
 		//$response .= "<div><h2>Northeastern University Alert!</h2><p>The Northeastern University System has issued the following alert(s).  Please be sure to read any associated information and contact your campus emergency services with any questions.</p><ul>";
 
 	 //$guide = '<li><a href="%s" title="%s, read more">%s For: <span>%s</span> - %s - Read More</a></li>';
-   // $guide = '<li><a href="%s" title="%s, read more">%s - %s - Read More</a></li>';
-   $guide = '<li><a href="%s" title="%s, read more">%s <span>&#xe5c8;</span>  Read More</a></li>';
+   $guide = '<li><a href="%s" title="%s, read more">%s - %s - Read More</a></li>';
+   //$guide = '<li><a href="%s" title="%s, read more">%s <span>&#xe5c8;</span>  Read More</a></li>';
 
 			foreach($res as $r){
 				$fields = get_fields($r->ID);
