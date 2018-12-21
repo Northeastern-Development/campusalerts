@@ -30,7 +30,8 @@ register_post_type('nualerts', // Register Custom Post Type
     'supports' => array(
         'title',
         'editor',
-        'excerpt'
+        'excerpt',
+        // 'author'
         // 'thumbnail'
     ), // Go to Dashboard Custom nudev post for supports
     'can_export' => false, // Allows export in Tools > Export
@@ -40,7 +41,6 @@ register_post_type('nualerts', // Register Custom Post Type
     //     'category'
     // ) // Add Category and Post Tags support
 ));
-// flush_rewrite_rules();
 
 // Add columns to alerts post listing
 function add_nualerts_acf_columns ( $columns ) {
@@ -56,79 +56,9 @@ function nualerts_custom_column ( $column, $post_id ) {
       echo (get_post_meta ( $post_id, 'active', true ) === "1"?"YES":"NO");
       break;
     case 'affected_campus':
-      $list = "";
-      foreach(get_post_meta ( $post_id, 'affected_campus', true ) as $r){
-        $list .= ($list != ""?", ":"").get_the_title($r);
-      }
-      echo $list;
+      echo get_post_meta ( $post_id, 'affected_campus', true );
       break;
   }
 }
-
-
-
-
-
-// this is a function to gather up the alerts and display them
-function getAlerts(){
-
-  wp_reset_postdata();
-	wp_reset_query();
-
-  $args = array(
-		 "post_type" => "nualerts"
-		,'meta_query' => array(
-			 'relation' => 'AND'
-			,array("key"=>"active","value"=>"1",""=>"=")
-		)
-	);
-
-	$alerts = query_posts($args);
-
-	$response = "";	// an empty return will collapse the alert area to nothing
-
-	if(count($alerts) > 0){	// we found a result, let's build out the list
-		$response .= "<div><h2>University Alert!</h2><p>The Northeastern University System has issued the following alert(s).  Please be sure to read any associated information and contact your campus emergency services with any questions.</p><ul>";
-
-    foreach($alerts as $a){
-
-			$fields = get_fields($a->ID);
-
-			$guide = '<li><a href="%s" title="%s, read more">%s For: %s - %s - Read More</a></li>';
-
-			$campus = "";
-			foreach($fields['affected_campus'] as $c){
-				$campus .= ($campus != ""?", ":"").$c->post_title;
-			}
-
-      $response .= sprintf(
-				 $guide
-				 ,$a->guid
-				,$a->post_title
-				,$a->post_title
-				,$campus
-				,$a->post_excerpt
-
-			);
-        print_r($campus);
-  }
-
-		$response .= "</ul></div>";
-	}
-
-	wp_reset_postdata();
-	wp_reset_query();
-
-  //return '<div id="nu__alerts">'.$response.'</div>';
-
-}
-
-
-
-
-
-
-// add_filter ( 'manage_alerts_posts_columns', 'add_alerts_acf_columns' );
-// add_action ( 'manage_alerts_posts_custom_column', 'alerts_custom_column', 10, 2 );
 
 ?>

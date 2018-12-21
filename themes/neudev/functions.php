@@ -17,10 +17,29 @@
  require_once(get_template_directory() . "/functions/admin-alerts.php");
 
  // set up specific admin tools for campuses
- require_once(get_template_directory() . "/functions/admin-campuses.php");
+ // require_once(get_template_directory() . "/functions/admin-campuses.php");
 
  // set up the custom feed endpoints so that other sites can grab the data in a few formats
  require_once(get_template_directory() . "/functions/custom-rss.php");
+
+
+
+
+
+ // this should allow logged in users to ONLY see their posts unless they are an administrator
+ function posts_for_current_author($query) {
+     global $pagenow;
+
+     if( 'edit.php' != $pagenow || !$query->is_admin )
+         return $query;
+
+     if( !current_user_can( 'manage_options' ) ) {
+         global $user_ID;
+         $query->set('author', $user_ID );
+     }
+     return $query;
+ }
+ add_filter('pre_get_posts', 'posts_for_current_author');
 
 
 
@@ -754,46 +773,96 @@ add_filter( 'login_errors', 'no_wordpress_errors' );
 
 //Customizing the WordPress Login Page
 
-function my_login_logo() { ?>
-    <style type="text/css">
-        body.login div#login h1 a {
+// Remove Admin bar
+// function remove_admin_bar(){
+//   return false;
+// }
 
-            background-image: url(<?php echo get_template_directory_uri(); ?>/img/logo.svg) !important;
-            width:300px;
-            background-size: 400px 84px;
-          	height: 84px;
-        }
-        body.login #login_error, .login .message {
-            border-left: 4px solid rgba(204, 0, 0, 1.0) !important;
-        }
-        body.login #backtoblog a, .login #nav a {
-            color:rgba(51, 62, 71, 1.0) !important;
-        }
-        body.login #backtoblog a:hover, .login #nav a:hover {
-            color:rgba(204, 0, 0, 1.0) !important;
-        }
-         .wp-core-ui .button-primary {
-            background:rgba(204, 0, 0, 1.0) !important;
-            border-color:rgba(189, 189, 189, 1.0) !important;
-            text-shadow: none !important;
-            box-shadow: 0 1px 0 #000 !important;
-        }
-        body.login label {
-            color:rgba(51, 62, 71, 1.0) !important;
-        }
-    </style>
+
+// tweaks to the styling for the login page
+function my_custom_login(){ ?>
+  <style type="text/css">
+
+    body.login{
+      background: rgba(0, 0, 0, 1.0) !important;
+    }
+
+    body.login div#login h1 a{
+      background-image: url('https://brand.northeastern.edu/global/assets/logos/northeastern/svg/northeastern-logo.svg');
+      width:315px;
+      background-size: 315px 85px;
+      height: 85px;
+    }
+    body.login #login_error, .login .message{
+      border-left: 4px solid rgba(224, 39, 47, 1.0) !important;
+    }
+    body.login #backtoblog a, .login #nav a{
+      color:rgba(255,255,255,1.0) !important;
+    }
+    body.login #backtoblog a:hover, .login #nav a:hover{
+      color: rgba(224, 39, 47, 1.0) !important;
+      text-decoration: underline;
+    }
+    .wp-core-ui .button-primary{
+      background:rgba(224, 39, 47, 1.0) !important;
+      border-color: none !important;
+      border-radius: 0 !important;
+      text-shadow: none !important;
+      box-shadow: none !important;
+      border: none;
+      min-width: 100px;
+    }
+    body.login label{
+      color:rgba(51, 62, 71, 1.0) !important;
+    }
+
+    p#backtoblog{
+      display: none;
+    }
+  </style>
 <?php }
-add_action( 'login_enqueue_scripts', 'my_login_logo' );
 
-function my_login_logo_url() {
-    return home_url();
+
+// set the remember option to be automatically checked for easier use
+function login_checked_remember_me(){
+  add_filter('login_footer','rememberme_checked');
 }
+
+function rememberme_checked(){
+  echo "<script>document.getElementById('rememberme').checked = true;</script>";
+}
+
+
+// change the url that the logo on the login page links to
+function my_login_logo_url(){
+  return get_bloginfo('url');
+}
+
+
+// change the tooltip value of the logo on the login page
+function my_login_logo_url_title(){
+  return get_bloginfo('name');
+}
+
+
+// override the default error message
+function login_error_override(){
+  return 'Invalid login.';
+}
+
+
+// remove the shake on error for the login panel
+function my_login_head(){
+  remove_action('login_head', 'wp_shake_js', 12);
+}
+
+// these are items for customizing the login page
+add_action('login_head', 'my_custom_login');
 add_filter( 'login_headerurl', 'my_login_logo_url' );
-
-function my_login_logo_url_title() {
-    return 'Northeastern Wordpress Starter';
-}
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+add_filter('login_errors', 'login_error_override');
+add_action('login_head', 'my_login_head');
+add_action( 'init', 'login_checked_remember_me' );
 
 
 

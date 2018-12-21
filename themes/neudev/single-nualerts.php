@@ -7,28 +7,22 @@
 
 	get_header();
 
+	$post = get_post();
 
+	$fields = get_fields($post->ID);
 
 ?>
 
 	<main id="nu__static" role="main" aria-label="content">
 
-		<!-- <section class="hero">
-			<div>
-				<h2>University Updates</h2>
-
-			</div>
-		</section> -->
-
-
 		<section class="intro">
 			<button onclick="goBack()" title="Click here to return to the previous page">Go Back</button><br>
 
-			<h1><?php the_title(); ?>: <?php the_date(); ?> <?php the_time(); ?></h1>
+			<h1><?=$post->post_title?>: <?=$fields['effective_date']?></h1>
 		</section>
 		<section>
 
-			<?php the_content(); ?>
+			<?=$post->post_content?>
 
 		</section>
 
