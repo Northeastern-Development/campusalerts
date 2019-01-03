@@ -16,7 +16,7 @@
 	$res = query_posts($args);
 
   // set the default content that there are no alerts
-	$response = '<div><h2>No Active Alerts</h2><p>The Northeastern University'.(isset($filter) && $filter != ''?' '.ucwords(strtolower(str_replace('-',' ',$filter))).' campus':' System').' has issued no alert(s).</p><hr>';
+	$response = '<div><h2>No Active Alerts</h2><p>The Northeastern University'.(isset($filter) && $filter != ''?' '.ucwords(strtolower(str_replace('-',' ',$filter))).' campus':' System').' has issued no alerts.</p><hr>';
 
   if(count($res) > 0){	// we found one or more active alerts
 
