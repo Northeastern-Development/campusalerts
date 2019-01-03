@@ -20,6 +20,18 @@
 	<meta name="msapplication-TileImage" content="https://brand.northeastern.edu/global/assets/favicon/mstile-144x144.png?v=2" />
 	<meta name="theme-color" content="#ffffff" />
 	<meta name="author" content="Northeastern University, https://www.northeastern.edu" />
+
+	<link rel="manifest" href="/manifest.json" />
+	<!-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+	<script>
+	  var OneSignal = window.OneSignal || [];
+	  OneSignal.push(function() {
+	    OneSignal.init({
+	      appId: "f03ec986-347f-442e-af12-6878cacaa342",
+	    });
+	  });
+	</script> -->
+
 <?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>

@@ -569,6 +569,16 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"/__PRECOMP/SASS/style.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/__PRECOMP/SASS/style-min.css",
+		"oF": 0,
+		"oS": 3
+		},
 	"/__PRECOMP/SASS/style.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -1152,6 +1162,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "/page-templates/rss/rss-alerts.php",
+		"oF": 0
+		},
+	"/page-templates/template-alertpanel.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/page-templates/template-alertpanel.php",
 		"oF": 0
 		},
 	"/page-templates/template-home.php": {

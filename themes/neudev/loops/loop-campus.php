@@ -16,11 +16,11 @@
 	$res = query_posts($args);
 
   // set the default content that there are no alerts
-	$response = '<div><h2>No Active Alert(s)</h2><p>The Northeastern University'.(isset($filter) && $filter != ''?' '.ucwords(strtolower(str_replace('-',' ',$filter))).' campus':' System').' has issued no alert(s).</p><hr>';
+	$response = '<div><h2>No Active Alerts</h2><p>The Northeastern University'.(isset($filter) && $filter != ''?' '.ucwords(strtolower(str_replace('-',' ',$filter))).' campus':' System').' has issued no alert(s).</p><hr>';
 
   if(count($res) > 0){	// we found one or more active alerts
 
-		$response = '<div><h2>University Alert(s)!</h2><p>The Northeastern University'.(isset($filter) && $filter != ''?' '.ucwords(strtolower(str_replace('-',' ',$filter))).' campus':' System').' has issued the following alert(s).  Please be sure to read any associated information and contact your campus emergency services with any questions.</p><hr>';
+		$response = '<div><h2>University Alerts'.(isset($filter) && $filter != ''?' - '.ucwords(strtolower(str_replace('-',' ',$filter))):'').'</h2><p>The Northeastern University'.(isset($filter) && $filter != ''?' '.ucwords(strtolower(str_replace('-',' ',$filter))).' campus':' System').' has issued the following alert(s).  Please be sure to read any associated information and contact your campus emergency services with any questions.</p><hr>';
 
     $guide = '<li><a href="%s" title="%s, read more">%s - Read More </a></li>';
 

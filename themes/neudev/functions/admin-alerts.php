@@ -61,4 +61,104 @@ function nualerts_custom_column ( $column, $post_id ) {
   }
 }
 
+
+
+
+
+// this is a class to gather up the alerts and display them
+class NUAlerts{
+
+  var $alerts;
+  var $filter;
+
+  public function __construct($a){
+    $this->filter = $a;
+    $this->alerts = $this->getData();
+    // $this->filter = $a;
+  }
+
+  private function getData():array{
+
+    wp_reset_postdata();
+    wp_reset_query();
+
+    $args = array(
+       "post_type" => "nualerts"
+      ,'meta_query' => array(
+         'relation' => 'AND'
+        ,array("key"=>"active","value"=>"1",""=>"=")
+        ,'campus_clause' => (isset($this->filter) && $this->filter != ''?array("key"=>"affected_campus","value"=>ucwords(str_replace('-',' ',$this->filter)),"compare"=>"="):array("key"=>"affected_campus","compare"=>"EXISTS"))
+      ),
+      'orderby' => array(
+        'campus_clause' => 'ASC',
+      )
+    );
+    return query_posts($args);
+  }
+
+  function buildAlerts():string{
+
+    // $this->filter = $a;
+
+    if(count($this->alerts) > 0){
+
+      $return = "<div><h2>University Alert!</h2><p>The Northeastern University System has issued the following alert(s).</p><ul>";
+
+      $guide = '<li><a href="%s" title="%s, read more" target="_blank">%s - %s - Read More</a></li>';
+
+      foreach($this->alerts as $a){
+
+        $fields = get_fields($a->ID);
+        // print_r($fields);
+
+        $return .= sprintf(
+          $guide
+          ,$a->guid
+          ,$a->post_title
+          ,$a->post_title
+          // ,$this->buildCampusList(get_field('affected_campus',$a->ID))
+          // ,'campus name here'
+          ,$fields['affected_campus']
+          // ,$a->post_excerpt
+        );
+      }
+
+      unset($guide,$a,$this->alerts);
+
+      return '<div id="nu__alerts">'.$return.'</ul></div></div>';
+
+    }else{
+      unset($this->alerts);
+      return '';
+    }
+
+  }
+
+  // private function buildCampusList($a=''):string{
+  //   $return = '';
+  //   foreach($a as $c){
+  //     $return .= ($return != ""?', ':'').$c->post_title;
+  //   }
+  //   return $return;
+  // }
+
+}
+
+if(!is_admin()){  // we only want to gather up the data if we are NOT in the admin area
+  // $filter = (isset($_GET['campus']) && $_GET['campus'] != ''?strtolower($_GET['campus']):'');
+  // echo $filter;
+  function getAlerts(){ // this is a hold-ver from the old logic that will need to be replaced
+
+    $filter = (isset($_GET['campus']) && $_GET['campus'] != ''?strtolower($_GET['campus']):'');
+    // echo $filter;
+
+    $activeAlerts = new NUAlerts($filter);
+    return $activeAlerts->buildAlerts();
+  }
+}
+// else{  // this will start functions specific to the admin side of things
+  // $activeAlerts = new NUAlerts();
+  // $activeAlerts->adminTools();
+// }
+
 ?>

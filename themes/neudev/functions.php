@@ -386,26 +386,26 @@ function remove_width_attribute( $html ) {
 if (function_exists('register_sidebar'))
 {
     // Define Sidebar Widget Area 1
-    register_sidebar(array(
-        'name' => __('Widget Area 1', 'neudev'),
-        'description' => __('Description for this widget-area...', 'neudev'),
-        'id' => 'widget-area-1',
-        'before_widget' => '<div id="%1$s" class="%2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<h3>',
-        'after_title' => '</h3>'
-    ));
-
-    // Define Sidebar Widget Area 2
-    register_sidebar(array(
-        'name' => __('Widget Area 2', 'neudev'),
-        'description' => __('Description for this widget-area...', 'neudev'),
-        'id' => 'widget-area-2',
-        'before_widget' => '<div id="%1$s" class="%2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<h3>',
-        'after_title' => '</h3>'
-    ));
+    // register_sidebar(array(
+    //     'name' => __('Widget Area 1', 'neudev'),
+    //     'description' => __('Description for this widget-area...', 'neudev'),
+    //     'id' => 'widget-area-1',
+    //     'before_widget' => '<div id="%1$s" class="%2$s">',
+    //     'after_widget' => '</div>',
+    //     'before_title' => '<h3>',
+    //     'after_title' => '</h3>'
+    // ));
+    //
+    // // Define Sidebar Widget Area 2
+    // register_sidebar(array(
+    //     'name' => __('Widget Area 2', 'neudev'),
+    //     'description' => __('Description for this widget-area...', 'neudev'),
+    //     'id' => 'widget-area-2',
+    //     'before_widget' => '<div id="%1$s" class="%2$s">',
+    //     'after_widget' => '</div>',
+    //     'before_title' => '<h3>',
+    //     'after_title' => '</h3>'
+    // ));
 }
 
 // Remove wp_head() injected Recent Comment styles
@@ -659,13 +659,13 @@ remove_action('welcome_panel', 'wp_welcome_panel'); // Removes Your Dashboard’
 add_filter('avatar_defaults', 'neudevgravatar'); // Custom Gravatar in Settings > Discussion
 add_filter('body_class', 'add_slug_to_body_class'); // Add slug to body class (Starkers build)
 add_filter('widget_text', 'do_shortcode'); // Allow shortcodes in Dynamic Sidebar
-add_filter('widget_text', 'shortcode_unautop'); // Remove <p> tags in Dynamic Sidebars (better!)
+// add_filter('widget_text', 'shortcode_unautop'); // Remove <p> tags in Dynamic Sidebars (better!)
 add_filter('wp_nav_menu_args', 'my_wp_nav_menu_args'); // Remove surrounding <div> from WP Navigation
 add_filter('nav_menu_css_class', 'my_css_attributes_filter', 100, 1); // Remove Navigation <li> injected classes (Commented out by default)
 add_filter('nav_menu_item_id', 'my_css_attributes_filter', 100, 1); // Remove Navigation <li> injected ID (Commented out by default)
 //add_filter('page_css_class', 'my_css_attributes_filter', 100, 1); // Remove Navigation <li> Page ID's (Commented out by default)
 add_filter('the_category', 'remove_category_rel_from_category_list'); // Remove invalid rel attribute
-add_filter('the_excerpt', 'shortcode_unautop'); // Remove auto <p> tags in Excerpt (Manual Excerpts only)
+// add_filter('the_excerpt', 'shortcode_unautop'); // Remove auto <p> tags in Excerpt (Manual Excerpts only)
 add_filter('the_excerpt', 'do_shortcode'); // Allows Shortcodes to be executed in Excerpt (Manual Excerpts only)
 add_filter('excerpt_more', 'neudev_view_article'); // Add 'View Article' button instead of [...] for Excerpts
 add_filter('show_admin_bar', 'remove_admin_bar'); // Remove Admin bar
