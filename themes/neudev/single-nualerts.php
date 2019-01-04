@@ -16,7 +16,7 @@
 	<main id="nu__static" role="main" aria-label="content">
 
 		<section class="intro">
-			<button onclick="goBack()" title="Click here to return to the previous page">Go Back</button><br>
+			<!-- <button onclick="goBack()" title="Click here to return to the previous page">Go Back</button><br> -->
 
 			<h1><?=$post->post_title?>: <?=$fields['effective_date']?></h1>
 		</section>
